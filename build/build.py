@@ -8,7 +8,7 @@ for f in ["geist-400","geist-500","instrument-serif-italic"]:
     css=css.replace(f"url(fonts/{f}.woff2)",f"url({B('fonts/'+f+'.woff2','font/woff2')})")
 open("styles.css","w").write(css)
 nav=open(os.path.join(HERE,"nav.html")).read();foot=open(os.path.join(HERE,"foot.html")).read()
-for src,out in [("src/index.html","index.html"),("src/realizacje.html","realizacje.html")]:
+for src,out in [("src/index.html","index.html"),("src/realizacje.html","realizacje.html"),("src/strony.html","strony.html"),("src/aplikacje.html","aplikacje.html"),("src/automatyzacje.html","automatyzacje.html")]:
     h=open(src).read().replace("{{NAV}}",nav).replace("{{FOOT}}",foot)
     h=re.sub(r"\{\{CASE:(\w+):(\w+)\}\}",lambda m:case(m.group(1),m.group(2)),h)
     if out=="index.html": h=h.replace('href="index.html#','href="#')

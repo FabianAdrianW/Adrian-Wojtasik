@@ -14,7 +14,7 @@
     const r=a.getBoundingClientRect(),lr=links.getBoundingClientRect();
     pill.style.opacity='';pill.style.width=r.width+'px';pill.style.transform=`translateX(${r.left-lr.left}px)`}
   let active=null;
-  if(links){$$('.links a').forEach(a=>{a.addEventListener('mouseenter',()=>movePill(a));a.addEventListener('focus',()=>movePill(a))});
+  if(links){$$('.links > li > a').forEach(a=>{a.addEventListener('mouseenter',()=>movePill(a));a.addEventListener('focus',()=>movePill(a))});
     links.addEventListener('mouseleave',()=>movePill(active))}
 
   /* menu mobilne */
@@ -35,7 +35,7 @@
     if(bar)bar.classList.toggle('show',y>H*.8);
     /* aktywny link */
     if(links){let a=null;for(const s of secs){const r=s.getBoundingClientRect();if(r.top<H*.45&&r.bottom>H*.45){a=links.querySelector(`a[href$="#${s.id}"]`)||a}}
-      if(a!==active){$$('.links a').forEach(x=>x.classList.toggle('on',x===a));active=a;if(!links.matches(':hover'))movePill(a)}}
+      if(a!==active){$$('.links > li > a').forEach(x=>x.classList.toggle('on',x===a));active=a;if(!links.matches(':hover'))movePill(a)}}
     /* słońce w navbarze wschodzi z porą dnia */
     if(sun){const t=Math.PI*(1-p*.9);sun.setAttribute('cx',(20+16*Math.cos(t)).toFixed(2));sun.setAttribute('cy',(20-16*Math.sin(t)).toFixed(2))}
     if(reduce||!win){root.style.setProperty('--sx','0px');root.style.setProperty('--sa','.35');return}

@@ -397,3 +397,29 @@ footer .sig em{color:var(--amber)}
 img[alt^="Adrian Wojtasik"]{filter:grayscale(1) contrast(1.04)}
 .work::after,.process .bg,.offer .bg{filter:grayscale(1)}
 .contact{background-blend-mode:luminosity}
+
+/* menu rozwijane Oferta */
+.links li:not(.pill){position:relative}
+.has-sub>.sub{position:absolute;top:calc(100% + .35rem);left:0;min-width:15rem;list-style:none;padding:.4rem;background:var(--ink);color:var(--paper);border:1px solid var(--line-d);border-radius:var(--r);box-shadow:0 18px 40px -18px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .25s,transform .35s var(--ease-o),visibility 0s .35s}
+.has-sub:hover>.sub,.has-sub:focus-within>.sub{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.has-sub>.sub a{padding:.6rem .8rem;white-space:nowrap;opacity:.85;border-radius:3px}
+.has-sub>.sub a:hover{opacity:1;background:rgba(var(--paper-rgb,244,243,240),.08)}
+.mnav a.sm{font-size:1.15rem;padding:.5rem 0 .5rem 1rem;color:var(--muted-d)}
+/* linki do podstron i szczegóły w ofercie */
+.offer-head .svc-links{display:flex;flex-wrap:wrap;gap:.6rem;font-size:1rem}
+.svc-links a{display:inline-flex;align-items:center;min-height:2.6rem;padding:.5rem 1rem;border:1px solid rgba(11,11,12,.22);border-radius:999px;color:var(--ink);text-decoration:none;font-size:.95rem;transition:background .3s,color .3s,border-color .3s}
+@media (hover:hover){.svc-links a:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}}
+.ledger .more{display:inline-block;margin-top:.9rem;font-size:.95rem;color:inherit;opacity:.75;text-underline-offset:4px;text-decoration-color:var(--accent)}
+.ledger .more:hover{opacity:1}
+.ledger .r-price{display:flex;flex-direction:column;align-items:flex-start}
+/* podstrony usług */
+.sub-hero .hero-cta{margin-top:1.6rem}
+.sub-hero p+p{margin-top:.8rem}
+.svc{background:var(--ink);color:var(--paper);padding:clamp(2.5rem,calc(5*var(--vw)),4.5rem) clamp(1.25rem,calc(5*var(--vw)),4rem) clamp(3rem,calc(6*var(--vw)),5rem) clamp(1.25rem,calc(9*var(--vw)),9rem)}
+.svc h2{font-size:clamp(2rem,calc(4.4*var(--vw)),4rem);font-weight:500;letter-spacing:-.04em;line-height:1;margin-top:1rem}
+.svc h2 em{color:var(--amber)}
+.svc-grid{display:grid;gap:1px;margin-top:2.4rem;background:var(--line-d);border:1px solid var(--line-d);border-radius:var(--r);overflow:hidden}
+.svc-grid article{background:var(--surface-d);padding:1.6rem 1.5rem}
+.svc-grid h3{font-size:1.3rem;font-weight:500;letter-spacing:-.02em;margin-bottom:.5rem}
+.svc-grid p{color:var(--muted-d)}
+@media (min-width:900px){.svc-grid{grid-template-columns:repeat(3,1fr)}}

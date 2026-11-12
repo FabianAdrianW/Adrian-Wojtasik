@@ -57,3 +57,9 @@ Sesja własna z korektą „okno” (skrypt `light_img.py`: rzut szyb tylko na t
 - Usunięta sekcja „Pracuję z AI. Odpowiadam ja.”. Wątek AI w kroku „Budowa”.
 - CTA: „Zapytaj o wycenę” zamiast „Porozmawiajmy”. Kontakt: „Opisz, czego potrzebujesz. Przygotuję wycenę.”
 - Do decyzji później: proporcje kolorów 60/30/10, dopracowanie wersji mobilnej, wariant z granatową czernią.
+
+## Zmiany v4 (2026-11-12)
+- Podstrony usług: Strony internetowe, Aplikacje i programy, Automatyzacje. Menu „Oferta” rozwija się z linkami, w ofercie są przyciski do podstron i „Szczegóły” przy każdej pozycji.
+- Proces na głównej opisuje wszystkie usługi, nie tylko strony („Kierunek” zamiast „Brand book”).
+- Zasada zmian: „Zmiany są normalne” w kroku Projekt. Cena: nie zmienia się, dopóki nie zmienia się zakres, a poszerzenie zakresu uzgadniamy przed dalszą pracą.
+- Automatyzacje nie mają jeszcze realizacji, więc podstrona pokazuje przykłady zadań, bez klientów.

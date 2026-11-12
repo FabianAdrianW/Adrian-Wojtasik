@@ -8,6 +8,7 @@ Strona nie ma frameworka ani etapu budowania po stronie przeglądarki: to czysty
 
 - **Hero**: „Strony i automatyzacje dla Twojej firmy”, zdjęcie i dwa przyciski, z rzutem szyb okna wędrującym po stronie.
 - **Moje ostatnie realizacje**: dwie wyróżnione na głównej, pełna lista na podstronie `realizacje.html`.
+- **Podstrony usług**: `strony.html`, `aplikacje.html` i `automatyzacje.html`, każda z opisem, procesem, przykładem i ceną. Linki są w menu „Oferta”, w sekcji oferty i w stopce.
 - **Jak pracuję**: oś pionowa z sześcioma krokami, każdy rozwija się po najechaniu kursorem (wątek AI jest w kroku „Budowa”), obok przykładowa rozmowa z klientem.
 - **Wiesz, ile zapłacisz**: trzy pozycje cennika w układzie księgi.
 - **O mnie** i **Kontakt** z numerem telefonu, e-mailem, WhatsAppem i formularzem.
@@ -42,11 +43,12 @@ Kroje: **Geist** (tekst) i **Instrument Serif** w kursywie (akcenty w nagłówka
 .
 ├── index.html          strona główna (wynik budowania)
 ├── realizacje.html     podstrona z realizacjami (wynik budowania)
+├── strony.html, aplikacje.html, automatyzacje.html   podstrony usług
 ├── styles.css          style z wbudowanymi fontami (wynik budowania)
 ├── app.js              animacje, menu, rozmowa, formularz
 ├── img/                zdjęcia, znaki, favicon, og.jpg
 ├── fonts/              pliki .woff2
-├── src/                źródła: index.html, realizacje.html, styles.css
+├── src/                źródła wszystkich stron i styles.css
 ├── build/              skrypt budujący i wspólne fragmenty (nav, stopka, realizacje)
 └── docs/DESIGN.md      decyzje projektowe
 ```
