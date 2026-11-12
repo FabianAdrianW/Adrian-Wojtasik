@@ -4,10 +4,15 @@ Ten plik mówi, skąd bierze się spójność strony. Każda zmiana w tekstach, 
 
 ## 1. Zdanie marki
 
-**Hasło: „Przejrzyście, od kodu po cenę.”** Stopka, podpis maila, opisy w social.
-**Rozwinięcie: „Widzisz, za co płacisz. Klienci widzą Twoją firmę.”** Oferta, opisy usług.
+**Hasło: „Konkurencję zostawiamy w cieniu.”** Stopka, podpis maila, opisy w social, wizytówka.
+**Pod hasłem: „Strony, programy i automatyzacje, które przyspieszają Twoją firmę.”** Oferta, opisy usług, bio.
 
-„Przejrzysty” łączy dwa znaczenia: szybę (motyw światła przez okno) i jasne zasady współpracy. Obejmuje strony, programy i automatyzacje. Rozwinięcie dodaje efekt dla klienta: jego firma jest widoczna na tle konkurencji. Słowa bazowe do tekstów: przejrzysty, jasny, czytelny, widoczny, wprost, bez tajemnic.
+- Idiom „zostawić w cieniu” znaczy „przyćmić”. Mówi o przewadze klienta i trzyma się motywu światła z okna.
+- „Zostawiamy” to ja razem z klientem: partnerstwo (archetyp Towarzysza).
+- Konkurencji nie atakujemy wprost; nie dopisujemy nazw ani porównań.
+- Hasło nie mówi, co robię, więc zawsze stoi przy nim zdanie o usługach.
+- Słowa bazowe do tekstów: przewaga, światło, widać, szybciej, prościej, razem.
+- Odrzucone: „Przejrzyście, od kodu po cenę” (słowo „przejrzysty” jest ograne u konkurencji), „Twoje okno na technologię” (nie mówi o efekcie), „XXI wiek / nowoczesność” (ogólniki, jak u agencji).
 
 ## 2. Archetyp
 
