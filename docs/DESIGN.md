@@ -70,3 +70,6 @@ Sesja własna z korektą „okno” (skrypt `light_img.py`: rzut szyb tylko na t
 
 ## Zdjęcia (v5)
 Portrety pochodzą wprost z oryginałów 2576 px (kolor, bez wypalonego tonowania), WebP q92: `hero-900/1800`, `omnie-700/1400`, `cta-1000/2000` z `srcset`. Filtr szarości na portretach usunięty. Nowe zdjęcia dodawaj z oryginałów, nie z już skompresowanych plików.
+
+## Paleta v5: czerń · biel · miód
+`--accent:#d99a1e` (hover `#b87e10`, jasny `--amber:#f5c45a`), tekst akcentu na jasnym tle `--accent-t:#8a5d0a`; tekst na przyciskach akcentu: czerń. Menu: „Oferta" i „Realizacje" mają rozwijane panele (numeracja, opis, strzałka przy hoverze).

@@ -24,7 +24,7 @@ Motyw przewodni to okno i pora dnia: sekcje przechodzą od ciemnego hero, przez 
 | Akcent na jasnym | Pomarańcz | `#D9480F` |
 | Akcent na ciemnym | Słońce | `#FF7A2F` |
 
-Zdjęcia na stronie są czarno-białe, a pomarańcz pojawia się tylko na przyciskach i detalach. Poprzednią, brązową wersję zachowuje gałąź `v1-braz`.
+Zdjęcia na stronie są czarno-białe, a miód pojawia się tylko na przyciskach i detalach. Poprzednią, brązową wersję zachowuje gałąź `v1-braz`.
 
 Kroje: **Geist** (tekst) i **Instrument Serif** w kursywie (akcenty w nagłówkach), oba na licencji OFL, wbudowane w `styles.css`. Szczegóły decyzji projektowych są w [`docs/DESIGN.md`](docs/DESIGN.md).
 
