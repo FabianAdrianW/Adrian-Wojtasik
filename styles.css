@@ -471,3 +471,23 @@ footer .sig em{color:var(--amber)}
   .js .svc-index.in li:nth-child(2){transition-delay:.1s}.js .svc-index.in li:nth-child(3){transition-delay:.2s}
 }
 @media (min-width:900px){.offer-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(3rem,calc(6*var(--vw)),6rem);align-items:end}.offer-top .offer-head{order:2}.svc-index{order:1}}
+
+/* ===== Motyw marki: szczelina światła =====
+   Jedna pionowa szczelina (jak w znaku) wraca w etykietach, krokach, linkach i przejściach sekcji.
+   Rozmiar zawsze 2px szerokości; kolor --amber na ciemnym, --accent na jasnym. */
+:root{--slit-w:2px}
+.eyebrow::before,.study .tag::before{content:"";flex:0 0 auto;width:var(--slit-w);height:1.05em;border-radius:2px;background:var(--amber);box-shadow:0 0 10px rgba(245,196,90,.55)}
+.study .tag{display:inline-flex;align-items:center;gap:.7rem}
+.light .eyebrow::before{background:var(--accent);box-shadow:none}
+.steps .dot{width:.3rem;height:1.2rem;left:-2.12rem;border-radius:3px}
+.steps li.on .dot{transform:scaleY(1.35)}
+.slit-div{position:relative;height:0;z-index:6;pointer-events:none}
+.slit-div::before{content:"";position:absolute;left:clamp(1.25rem,calc(9*var(--vw)),9rem);top:-3.2rem;width:var(--slit-w);height:6.4rem;border-radius:2px;background:linear-gradient(transparent,var(--amber) 35%,var(--amber) 65%,transparent);box-shadow:0 0 14px rgba(245,196,90,.5)}
+@media (prefers-reduced-motion:no-preference){
+  .js .slit-div::before{transform:scaleY(0);transition:transform 1.1s var(--ease-o)}
+  .js .slit-div.in::before{transform:none}
+}
+@media (hover:hover){
+  footer a,.ledger .more{text-decoration:none;background:linear-gradient(var(--amber),var(--amber)) left bottom/0 1px no-repeat;transition:background-size .45s var(--ease-o)}
+  footer a:hover,.ledger .more:hover{background-size:100% 1px}
+}
