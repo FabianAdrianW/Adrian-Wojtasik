@@ -41,10 +41,27 @@
     if(reduce||!win){root.style.setProperty('--sx','0px');root.style.setProperty('--sa','.35');return}
     root.style.setProperty('--sx',lerp(-34,34,p).toFixed(1)+'px');
     root.style.setProperty('--sa',lerp(.55,.18,p).toFixed(3));
+    /* światło: liczone z układu strony, nie z ręcznych wartości.
+       Kolejne ciemne sekcje tworzą „przebieg”; światło wchodzi na jego początku,
+       wędruje po całej jego długości i gaśnie na końcu. */
     let wx=74,wo=0;
-    for(let i=0;i<secs.length;i++){const s=secs[i],r=s.getBoundingClientRect();
-      if(r.top<=H*.5&&r.bottom>H*.5){const n=secs[i+1]||s,t=clamp((H*.5-r.top)/r.height);
-        const a=+(s.dataset.wx??0),b=+(n.dataset.wx??a),ao=+(s.dataset.wo??0),bo=+(n.dataset.wo??ao);wx=lerp(a,b,t);wo=lerp(ao,bo,t);break}}
+    const wm=H*.5;
+    for(let i=0;i<secs.length;i++){
+      if(secs[i].dataset.tone!=='dark')continue;
+      let j=i;while(secs[j+1]&&secs[j+1].dataset.tone==='dark')j++;
+      const top=secs[i].getBoundingClientRect().top,bot=secs[j].getBoundingClientRect().bottom;
+      if(top<=wm+H*.5&&bot>=wm-H*.5){
+        const len=Math.max(bot-top,1),pos=wm-top;           /* px od początku przebiegu */
+        const t=clamp(pos/len);
+        const edge=Math.min(H*.9,len*.35);                    /* strefa wejścia/wyjścia */
+        wo=Math.min(clamp((pos+H*.25)/edge),clamp((len-pos+H*.25)/edge));
+        wo=wo*wo*(3-2*wo);                                    /* smoothstep */
+        const drift=Math.sin(t*Math.PI*Math.max(1,len/(H*1.6)));/* dłuższy przebieg = więcej ruchu */
+        wx=lerp(76,22,t)+drift*6;
+      }
+      i=j;
+      if(wo>0)break;
+    }
     win.style.setProperty('--wx',wx.toFixed(2)+'%');win.style.setProperty('--wo',wo.toFixed(3));
   }
   addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(frame)},{passive:true});

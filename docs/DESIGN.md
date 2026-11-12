@@ -63,3 +63,7 @@ Sesja własna z korektą „okno” (skrypt `light_img.py`: rzut szyb tylko na t
 - Proces na głównej opisuje wszystkie usługi, nie tylko strony („Kierunek” zamiast „Brand book”).
 - Zasada zmian: „Zmiany są normalne” w kroku Projekt. Cena: nie zmienia się, dopóki nie zmienia się zakres, a poszerzenie zakresu uzgadniamy przed dalszą pracą.
 - Automatyzacje nie mają jeszcze realizacji, więc podstrona pokazuje przykłady zadań, bez klientów.
+
+## Światło w oknie (v5)
+- Położenie i jasność światła liczy `app.js` z układu strony: kolejne sekcje `data-tone="dark"` tworzą przebieg; światło wchodzi na jego początku, przesuwa się po całej długości (od ok. 76% do 22% szerokości) i gaśnie na końcu. Nie ma ręcznych `data-wx`/`data-wo` – dodawanie lub wydłużanie sekcji niczego nie rozjeżdża. Wystarczy poprawny `data-tone` na każdej `<section>`.
+- Strażnik: `python3 build/check_light.py` (Playwright, 5 stron × desktop/mobile). Uruchamiaj po każdej zmianie układu lub treści.
