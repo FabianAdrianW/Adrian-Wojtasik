@@ -6,23 +6,24 @@ Strona nie ma frameworka ani etapu budowania po stronie przeglądarki: to czysty
 
 ## Co jest na stronie
 
-- **Hero** z zapalaniem okna i rzutem szyb, który wędruje po stronie razem z porą dnia.
+- **Hero**: „Strony i automatyzacje dla Twojej firmy”, zdjęcie i dwa przyciski, z rzutem szyb okna wędrującym po stronie.
 - **Moje ostatnie realizacje**: dwie wyróżnione na głównej, pełna lista na podstronie `realizacje.html`.
-- **Jak pracuję**: oś pionowa z sześcioma krokami, każdy rozwija się po najechaniu kursorem, obok przykładowa rozmowa z klientem.
-- **Pracuję z AI, odpowiadam ja**: co robi AI, co robię ja i co z tego ma klient.
+- **Jak pracuję**: oś pionowa z sześcioma krokami, każdy rozwija się po najechaniu kursorem (wątek AI jest w kroku „Budowa”), obok przykładowa rozmowa z klientem.
 - **Wiesz, ile zapłacisz**: trzy pozycje cennika w układzie księgi.
 - **O mnie** i **Kontakt** z numerem telefonu, e-mailem, WhatsAppem i formularzem.
 
 ## Wygląd
 
-Motyw przewodni to okno i pora dnia: sekcje przechodzą od zmierzchu w hero, przez popołudnie i południe, do pełnego dnia w kontakcie.
+Motyw przewodni to okno i pora dnia: sekcje przechodzą od ciemnego hero, przez szarości, do jasnego kontaktu.
 
 | Token | Nazwa | Wartość |
 |---|---|---|
-| Tło ciemne | Sadza | `#151311` |
-| Tło jasne | Kość | `#F1ECE4` |
-| Akcent ciemny | Koniak | `#8E5E36` |
-| Akcent jasny | Bursztyn | `#C08A5B` |
+| Tło ciemne | Czerń | `#0B0B0C` |
+| Tło jasne | Papier | `#F4F3F0` |
+| Akcent na jasnym | Pomarańcz | `#D9480F` |
+| Akcent na ciemnym | Słońce | `#FF7A2F` |
+
+Zdjęcia na stronie są czarno-białe, a pomarańcz pojawia się tylko na przyciskach i detalach. Poprzednią, brązową wersję zachowuje tag `v1-braz`.
 
 Kroje: **Geist** (tekst) i **Instrument Serif** w kursywie (akcenty w nagłówkach), oba na licencji OFL, wbudowane w `styles.css`. Szczegóły decyzji projektowych są w [`docs/DESIGN.md`](docs/DESIGN.md).
 
