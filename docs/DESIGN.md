@@ -67,3 +67,6 @@ Sesja własna z korektą „okno” (skrypt `light_img.py`: rzut szyb tylko na t
 ## Światło w oknie (v5)
 - Położenie i jasność światła liczy `app.js` z układu strony: kolejne sekcje `data-tone="dark"` tworzą przebieg; światło wchodzi na jego początku, przesuwa się po całej długości (od ok. 76% do 22% szerokości) i gaśnie na końcu. Nie ma ręcznych `data-wx`/`data-wo` – dodawanie lub wydłużanie sekcji niczego nie rozjeżdża. Wystarczy poprawny `data-tone` na każdej `<section>`.
 - Strażnik: `python3 build/check_light.py` (Playwright, 5 stron × desktop/mobile). Uruchamiaj po każdej zmianie układu lub treści.
+
+## Zdjęcia (v5)
+Portrety pochodzą wprost z oryginałów 2576 px (kolor, bez wypalonego tonowania), WebP q92: `hero-900/1800`, `omnie-700/1400`, `cta-1000/2000` z `srcset`. Filtr szarości na portretach usunięty. Nowe zdjęcia dodawaj z oryginałów, nie z już skompresowanych plików.

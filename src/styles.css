@@ -394,7 +394,6 @@ footer .sig em{color:var(--amber)}
 @media (prefers-reduced-motion:reduce){.window,.case .frame,.sheet,.btn{transition:none!important}.manifest::before{animation:none}}
 
 /* zdjęcia w czerni i bieli, żeby pasowały do palety */
-img[alt^="Adrian Wojtasik"]{filter:grayscale(1) contrast(1.04)}
 .work::after,.process .bg,.offer .bg{filter:grayscale(1)}
 .contact{background-blend-mode:luminosity}
 
