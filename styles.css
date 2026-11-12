@@ -491,3 +491,4 @@ footer .sig em{color:var(--amber)}
   footer a,.ledger .more{text-decoration:none;background:linear-gradient(var(--amber),var(--amber)) left bottom/0 1px no-repeat;transition:background-size .45s var(--ease-o)}
   footer a:hover,.ledger .more:hover{background-size:100% 1px}
 }
+.offer-line{font-size:1.2rem;font-weight:500;letter-spacing:-.01em;color:var(--ink);margin-bottom:.6rem}

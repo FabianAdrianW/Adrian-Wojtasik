@@ -2,18 +2,12 @@
 
 Ten plik mówi, skąd bierze się spójność strony. Każda zmiana w tekstach, zdjęciach, kolorach i animacjach ma potwierdzać zasady poniżej. Element, który ich nie potwierdza, wypada.
 
-## 1. Zdanie marki (do zatwierdzenia)
+## 1. Zdanie marki
 
-Zdanie opisuje, co klient zyskuje: jego firmę widać lepiej niż konkurencję. Nawiązuje do motywu światła wpadającego przez okno.
+**Hasło: „Przejrzyście, od kodu po cenę.”** Stopka, podpis maila, opisy w social.
+**Rozwinięcie: „Widzisz, za co płacisz. Klienci widzą Twoją firmę.”** Oferta, opisy usług.
 
-| Propozycja | Co mówi | Uwagi |
-|---|---|---|
-| **Twoja firma w najlepszym świetle.** (rekomendacja) | Klient wygląda lepiej niż konkurencja, a światło spina metaforę strony. | Krótkie, łatwe do zapamiętania, pasuje do hasła w stopce, podpisu w mailu i opisu w social. |
-| Widać Cię pierwszego. | Przewaga nad konkurencją: klient zauważa Ciebie, nie innych. | Mocniejsze, bardziej sprzedażowe. |
-| Klient zobaczy Cię, zanim zobaczy konkurencję. | To samo, wprost. | Dłuższe, lepsze jako lead pod nagłówkiem niż jako hasło. |
-| Więcej światła na Twoją firmę. | Uwaga klientów kierowana na firmę. | Najbliżej metafory, najmniej konkretne. |
-
-Hasło roboczo pojawia się tylko w dokumentacji. Na stronie znajdzie się po zatwierdzeniu.
+„Przejrzysty” łączy dwa znaczenia: szybę (motyw światła przez okno) i jasne zasady współpracy. Obejmuje strony, programy i automatyzacje. Rozwinięcie dodaje efekt dla klienta: jego firma jest widoczna na tle konkurencji. Słowa bazowe do tekstów: przejrzysty, jasny, czytelny, widoczny, wprost, bez tajemnic.
 
 ## 2. Archetyp
 
