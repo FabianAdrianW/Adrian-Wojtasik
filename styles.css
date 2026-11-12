@@ -406,9 +406,6 @@ img[alt^="Adrian Wojtasik"]{filter:grayscale(1) contrast(1.04)}
 .has-sub>.sub a:hover{opacity:1;background:rgba(var(--paper-rgb,244,243,240),.08)}
 .mnav a.sm{font-size:1.15rem;padding:.5rem 0 .5rem 1rem;color:var(--muted-d)}
 /* linki do podstron i szczegóły w ofercie */
-.offer-head .svc-links{display:flex;flex-wrap:wrap;gap:.6rem;font-size:1rem}
-.svc-links a{display:inline-flex;align-items:center;min-height:2.6rem;padding:.5rem 1rem;border:1px solid rgba(11,11,12,.22);border-radius:999px;color:var(--ink);text-decoration:none;font-size:.95rem;transition:background .3s,color .3s,border-color .3s}
-@media (hover:hover){.svc-links a:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}}
 .ledger .more{display:inline-block;margin-top:.9rem;font-size:.95rem;color:inherit;opacity:.75;text-underline-offset:4px;text-decoration-color:var(--accent)}
 .ledger .more:hover{opacity:1}
 .ledger .r-price{display:flex;flex-direction:column;align-items:flex-start}
@@ -423,3 +420,32 @@ img[alt^="Adrian Wojtasik"]{filter:grayscale(1) contrast(1.04)}
 .svc-grid h3{font-size:1.3rem;font-weight:500;letter-spacing:-.02em;margin-bottom:.5rem}
 .svc-grid p{color:var(--muted-d)}
 @media (min-width:900px){.svc-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* indeks usług w ofercie */
+.offer-top{position:relative;display:grid;gap:3rem}
+.offer-top .offer-head{margin-left:0}
+.svc-index ol{list-style:none;counter-reset:svc;margin-top:1.2rem;border-top:1px solid rgba(11,11,12,.16)}
+.svc-index li{counter-increment:svc;border-bottom:1px solid rgba(11,11,12,.16)}
+.svc-index a{position:relative;display:grid;grid-template-columns:2.6rem 1fr 2.8rem;grid-template-areas:"n t g" ". d g";align-items:center;column-gap:.9rem;padding:1.15rem .9rem 1.15rem .4rem;color:var(--ink);text-decoration:none;isolation:isolate;overflow:hidden}
+.svc-index a::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ink);transform:scaleY(0);transform-origin:bottom;transition:transform .55s var(--ease-o)}
+.svc-index .sn{grid-area:n;font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--accent);transition:color .4s}
+.svc-index .sn::before{content:"0" counter(svc)}
+.svc-index .t{grid-area:t;font-size:clamp(1.6rem,calc(2.9*var(--vw)),2.6rem);font-weight:500;letter-spacing:-.035em;line-height:1.08;transition:color .4s,transform .55s var(--ease-o)}
+.svc-index .d{grid-area:d;color:var(--noon-muted);font-size:.98rem;margin-top:.35rem;transition:color .4s,transform .55s var(--ease-o)}
+.svc-index .go{grid-area:g;justify-self:end;width:2.8rem;height:2.8rem;border-radius:50%;border:1px solid rgba(11,11,12,.22);display:grid;place-items:center;transition:background .4s,border-color .4s,transform .55s var(--ease-o)}
+.svc-index .go svg{width:1.15rem;height:1.15rem;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:transform .55s var(--ease-o)}
+.svc-index a:focus-visible{outline-offset:-2px}
+@media (max-width:599px){.svc-index a{grid-template-columns:2rem 1fr 2.6rem;column-gap:.6rem}}
+@media (hover:hover){
+  .svc-index a:hover::before{transform:scaleY(1)}
+  .svc-index a:hover .t{color:var(--paper);transform:translateX(.5rem)}
+  .svc-index a:hover .d{color:var(--muted-d);transform:translateX(.5rem)}
+  .svc-index a:hover .sn{color:var(--amber)}
+  .svc-index a:hover .go{background:var(--accent);border-color:var(--accent);color:#fff;transform:rotate(-45deg)}
+}
+@media (prefers-reduced-motion:no-preference){
+  .js .svc-index li{opacity:0;transform:translateY(14px);transition:opacity .8s var(--ease-o),transform .8s var(--ease-o)}
+  .js .svc-index.in li{opacity:1;transform:none}
+  .js .svc-index.in li:nth-child(2){transition-delay:.1s}.js .svc-index.in li:nth-child(3){transition-delay:.2s}
+}
+@media (min-width:900px){.offer-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(3rem,calc(6*var(--vw)),6rem);align-items:end}.offer-top .offer-head{order:2}.svc-index{order:1}}
