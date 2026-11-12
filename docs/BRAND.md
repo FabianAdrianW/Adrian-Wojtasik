@@ -4,7 +4,7 @@ Ten plik mówi, skąd bierze się spójność strony. Każda zmiana w tekstach, 
 
 ## 1. Zdanie marki
 
-**Hasło: „Konkurencję zostawiamy w cieniu.”** Stopka, podpis maila, opisy w social, wizytówka.
+**Hasło: „Konkurencję zostawiamy w cieniu.”** Pas `#haslo` na stronie głównej (przejście z ciemnej części do jasnej: „w cieniu” celowo przygaszone), stopka, podpis maila, social, wizytówka.
 **Pod hasłem: „Strony, programy i automatyzacje, które przyspieszają Twoją firmę.”** Oferta, opisy usług, bio.
 
 - Idiom „zostawić w cieniu” znaczy „przyćmić”. Mówi o przewadze klienta i trzyma się motywu światła z okna.

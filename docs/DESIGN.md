@@ -73,3 +73,5 @@ Portrety pochodzą wprost z oryginałów 2576 px (kolor, bez wypalonego tonowani
 
 ## Paleta v5: czerń · biel · miód
 `--accent:#d99a1e` (hover `#b87e10`, jasny `--amber:#f5c45a`), tekst akcentu na jasnym tle `--accent-t:#8a5d0a`; tekst na przyciskach akcentu: czerń. Menu: „Oferta" i „Realizacje" mają rozwijane panele (numeracja, opis, strzałka przy hoverze).
+
+Podstrony usług kończą się sekcją `#inne-uslugi` (dwie pozostałe usługi w tym samym stylu co lista na stronie głównej), przed kontaktem.

@@ -491,4 +491,21 @@ footer .sig em{color:var(--amber)}
   footer a,.ledger .more{text-decoration:none;background:linear-gradient(var(--amber),var(--amber)) left bottom/0 1px no-repeat;transition:background-size .45s var(--ease-o)}
   footer a:hover,.ledger .more:hover{background-size:100% 1px}
 }
-.offer-line{font-size:1.2rem;font-weight:500;letter-spacing:-.01em;color:var(--ink);margin-bottom:.6rem}
+.svc-index .sn[data-n]::before{content:attr(data-n)}
+.more-svc{background:var(--paper);color:var(--ink);padding:clamp(4rem,calc(8*var(--vw)),6.5rem) clamp(1.25rem,calc(9*var(--vw)),9rem) clamp(2rem,calc(4*var(--vw)),3rem);display:grid;gap:1.2rem}
+.more-svc h2{font-size:clamp(2.2rem,calc(4.6*var(--vw)),4.2rem);font-weight:500;letter-spacing:-.045em;line-height:1}
+.more-svc h2 em{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;color:var(--accent-t)}
+.more-svc .lead{color:var(--noon-muted);max-width:34rem;font-size:1.1rem}
+.more-svc .svc-index{max-width:60rem;margin-top:.6rem}
+.more-svc+.backcta{padding-top:clamp(2.5rem,calc(5*var(--vw)),4rem)}
+/* hasło marki: pas na przejściu do jasnej części */
+.motto{position:relative;overflow:hidden;background:var(--ink);color:var(--paper);padding:clamp(5rem,calc(11*var(--vw)),9rem) clamp(1.25rem,calc(9*var(--vw)),9rem) clamp(4.5rem,calc(9*var(--vw)),7.5rem)}
+.motto::before{content:"";position:absolute;animation:none;left:-10%;top:-40%;width:75%;height:180%;background:radial-gradient(closest-side,rgba(245,196,90,.16),transparent 70%);transform:skewX(-18deg);pointer-events:none}
+.motto h2{position:relative;font-size:clamp(2.6rem,calc(7.2*var(--vw)),7.4rem);font-weight:500;letter-spacing:-.05em;line-height:.98;max-width:none}
+.motto .lit{color:var(--paper);text-shadow:0 0 40px rgba(245,196,90,.18)}
+.motto .shade{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;color:#6f6c66}
+.motto p{position:relative;margin-top:1.6rem;color:var(--muted-d);font-size:clamp(1.05rem,calc(1.4*var(--vw)),1.3rem);max-width:34rem}
+@media (prefers-reduced-motion:no-preference){
+  .js .motto::before{opacity:0;transform:skewX(-18deg) translateX(-12%);transition:opacity 1.6s var(--ease-o),transform 1.8s var(--ease-o)}
+  .js .motto.in-view::before{opacity:1;transform:skewX(-18deg)}
+}

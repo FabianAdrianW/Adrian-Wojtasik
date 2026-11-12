@@ -70,6 +70,8 @@
   /* odsłanianie nagłówków i bloków */
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);if(e.target.classList.contains('chat'))playChat(e.target)}}),{rootMargin:'0px 0px -12% 0px'});
   $$('.rv-wrap,.fade,.chat').forEach(el=>io.observe(el));
+  const mio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');mio.unobserve(e.target)}}),{threshold:.35});
+  $$('.motto').forEach(el=>mio.observe(el));
 
 
   /* kroki: oś przypięta, punkt rozwija się podczas przewijania */
