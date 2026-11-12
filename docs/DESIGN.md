@@ -51,7 +51,7 @@ Sesja własna z korektą „okno” (skrypt `light_img.py`: rzut szyb tylko na t
 - Wizytówka od 2 000 zł netto. Pole formularza: „Co chcesz stworzyć albo osiągnąć?”
 
 ## Zmiany v3 (2026-11-12)
-- Paleta: czerń `#0B0B0C`, papier `#F4F3F0`, akcent `#D9480F` (na jasnym) i `#FF7A2F` (na ciemnym) zamiast brązu. Zdjęcia w czerni i bieli. Poprzednia wersja: tag `v1-braz`. Migracja kolorów: `build/theme_orange.py`.
+- Paleta: czerń `#0B0B0C`, papier `#F4F3F0`, akcent `#D9480F` (na jasnym) i `#FF7A2F` (na ciemnym) zamiast brązu. Zdjęcia w czerni i bieli. Poprzednia wersja: gałąź `v1-braz`. Migracja kolorów: `build/theme_orange.py`.
 - Hero: „Strony i automatyzacje dla Twojej firmy.” zamiast „Twoja firma w dobrym świetle.” (opinia: hasło ze światłem kojarzy się z producentem lamp).
 - Proces: nagłówek „Dobry projekt zaczyna się od dobrej rozmowy.”
 - Usunięta sekcja „Pracuję z AI. Odpowiadam ja.”. Wątek AI w kroku „Budowa”.
