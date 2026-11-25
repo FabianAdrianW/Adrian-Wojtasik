@@ -27,9 +27,16 @@ if(glow){$$('.links>li>a').forEach(a=>{a.addEventListener('mouseenter',()=>{cons
 /* odsłony */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
 $$('.rv,.focus').forEach(el=>io.observe(el));
-/* kroki procesu zapalają się po kolei */
-const steps=$('#steps');
-if(steps){const li=[...steps.children];new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){li.forEach((l,i)=>setTimeout(()=>l.classList.add('on'),i*220));o.disconnect()}})},{threshold:.4}).observe(steps)}
+/* tobi-ishi: ścieżka między kamieniami rysuje się przy przewijaniu, kamienie zapalają się po kolei */
+const steps=$('#steps'),trail=$('.trail');
+if(steps&&trail){const li=[...steps.children],base=trail.querySelector('.base'),lit=trail.querySelector('.lit'),still=matchMedia('(prefers-reduced-motion: reduce)').matches;let len=0,cy=[];
+  const build=()=>{const w=steps.getBoundingClientRect(),pts=li.map(l=>{const r=l.querySelector('.stone').getBoundingClientRect();return[r.left-w.left+r.width/2,r.top-w.top+r.height/2]});
+    let d=`M${pts[0][0]} ${pts[0][1]}`;for(let i=1;i<pts.length;i++){const[a,b]=pts[i-1],[c,e]=pts[i],m=(e-b)/2;d+=` C${a} ${b+m} ${c} ${e-m} ${c} ${e}`}
+    base.setAttribute('d',d);lit.setAttribute('d',d);len=lit.getTotalLength();lit.style.strokeDasharray=len;cy=pts.map(p=>p[1]/w.height);draw()};
+  const draw=()=>{const r=steps.getBoundingClientRect();let p=still?1:Math.min(1,Math.max(0,(innerHeight*.62-r.top)/r.height));
+    lit.style.strokeDashoffset=len*(1-p);li.forEach((l,i)=>l.classList.toggle('on',cy[i]<=p+.015))};
+  let t=false;addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(()=>{draw();t=false})}},{passive:true});
+  addEventListener('resize',build);if(document.fonts)document.fonts.ready.then(build);build()}
 /* kopiowanie e-maila */
 $$('.copybtn').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);const t=b.textContent;b.textContent='Skopiowano';setTimeout(()=>b.textContent=t,1800)}catch(e){}}));
 /* formularz: mailto */
