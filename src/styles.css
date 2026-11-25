@@ -418,26 +418,34 @@ footer .light-line{top:0}
 @media (prefers-reduced-motion:reduce){.intro{display:none}}
 
 /* Nić światła: bursztynowa linia z hero schodzi w dół, na granicy sekcji przecina stronę i odsłania nowy obszar. Każda sekcja otwiera się inaczej */
-@property --o{syntax:"<length>";inherits:false;initial-value:0px}
-@property --k{syntax:"<percentage>";inherits:false;initial-value:0%}
 .thread{position:absolute;left:0;top:0;width:100%;pointer-events:none;z-index:40;overflow:visible}
 .thread path{fill:none;stroke:var(--lantern);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 3px rgba(255,181,71,.85))}
 .thread circle{fill:#FFE2B0;filter:drop-shadow(0 0 6px rgba(255,181,71,1)) drop-shadow(0 0 14px rgba(255,181,71,.7))}
-.js.thread-on main>section[data-reveal]:not(.open){transition:clip-path 1.25s var(--ease),--o 1.3s var(--ease),--k 1.35s var(--ease)}
-.js.thread-on [data-reveal="kakejiku"]:not(.in){clip-path:inset(0 0 100% 0)}
-.js.thread-on [data-reveal="kakejiku"].in{clip-path:inset(0)}
-.js.thread-on [data-reveal="shoji"]:not(.in){clip-path:inset(0 50% 0 50%)}
-.js.thread-on [data-reveal="shoji"].in{clip-path:inset(0)}
-.js.thread-on [data-reveal="fusuma"][data-dir="r"]:not(.in){clip-path:inset(0 100% 0 0)}
-.js.thread-on [data-reveal="fusuma"][data-dir="l"]:not(.in){clip-path:inset(0 0 0 100%)}
-.js.thread-on [data-reveal="fusuma"].in{clip-path:inset(0)}
-.js.thread-on [data-reveal="enso"]:not(.in){clip-path:circle(0% at var(--ox,4%) 0)}
-.js.thread-on [data-reveal="enso"].in{clip-path:circle(150% at var(--ox,4%) 0);transition-duration:1.6s}
-.js.thread-on [data-reveal="kirigami"]{clip-path:polygon(0 0,var(--k) 0,calc(var(--k) - 35%) 100%,0 100%)}
-.js.thread-on [data-reveal="kirigami"].in{--k:135%}
-.js.thread-on [data-reveal="kumiko"]{-webkit-mask:repeating-linear-gradient(90deg,#000 0 var(--o),transparent var(--o) 9vw);mask:repeating-linear-gradient(90deg,#000 0 var(--o),transparent var(--o) 9vw)}
-.js.thread-on [data-reveal="kumiko"].in{--o:9vw}
-.js.thread-on [data-reveal="sudare"]{-webkit-mask:repeating-linear-gradient(180deg,#000 0 var(--o),transparent var(--o) 5.5rem);mask:repeating-linear-gradient(180deg,#000 0 var(--o),transparent var(--o) 5.5rem)}
-.js.thread-on [data-reveal="sudare"].in{--o:5.5rem}
-.js.thread-on main>section.open{clip-path:none!important;-webkit-mask:none!important;mask:none!important}
+.js.thread-on main>section[data-reveal]:not(.open){transition:clip-path 1.3s var(--ease),--k 1.4s var(--ease)}
+/* kafel: kwadrat ciągnięty przez linię zmienia się w pas, pas w całą sekcję */
+.js.thread-on [data-reveal="kafel"][data-dir="r"]:not(.in){clip-path:inset(0 calc((1 - var(--f,0)) * (100% - 4.5rem)) calc(100% - 4.5rem) 0 round 3px);transition:none}
+.js.thread-on [data-reveal="kafel"][data-dir="l"]:not(.in){clip-path:inset(0 0 calc(100% - 4.5rem) calc((1 - var(--f,0)) * (100% - 4.5rem)) round 3px);transition:none}
+.js.thread-on [data-reveal="kafel"].in{clip-path:inset(0 0 calc(100% - 140vh) 0 round 0);transition:clip-path 1.2s var(--ease)}
+/* fala: krawędź seigaiha spływa w dół i odsłania sekcję */
+.js.thread-on [data-reveal="fala"]{clip-path:polygon(0 calc(var(--k) + 2.6rem),8% calc(var(--k) + .4rem),17% calc(var(--k) + 2.2rem),25% calc(var(--k) + 3rem),33% calc(var(--k) + .6rem),42% calc(var(--k) + 2rem),50% calc(var(--k) + 3rem),58% calc(var(--k) + .4rem),67% calc(var(--k) + 2.4rem),75% calc(var(--k) + 3rem),83% calc(var(--k) + .5rem),92% calc(var(--k) + 2.2rem),100% calc(var(--k) + 2.8rem),100% 0,0 0)}
+.js.thread-on [data-reveal="fala"]{--k:-3.5rem}
+.js.thread-on [data-reveal="fala"].in{--k:130vh;transition:--k 1.6s cubic-bezier(.45,.05,.25,1)}
+/* ensō: okrąg rośnie z punktu, w którym stoi światło */
+.js.thread-on [data-reveal="enso"]:not(.in){clip-path:circle(0 at var(--ox,4%) 0)}
+.js.thread-on [data-reveal="enso"].in{clip-path:circle(170vmax at var(--ox,4%) 0);transition-duration:1.7s}
+/* okno: małe zaokrąglone okno w środku kadru rozszerza się do pełnej sekcji */
+.js.thread-on [data-reveal="okno"]:not(.in){clip-path:inset(2vh 32% calc(100% - 25vh) 32% round 12vh)}
+.js.thread-on [data-reveal="okno"].in{clip-path:inset(0 0 calc(100% - 150vh) 0 round 0);transition:clip-path 1.5s var(--ease)}
+/* kirigami: ukośne cięcie */
+.js.thread-on [data-reveal="kirigami"]{clip-path:polygon(0 0,var(--kp) 0,calc(var(--kp) - 35%) 100%,0 100%)}
+@property --kp{syntax:"<percentage>";inherits:false;initial-value:0%}
+.js.thread-on [data-reveal="kirigami"]:not(.open){transition:--kp 1.35s var(--ease)}
+.js.thread-on [data-reveal="kirigami"].in{--kp:135%}
+/* mozaika: płytki w kolorze poprzedniej sekcji obracają się w romby i znikają falą od światła */
+main{overflow-x:clip}
+.mosaic{position:absolute;inset:0;z-index:30;display:grid;pointer-events:none;overflow:hidden}
+.mosaic i{background:var(--mc);transform-origin:center;transition:transform .9s var(--ease),opacity .9s var(--ease);will-change:transform}
+.in>.mosaic i{transform:scale(0) rotate(45deg);opacity:.2}
+@property --k{syntax:"<length>";inherits:false;initial-value:0px}
+.js.thread-on main>section.open{clip-path:none!important}
 @media (max-width:700px){.thread path{stroke-width:1.1}}
