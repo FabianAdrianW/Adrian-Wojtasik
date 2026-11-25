@@ -119,3 +119,6 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
         const to=cl1[i].querySelector('.to');if(to)to.style.opacity=cl((p-.6)/.35)})})}
   if(!morphs.length)return;let t=false;const run=()=>{morphs.forEach(f=>f());t=false};
   addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(run)}},{passive:true});addEventListener('resize',run);run()})();
+/* Po godzinach: schematy ruszają, gdy są na ekranie */
+(()=>{const f=document.querySelectorAll('.flow');if(!f.length||!('IntersectionObserver' in window))return;
+  const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('run',e.isIntersecting)),{threshold:.4});f.forEach(x=>io.observe(x))})();
