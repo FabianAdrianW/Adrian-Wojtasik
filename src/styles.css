@@ -305,7 +305,6 @@ section{position:relative;scroll-margin-top:var(--nav-h)}
 .flow p{font-size:.92rem;color:var(--muted-n)}
 @media (hover:hover){.flow:hover{border-color:rgba(255,181,71,.55);box-shadow:0 0 30px -6px rgba(255,181,71,.35);transform:translateY(-4px)}}
 @media (max-width:960px){.flows{grid-template-columns:1fr}}
-@media (max-width:760px){
 /* o mnie */
 .about-g{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,6vw,6rem);align-items:center}
 .about .photo{position:relative}
