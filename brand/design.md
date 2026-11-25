@@ -15,4 +15,4 @@ Kontrast AA (tabela w rozdziale 13), fokus widoczny, cele dotykowe ≥ 44 px, br
 
 ## Do uzupełnienia
 - Zdjęcia z Flow w 2K (obecne 1376 px).
-- E-mail kontaktowy, potwierdzenie ceny „od 2 000 zł”, zgody klientów na pokazanie realizacji, opinie do cytowania.
+- E-mail kontaktowy, potwierdzenie ceny „od 2 500 zł”, zgody klientów na pokazanie realizacji, opinie do cytowania.

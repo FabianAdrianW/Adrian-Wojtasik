@@ -19,7 +19,7 @@ Data: 25.11.2026. Etykiety źródeł: **S** właścicielskie (Fabian), **B** mar
 
 ## Fakty o marce (z obecnej strony i rozmów)
 - Jedna osoba od pierwszej rozmowy do publikacji; robi strony, aplikacje/programy, automatyzacje. (S)
-- Ceny „od”: strona wizytówka od 2 000 zł netto. (S, do potwierdzenia aktualności)
+- Ceny „od”: strona wizytówka od 2 500 zł netto. (S, do potwierdzenia aktualności)
 - Pracuje też pro bono (mogetopomoge.pl) i w modelu barteru dla lokalnych firm (strona + materiały promocyjne za towar/usługę). (S)
 - Wykształcenie: filologia angielska, magisterka Psychologia i Informatyka (projektowanie systemów inteligentnych) na WSB Merito. Język obcy jako atut przy klientach zagranicznych. (S) *Psychologia + projektowanie to realna przewaga przy UX i tekstach.*
 - Mieszka w Nadolicach Wielkich pod Wrocławiem. (S)

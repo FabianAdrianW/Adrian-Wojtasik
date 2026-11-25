@@ -63,9 +63,9 @@ CONTACT = f'''
 PAGES = {
 "strony": dict(
   title="Strony internetowe dla firm: Oława, Oleśnica, Wrocław | Adrian Wojtasik",
-  desc="Strony wizytówki, strony firmowe i sklepy dla firm z Oławy, Oleśnicy, Wrocławia i całej Polski. Projekt od zera, od 2 000 zł netto.",
+  desc="Strony wizytówki, strony firmowe i sklepy dla firm z Oławy, Oleśnicy, Wrocławia i całej Polski. Projekt od zera, od 2 500 zł netto.",
   hero=("Strony internetowe", "Strony internetowe", "Strona, którą klienci <em>zapamiętają.</em>", "Wizytówki, strony firmowe i sklepy. Projektuję od zera, bez szablonu, wokół jednej rzeczy, która wyróżnia Twoją firmę.", "weranda-laptop", "50% 40%"),
-  intro=("Co dostajesz", "Wszystko, czego strona potrzebuje, <em>w jednej cenie.</em>", "Strona wizytówka kosztuje od 2 000 zł netto. Dokładną kwotę podaję po rozmowie, zanim zaczniemy."),
+  intro=("Co dostajesz", "Wszystko, czego strona potrzebuje, <em>w jednej cenie.</em>", "Strona wizytówka kosztuje od 2 500 zł netto. Dokładną kwotę podaję po rozmowie, zanim zaczniemy."),
   items=[("Projekt od zera", "Wygląd wynika z Twojej firmy, nie z gotowego motywu."), ("Jeden pomysł", "Coś, co klienci zapamiętają: tryb nocny, brama, kurtyna."),
          ("Telefon na pierwszym planie", "Numer jest zawsze pod ręką, także na małym ekranie."), ("Teksty i zdjęcia", "Piszę teksty i przygotowuję grafiki, także z AI, z adnotacją."),
          ("Google i SEO lokalne", "Nazwy miejscowości, wizytówka Google, dane dla wyszukiwarek."), ("Publikacja i opieka", "Domena, hosting, a potem zmiany co miesiąc.")],

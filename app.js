@@ -61,7 +61,7 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
     mo.style.cssText=`--mc:${bgOf(s)};grid-template-columns:repeat(${cols},1fr);grid-auto-rows:${size}px;bottom:auto;height:${Math.min(s.offsetHeight,rows*size)}px`;
     const fromR=s.dataset.dir==='l';for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const i=document.createElement('i'),dx=fromR?cols-1-c:c;i.style.transitionDelay=(Math.hypot(dx,r*1.2)*.07).toFixed(2)+'s';mo.append(i)}
     s.append(mo);s.dataset.mosaicH='1'};
-  const reveal=(s,hx)=>{s.classList.add('in');[...s.querySelectorAll('.rv:not(.in)')].filter(r=>r.getBoundingClientRect().top<innerHeight*1.05).sort((a,b)=>a.getBoundingClientRect().top-b.getBoundingClientRect().top).forEach((r,i)=>{r.style.transitionDelay=Math.min(i*.15,.9)+'s';r.classList.add('in');setTimeout(()=>r.style.transitionDelay='',2800)});
+  const reveal=(s,hx)=>{s.classList.add('in');const fast=s.dataset.reveal==='enso'||s.dataset.reveal==='okno',sg=fast?.07:.15,mx=fast?.45:.9;[...s.querySelectorAll('.rv:not(.in)')].filter(r=>r.getBoundingClientRect().top<innerHeight*1.05).sort((a,b)=>a.getBoundingClientRect().top-b.getBoundingClientRect().top).forEach((r,i)=>{r.style.transitionDelay=Math.min(i*sg,mx)+'s';r.classList.add('in');setTimeout(()=>r.style.transitionDelay='',2800)});
     setTimeout(()=>{s.classList.add('open');const mo=s.querySelector(':scope>.mosaic');if(mo)mo.remove()},3000)};
 
   const build=()=>{const W=document.documentElement.clientWidth,pad=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad'))||parseFloat(getComputedStyle(secs[0]).paddingLeft)||20;

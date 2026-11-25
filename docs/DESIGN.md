@@ -48,7 +48,7 @@ Sesja własna z korektą „okno” (skrypt `light_img.py`: rzut szyb tylko na t
 - Realizacje na podstronie `realizacje.html` (mogetopomoge, Polfinans, qmala, Eyelingo, Tereszko, Alan). Na głównej dwie wyróżnione. Usunięte: Nanorój, Nacomi.
 - Nowe sekcje: „Piszesz do mnie jak do znajomego” (animowany przykład rozmowy) i „Pracuję z AI. Odpowiadam ja.”
 - Efekty: płynna pigułka w navbarze, słońce wschodzące w navbarze ze scrollem, linia postępu, animowane menu mobilne, odsłanianie nagłówków, przechylenie kart realizacji z refleksem światła, kartki oferty prostują się i unoszą, przyciski z połyskiem i lekkim przyciąganiem, rysowanie ikon. Wszystko wyłączone przy `prefers-reduced-motion`.
-- Wizytówka od 2 000 zł netto. Pole formularza: „Co chcesz stworzyć albo osiągnąć?”
+- Wizytówka od 2 500 zł netto. Pole formularza: „Co chcesz stworzyć albo osiągnąć?”
 
 ## Zmiany v3 (2026-11-12)
 - Paleta: czerń `#0B0B0C`, papier `#F4F3F0`, akcent `#D9480F` (na jasnym) i `#FF7A2F` (na ciemnym) zamiast brązu. Zdjęcia w czerni i bieli. Poprzednia wersja: gałąź `v1-braz`. Migracja kolorów: `build/theme_orange.py`.
