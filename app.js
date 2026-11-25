@@ -45,3 +45,38 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
   location.href=`mailto:eyeamadrian@gmail.com?subject=${encodeURIComponent('Zapytanie ze strony: '+n)}&body=${encodeURIComponent(body)}`;
   st.textContent='Otwieram program pocztowy. Jeśli się nie otworzył, napisz na eyeamadrian@gmail.com.'});
 })();
+
+/* Nić światła: ścieżka wije się od lewej do prawej krawędzi; dojście do granicy sekcji ją odsłania */
+(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const page=(location.pathname.split('/').pop()||'index.html').replace('.html','')||'index';
+  const MAP={index:{realizacje:'kakejiku',uslugi:'shoji','jak-pracuje':'kumiko',systemy:'enso','o-mnie':'fusuma',ceny:'kirigami',kontakt:'sudare'},
+    strony:{co:'fusuma',jak:'kumiko','inne-uslugi':'shoji',kontakt:'enso'},
+    aplikacje:{co:'enso',jak:'sudare','inne-uslugi':'kirigami',kontakt:'shoji'},
+    automatyzacje:{co:'kirigami',jak:'shoji','inne-uslugi':'fusuma',kontakt:'sudare'},
+    realizacje:{realizacje:'shoji','inne-uslugi':'kumiko',kontakt:'kirigami'}};
+  const m=MAP[page]||{},secs=[...document.querySelectorAll('main>section')].slice(1);if(!secs.length)return;
+  secs.forEach(s=>{s.dataset.reveal=m[s.id]||'shoji'});document.documentElement.classList.add('thread-on');
+  const NS='http://www.w3.org/2000/svg',svg=document.createElementNS(NS,'svg'),path=document.createElementNS(NS,'path'),dot=document.createElementNS(NS,'circle');
+  svg.setAttribute('class','thread');svg.setAttribute('aria-hidden','true');dot.setAttribute('r','2.6');svg.append(path,dot);document.body.append(svg);
+  const SEAM=150;let seg=[],total=0,x0=0,x1=0;
+  const build=()=>{const W=document.documentElement.clientWidth,pad=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad'))||parseFloat(getComputedStyle(secs[0]).paddingLeft)||20;
+    const g=Math.max(8,Math.min(pad*.45,44));x0=g;x1=W-g;const top=y=>y+scrollY;
+    const hero=document.querySelector('main>section');let y=top(hero.getBoundingClientRect().bottom),x=x0;
+    const H=document.documentElement.scrollHeight;svg.setAttribute('width',W);svg.setAttribute('height',H);svg.style.height=H+'px';
+    seg=[];let d=`M${x} ${y}`;
+    secs.forEach((s,i)=>{const r=s.getBoundingClientRect(),st=top(r.top),sb=top(r.bottom);
+      if(st>y){seg.push({k:'v',x,y0:y,y1:st,off:i?SEAM:0});y=st}
+      const nx=x===x0?x1:x0;s.dataset.dir=nx>x?'r':'l';s.style.setProperty('--ox',(nx>x?4:96)+'%');
+      seg.push({k:'h',x0:x,x1:nx,y,sec:s});x=nx;
+      const end=i===secs.length-1?Math.min(sb,st+innerHeight*.8):sb;seg.push({k:'v',x,y0:y,y1:end,off:SEAM});y=end});
+    seg.forEach(s=>d+=s.k==='v'?` L${s.x} ${s.y1}`:` L${s.x1} ${s.y}`);path.setAttribute('d',d);
+    total=path.getTotalLength();path.style.strokeDasharray=total;draw()};
+  const draw=()=>{const head=scrollY+innerHeight*.72;let len=0,hx=x0,hy=seg[0]?seg[0].y0||seg[0].y:0;
+    for(const s of seg){if(s.k==='v'){const a=Math.min(s.y0+(s.off||0),s.y1-1),f=Math.max(0,Math.min(1,(head-a)/(s.y1-a)));len+=(s.y1-s.y0)*f;hx=s.x;hy=s.y0+(s.y1-s.y0)*f;if(f<1)break}
+      else{const f=Math.max(0,Math.min(1,(head-s.y)/SEAM));len+=Math.abs(s.x1-s.x0)*f;hx=s.x0+(s.x1-s.x0)*f;hy=s.y;
+        if(f>=.3&&!s.sec.classList.contains('in')){s.sec.classList.add('in');setTimeout(()=>s.sec.classList.add('open'),1800)}
+        if(f<1)break}}
+    path.style.strokeDashoffset=Math.max(0,total-len);dot.setAttribute('cx',hx);dot.setAttribute('cy',hy)};
+  let t=false;addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(()=>{draw();t=false})}},{passive:true});
+  let rt;const rb=()=>{clearTimeout(rt);rt=setTimeout(build,120)};addEventListener('resize',rb);addEventListener('load',build);
+  if(window.ResizeObserver)new ResizeObserver(rb).observe(document.querySelector('main'));if(document.fonts)document.fonts.ready.then(build);build()})();

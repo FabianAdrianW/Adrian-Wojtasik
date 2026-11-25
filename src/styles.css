@@ -416,3 +416,28 @@ footer .light-line{top:0}
 @keyframes introout{to{opacity:0;visibility:hidden}}
 .intro-on .hero .h-a,.intro-on .hero .h-b,.intro-on .hero .bh,.intro-on .hero .bv,.intro-on .hero .side,.intro-on .hero .low,.intro-on .hero .corners i,.intro-on .hero .bg img,.intro-on .hero .light-line{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){.intro{display:none}}
+
+/* Nić światła: bursztynowa linia z hero schodzi w dół, na granicy sekcji przecina stronę i odsłania nowy obszar. Każda sekcja otwiera się inaczej */
+@property --o{syntax:"<length>";inherits:false;initial-value:0px}
+@property --k{syntax:"<percentage>";inherits:false;initial-value:0%}
+.thread{position:absolute;left:0;top:0;width:100%;pointer-events:none;z-index:40;overflow:visible}
+.thread path{fill:none;stroke:var(--lantern);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 3px rgba(255,181,71,.85))}
+.thread circle{fill:#FFE2B0;filter:drop-shadow(0 0 6px rgba(255,181,71,1)) drop-shadow(0 0 14px rgba(255,181,71,.7))}
+.js.thread-on main>section[data-reveal]:not(.open){transition:clip-path 1.25s var(--ease),--o 1.3s var(--ease),--k 1.35s var(--ease)}
+.js.thread-on [data-reveal="kakejiku"]:not(.in){clip-path:inset(0 0 100% 0)}
+.js.thread-on [data-reveal="kakejiku"].in{clip-path:inset(0)}
+.js.thread-on [data-reveal="shoji"]:not(.in){clip-path:inset(0 50% 0 50%)}
+.js.thread-on [data-reveal="shoji"].in{clip-path:inset(0)}
+.js.thread-on [data-reveal="fusuma"][data-dir="r"]:not(.in){clip-path:inset(0 100% 0 0)}
+.js.thread-on [data-reveal="fusuma"][data-dir="l"]:not(.in){clip-path:inset(0 0 0 100%)}
+.js.thread-on [data-reveal="fusuma"].in{clip-path:inset(0)}
+.js.thread-on [data-reveal="enso"]:not(.in){clip-path:circle(0% at var(--ox,4%) 0)}
+.js.thread-on [data-reveal="enso"].in{clip-path:circle(150% at var(--ox,4%) 0);transition-duration:1.6s}
+.js.thread-on [data-reveal="kirigami"]{clip-path:polygon(0 0,var(--k) 0,calc(var(--k) - 35%) 100%,0 100%)}
+.js.thread-on [data-reveal="kirigami"].in{--k:135%}
+.js.thread-on [data-reveal="kumiko"]{-webkit-mask:repeating-linear-gradient(90deg,#000 0 var(--o),transparent var(--o) 9vw);mask:repeating-linear-gradient(90deg,#000 0 var(--o),transparent var(--o) 9vw)}
+.js.thread-on [data-reveal="kumiko"].in{--o:9vw}
+.js.thread-on [data-reveal="sudare"]{-webkit-mask:repeating-linear-gradient(180deg,#000 0 var(--o),transparent var(--o) 5.5rem);mask:repeating-linear-gradient(180deg,#000 0 var(--o),transparent var(--o) 5.5rem)}
+.js.thread-on [data-reveal="sudare"].in{--o:5.5rem}
+.js.thread-on main>section.open{clip-path:none!important;-webkit-mask:none!important;mask:none!important}
+@media (max-width:700px){.thread path{stroke-width:1.1}}
