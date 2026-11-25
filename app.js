@@ -25,7 +25,7 @@ const glow=$('.nav-glow');
 if(glow){$$('.links>li>a').forEach(a=>{a.addEventListener('mouseenter',()=>{const li=a.parentElement;glow.style.left=(li.offsetLeft+16)+'px';glow.style.width=(li.offsetWidth-32)+'px';glow.style.opacity=1})});
   $('.links').addEventListener('mouseleave',()=>glow.style.opacity=0)}
 /* odsłony */
-const io=new IntersectionObserver(es=>{es.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top||a.boundingClientRect.left-b.boundingClientRect.left).forEach((e,i)=>{e.target.style.transitionDelay=Math.min(i*.09,.6)+'s';e.target.classList.add('in');io.unobserve(e.target);setTimeout(()=>e.target.style.transitionDelay='',1600)})},{threshold:0,rootMargin:'0px 0px -4% 0px'});
+const io=new IntersectionObserver(es=>{es.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top||a.boundingClientRect.left-b.boundingClientRect.left).forEach((e,i)=>{e.target.style.transitionDelay=Math.min(i*.15,.9)+'s';e.target.classList.add('in');io.unobserve(e.target);setTimeout(()=>e.target.style.transitionDelay='',2800)})},{threshold:0,rootMargin:'0px 0px -4% 0px'});
 $$('.rv,.focus').forEach(el=>io.observe(el));
 /* Jak pracuję: aktywny krok to ten na środku ekranu; zdjęcie, podpis i znaczniki idą za nim */
 const steps=$('#steps');
@@ -49,13 +49,9 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
 /* Nić światła: ścieżka wije się od lewej do prawej krawędzi; dojście do granicy sekcji ją odsłania */
 (()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   const page=(location.pathname.split('/').pop()||'index.html').replace('.html','')||'index';
-  const MAP={index:{realizacje:'brak',uslugi:'kafel','jak-pracuje':'fala',systemy:'enso','o-mnie':'okno',ceny:'mozaika',kontakt:'kirigami'},
-    strony:{co:'kafel',jak:'mozaika','inne-uslugi':'fala',kontakt:'enso'},
-    aplikacje:{co:'okno',jak:'fala','inne-uslugi':'kirigami',kontakt:'mozaika'},
-    automatyzacje:{co:'mozaika',jak:'enso','inne-uslugi':'okno',kontakt:'kafel'},
-    realizacje:{realizacje:'brak','inne-uslugi':'fala',kontakt:'okno'}};
+  const MAP={};
   const m=MAP[page]||{},secs=[...document.querySelectorAll('main>section')].slice(1);if(!secs.length)return;
-  secs.forEach(s=>{s.dataset.reveal=m[s.id]||'enso'});document.documentElement.classList.add('thread-on');
+  secs.forEach(s=>{s.dataset.reveal='wiatr'});document.documentElement.classList.add('thread-on');
   const NS='http://www.w3.org/2000/svg',svg=document.createElementNS(NS,'svg'),path=document.createElementNS(NS,'path'),dot=document.createElementNS(NS,'circle');
   svg.setAttribute('class','thread');svg.setAttribute('aria-hidden','true');dot.setAttribute('r','2.6');svg.append(path,dot);document.body.append(svg);
   const SEAM=110;let seg=[],total=0,x0=0,x1=0;
@@ -65,8 +61,8 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
     mo.style.cssText=`--mc:${bgOf(s)};grid-template-columns:repeat(${cols},1fr);grid-auto-rows:${size}px;bottom:auto;height:${Math.min(s.offsetHeight,rows*size)}px`;
     const fromR=s.dataset.dir==='l';for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const i=document.createElement('i'),dx=fromR?cols-1-c:c;i.style.transitionDelay=(Math.hypot(dx,r*1.2)*.07).toFixed(2)+'s';mo.append(i)}
     s.append(mo);s.dataset.mosaicH='1'};
-  const reveal=(s,hx)=>{s.classList.add('in');[...s.querySelectorAll('.rv:not(.in)')].filter(r=>r.getBoundingClientRect().top<innerHeight*1.05).sort((a,b)=>a.getBoundingClientRect().top-b.getBoundingClientRect().top).forEach((r,i)=>{r.style.transitionDelay=Math.min(i*.09,.6)+'s';r.classList.add('in');setTimeout(()=>r.style.transitionDelay='',1600)});
-    setTimeout(()=>{s.classList.add('open');const mo=s.querySelector(':scope>.mosaic');if(mo)mo.remove()},s.dataset.reveal==='mozaika'?2400:1900)};
+  const reveal=(s,hx)=>{s.classList.add('in');[...s.querySelectorAll('.rv:not(.in)')].filter(r=>r.getBoundingClientRect().top<innerHeight*1.05).sort((a,b)=>a.getBoundingClientRect().top-b.getBoundingClientRect().top).forEach((r,i)=>{r.style.transitionDelay=Math.min(i*.15,.9)+'s';r.classList.add('in');setTimeout(()=>r.style.transitionDelay='',2800)});
+    setTimeout(()=>{s.classList.add('open');const mo=s.querySelector(':scope>.mosaic');if(mo)mo.remove()},3000)};
 
   const build=()=>{const W=document.documentElement.clientWidth,pad=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad'))||parseFloat(getComputedStyle(secs[0]).paddingLeft)||20;
     const g=Math.max(8,Math.min(pad*.45,44));x0=g;x1=W-g;const top=y=>y+scrollY;
