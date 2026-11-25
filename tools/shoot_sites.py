@@ -8,9 +8,11 @@ TW=open('/tmp/tw/out.css').read()
 JOBS={
  'eskander-monitor':('eskander_vet',1600,953),
  'eskander-telefon':('eskander_vet',390,965),
- 'pho-laptop':('pho_viet',1180,772),
+ 'polfinans-laptop':('gppolfinans',1440,939),
+ 'polfinans-telefon':('gppolfinans',390,965),
+ 'pho-laptop':('pho_viet',1440,939),
  'pho-telefon':('pho_viet',390,965),
- 'brama-laptop':('Brama-ole-nicka',1440,942),
+ 'brama-laptop':('Brama-ole-nicka',1440,939),
  'brama-tablet':('Brama-ole-nicka',768,1012),
  'malgorzata-tablet':('Malgorzata_tests',768,1012),
  'malgorzata-telefon':('Malgorzata_tests',390,891),
@@ -19,7 +21,7 @@ with sync_playwright() as p:
     b=p.chromium.launch()
     for name,(repo,w,h) in JOBS.items():
         if len(sys.argv)>2 and name not in sys.argv[2:]: continue
-        ctx=b.new_context(viewport={'width':w,'height':h},device_scale_factor=2 if w<800 else 1.25,is_mobile=w<800,has_touch=w<800)
+        ctx=b.new_context(viewport={'width':w,'height':h},device_scale_factor=3 if w<500 else (2 if w<800 else 1.5),is_mobile=w<800,has_touch=w<800)
         pg=ctx.new_page()
         pg.add_init_script("try{sessionStorage.setItem('bo-intro','1');sessionStorage.setItem('esk-tip','1');sessionStorage.setItem('esk-mode','day')}catch(e){}")
         if repo=='pho_viet':

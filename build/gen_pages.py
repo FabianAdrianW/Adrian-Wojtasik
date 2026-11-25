@@ -3,7 +3,7 @@ Realizacje i ścieżki usług bierze z src/index.html, żeby nie było dwóch ź
 import re, os
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 idx = open("src/index.html", encoding="utf-8").read()
-works = re.search(r'<div class="works">.*?</div>\s*<div class="more-works rv">.*?</div>', idx, re.S).group(0)
+works = re.search(r'<div class="works">.*?</div>\s*<div class="more-works rv">.*?</div>\s*</div>', idx, re.S).group(0)
 paths = {m.group(1): m.group(0) for m in re.finditer(r'<a class="path rv" href="(\w+)\.html">.*?</a>', idx, re.S)}
 ARW = '<svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>'
 
@@ -64,30 +64,30 @@ PAGES = {
 "strony": dict(
   title="Strony internetowe dla firm: Oława, Oleśnica, Wrocław | Adrian Wojtasik",
   desc="Strony wizytówki, strony firmowe i sklepy dla firm z Oławy, Oleśnicy, Wrocławia i całej Polski. Projekt od zera, od 2 000 zł netto.",
-  hero=("Strony internetowe", "01 · Dzień", "Strona, którą klienci <em>zapamiętają.</em>", "Wizytówki, strony firmowe i sklepy. Projektuję od zera, bez szablonu, wokół jednej rzeczy, która wyróżnia Twoją firmę.", "weranda-laptop", "50% 40%"),
+  hero=("Strony internetowe", "Strony internetowe", "Strona, którą klienci <em>zapamiętają.</em>", "Wizytówki, strony firmowe i sklepy. Projektuję od zera, bez szablonu, wokół jednej rzeczy, która wyróżnia Twoją firmę.", "weranda-laptop", "50% 40%"),
   intro=("Co dostajesz", "Wszystko, czego strona potrzebuje, <em>w jednej cenie.</em>", "Strona wizytówka kosztuje od 2 000 zł netto. Dokładną kwotę podaję po rozmowie, zanim zaczniemy."),
   items=[("Projekt od zera", "Wygląd wynika z Twojej firmy, nie z gotowego motywu."), ("Jeden pomysł", "Coś, co klienci zapamiętają: tryb nocny, brama, kurtyna."),
          ("Telefon na pierwszym planie", "Numer jest zawsze pod ręką, także na małym ekranie."), ("Teksty i zdjęcia", "Piszę teksty i przygotowuję grafiki, także z AI, z adnotacją."),
          ("Google i SEO lokalne", "Nazwy miejscowości, wizytówka Google, dane dla wyszukiwarek."), ("Publikacja i opieka", "Domena, hosting, a potem zmiany co miesiąc.")],
-  fig="brama-laptop", figcap="Brama Oleśnicka: strona restauracji z Oleśnicy."),
+  fig="brama-tablet", figcap="Brama Oleśnicka: strona restauracji z Oleśnicy."),
 "aplikacje": dict(
   title="Aplikacje i programy dla firm | Adrian Wojtasik",
   desc="Programy szyte pod Twoją firmę: rezerwacje, wyceny, ewidencja i panele. Działają w przeglądarce i na telefonie.",
-  hero=("Aplikacje i programy", "02 · Zmierzch", "Program, który pasuje <em>do Twojej pracy.</em>", "Rezerwacje, wyceny, ewidencja, panele dla pracowników. Zamiast arkusza i karteczek jedno narzędzie, które działa w przeglądarce i na telefonie.", "klon-pawilon", "50% 55%"),
+  hero=("Aplikacje i programy", "Aplikacje i programy", "Program, który pasuje <em>do Twojej pracy.</em>", "Rezerwacje, wyceny, ewidencja, panele dla pracowników. Zamiast arkusza i karteczek jedno narzędzie, które działa w przeglądarce i na telefonie.", "klon-pawilon", "50% 55%"),
   intro=("Co mogę zbudować", "Od prostego formularza <em>po cały panel.</em>", "Najpierw patrzę, jak dziś pracujesz. Program powstaje wokół tego, co zajmuje Ci najwięcej czasu."),
   items=[("Rezerwacje i terminy", "Klient sam wybiera termin, a Ty widzisz kalendarz."), ("Wyceny i kalkulatory", "Klient liczy cenę na stronie, Ty dostajesz gotowe zapytanie."),
          ("Ewidencja i magazyn", "Stan, historia, wydruki. Bez przepisywania z kartki."), ("Panel dla pracowników", "Każdy widzi swoje zadania i grafik."),
          ("Sklep z koszykiem", "Zamówienia, płatności, odbiór lub dostawa."), ("Działa wszędzie", "W przeglądarce, na telefonie i tablecie, bez instalowania.")],
-  fig="eskander-monitor", figcap="Eskander: strona, która po godzinach sama przechodzi w tryb dyżuru."),
+  fig="eskander-telefon", figcap="Eskander: strona, która po godzinach sama przechodzi w tryb dyżuru."),
 "automatyzacje": dict(
   title="Automatyzacje dla firm | Adrian Wojtasik",
   desc="Automatyzacje, które robią powtarzalną pracę za Ciebie: zgłoszenia, wiadomości, faktury i zestawienia.",
-  hero=("Automatyzacje", "03 · Noc", "Praca, która <em>dzieje się sama.</em>", "Zgłoszenia, wiadomości, faktury i zestawienia, które same trafiają tam, gdzie trzeba. Ty zamykasz firmę, a one pracują dalej.", "bambus", "50% 40%"),
+  hero=("Automatyzacje", "Automatyzacje", "Praca, która <em>dzieje się sama.</em>", "Zgłoszenia, wiadomości, faktury i zestawienia, które same trafiają tam, gdzie trzeba. Ty zamykasz firmę, a one pracują dalej.", "bambus", "50% 40%"),
   intro=("Przykłady", "Każda automatyzacja to <em>mniej ręcznej pracy.</em>", "Każdą automatyzację zaczynam od pytania: co dziś robisz ręcznie więcej niż raz w tygodniu?"),
   items=[("Formularz → kalendarz → SMS", "Zapytanie ze strony od razu jest terminem w kalendarzu i przypomnieniem dla klienta."), ("Zamówienie → faktura → mail", "Nic nie przepisujesz. Klient dostaje fakturę od razu."),
          ("Zestawienie na piątek", "Zamówienia, zapytania i terminy tygodnia w jednej wiadomości."), ("Odpowiedzi na pytania", "Godziny otwarcia, cennik, dojazd: klient dostaje odpowiedź od razu."),
          ("Opinie po wizycie", "Dzień po wizycie klient dostaje prośbę o opinię w Google."), ("Twoje dane u Ciebie", "Dane zostają na Twoich kontach, na serwerach w UE.")],
-  fig="shoji-noc", figcap="Systemy pracują po godzinach. Sceny ilustracyjne wygenerowane przez AI."),
+  fig="latarnia", figcap="Systemy pracują po godzinach. Scena ilustracyjna wygenerowana przez AI."),
 }
 
 for slug, p in PAGES.items():
@@ -96,7 +96,7 @@ for slug, p in PAGES.items():
     html = head(p["title"], p["desc"], img) + subhero(c, e, h1, lead, img, pos) + f'''
 <section class="day kumiko-bg" id="co" data-tone="day"><div class="blk cols2">
   <div class="rv"><span class="eyebrow">{ie}</span><h2>{ih2}</h2><p class="lead" style="margin-bottom:2rem">{ilead}</p>{lst(p["items"])}</div>
-  <figure class="focus rv" style="position:sticky;top:calc(var(--nav-h) + 2rem)"><img src="img/v5/{p["fig"]}.webp" alt="" loading="lazy"><figcaption class="ai-note">{p["figcap"]}</figcaption></figure>
+  <figure class="focus rv side-fig"><img src="img/v5/{p["fig"]}.webp" alt="" loading="lazy"><figcaption class="ai-note">{p["figcap"]}</figcaption></figure>
 </div></section>
 <section class="day" id="jak" data-tone="day"><div class="blk" style="padding-top:0">
   <div class="rule rv"><div><b>Cena przed startem</b><p>Kwota zmienia się tylko wtedy, gdy zmienia się zakres.</p></div><div><b>Odpowiedź w 1 dzień</b><p>Odbieram sam, nikt nie przekazuje Cię dalej.</p></div><div><b>Po publikacji zostaję</b><p>Ta sama osoba poprawia wszystko za rok.</p></div></div>
@@ -104,11 +104,11 @@ for slug, p in PAGES.items():
     open(f"src/{slug}.html", "w", encoding="utf-8").write(html)
 
 real = head("Realizacje: strony dla firm z Oławy, Oleśnicy i Wrocławia | Adrian Wojtasik",
-            "Realizacje: Eskander, Phở Việt, Brama Oleśnicka, Kwiaciarnia Małgorzata i inne. Każda firma dostała jeden własny pomysł.", "brama-laptop") \
+            "Realizacje: Eskander, Polfinans, Brama Oleśnicka, Kwiaciarnia Małgorzata i inne. Każda firma dostała jeden własny pomysł.", "brama-laptop") \
     + subhero("Realizacje", "Realizacje", "Strony, które pracują <em>w prawdziwych firmach.</em>", "Każda strona powstała dla konkretnej firmy z regionu. Pokazuję ją na urządzeniach w scenerii mojej marki, a link prowadzi do działającej strony.", "brama-laptop", "50% 40%") \
     + f'''
 <section class="day kumiko-bg" id="realizacje" data-tone="day"><div class="blk">
-  {works.replace('id="w-eskander"','id="eskander"').replace('id="w-pho"','id="pho-viet"').replace('id="w-brama"','id="brama"').replace('id="w-malgorzata"','id="malgorzata"')}
+  {works.replace('id="w-eskander"','id="eskander"').replace('id="w-polfinans"','id="polfinans"').replace('id="w-brama"','id="brama"').replace('id="w-malgorzata"','id="malgorzata"')}
   <p class="ai-note" style="margin-top:2rem">Sceny wokół urządzeń są ilustracyjne i wygenerowane przez AI. Ekrany pokazują prawdziwe strony.</p>
 </div></section>''' + others("") + CONTACT
 open("src/realizacje.html", "w", encoding="utf-8").write(real)

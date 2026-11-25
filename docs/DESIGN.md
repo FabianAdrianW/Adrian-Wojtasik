@@ -91,3 +91,8 @@ Pełny redesign na podstawie brand booka 1.0 (`brand/`). Stara wersja: gałąź 
 - Realizacje: zrzuty robione w proporcjach ekranu każdej sceny (`tools/shoot_sites.py`), więc nic nie jest ucięte; laptop z dokładnym prostokątem i wycięciem kamery.
 - Podwójne kreski w łańcuchach automatyzacji zamienione na strzałki; punkty list jako małe romby.
 - Teksty przejrzane humanizerem.
+
+## v5.2
+- Tło sekcji: wzór seigaiha (fale piasku) zamiast kratki.
+- Mockupy realizacji składane w 3× rozdzielczości (`tools/make_mocks.py`), Polfinans zamiast Phở Việt na głównej.
+- Inne projekty jako karty ze zrzutami. Podstrony usług: wysokie, przyklejone zdjęcie obok listy.

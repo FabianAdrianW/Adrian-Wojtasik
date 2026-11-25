@@ -13,7 +13,7 @@ Czysty HTML, CSS i JavaScript, bez frameworka. Działa na każdym hostingu staty
 Strona prowadzi od dnia do nocy, tak jak oferta prowadzi od wizytówki do systemu:
 
 1. **Hero:** japoński ogród o zmierzchu z bursztynową linią światła, hasło, dwa przyciski.
-2. **Realizacje:** Eskander, Phở Việt, Brama Oleśnicka, Kwiaciarnia Małgorzata na urządzeniach w scenerii marki, plus lista starszych projektów.
+2. **Realizacje:** Eskander, Polfinans, Brama Oleśnicka, Kwiaciarnia Małgorzata na urządzeniach w scenerii marki, plus karty innych projektów (Phở Việt, qmala.pl, mogetopomoge.pl, Eyelingo).
 3. **Usługi:** trzy ścieżki dzień → zmierzch → noc (strony, programy, automatyzacje).
 4. **Jak pracuję:** 7 kroków, które zapalają się po kolei.
 5. **Po godzinach (noc):** przykłady automatyzacji.
@@ -44,7 +44,7 @@ Poprzednie wersje: gałęzie `v4-czern-miod` i `v1-braz`.
 - Podstrony: edytuj `build/gen_pages.py`, potem `python3 build/gen_pages.py`.
 - Budowanie: `python3 build/build.py` (pliki w katalogu głównym + samodzielne `dist/*.html` do podglądu).
 - Kontrola: `python3 build/check_site.py` (brak poziomego przewijania przy 320, 390 i 1440 px, brak błędów JS).
-- Nowa realizacja w scenie: `python3 tools/mockup.py brand/images/src/mock-laptop-weranda.jpg zrzut.png wynik.jpg`.
+- Nowa realizacja w scenie: zrzut `tools/shoot_sites.py`, potem `python3 tools/make_mocks.py nazwa` (scena powiększana 3×, ostry ekran).
 
 ## Do uzupełnienia
 
