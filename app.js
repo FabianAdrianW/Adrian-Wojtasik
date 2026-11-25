@@ -56,8 +56,8 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
     realizacje:{realizacje:'brak','inne-uslugi':'fala',kontakt:'wiatr'}};
   const m=MAP[page]||{},secs=[...document.querySelectorAll('main>section')].slice(1);if(!secs.length)return;
   secs.forEach(s=>{s.dataset.reveal=m[s.id]||'enso'});document.documentElement.classList.add('thread-on');
-  const NS='http://www.w3.org/2000/svg',svg=document.createElementNS(NS,'svg'),path=document.createElementNS(NS,'path'),dot=document.createElementNS(NS,'circle');
-  svg.setAttribute('class','thread');svg.setAttribute('aria-hidden','true');dot.setAttribute('r','2.6');svg.append(path,dot);document.body.append(svg);
+  const NS='http://www.w3.org/2000/svg',svg=document.createElementNS(NS,'svg'),path=document.createElementNS(NS,'path'),dot=document.createElementNS(NS,'circle'),glow=document.createElementNS(NS,'path'),halo=document.createElementNS(NS,'circle');
+  svg.setAttribute('class','thread');svg.setAttribute('aria-hidden','true');dot.setAttribute('r','2.6');glow.setAttribute('class','tg');halo.setAttribute('class','th');halo.setAttribute('r','9');svg.append(glow,path,halo,dot);document.body.append(svg);
   const SEAM=110;let seg=[],total=0,x0=0,x1=0;
   const bgOf=el=>{let p=el.previousElementSibling;while(p){const c=getComputedStyle(p).backgroundColor;if(c&&c!=='rgba(0, 0, 0, 0)')return c;p=p.previousElementSibling}return getComputedStyle(document.body).backgroundColor};
   const prep=s=>{if(s.dataset.reveal!=='mozaika'||s.querySelector(':scope>.mosaic'))return;const mo=document.createElement('div');mo.className='mosaic';mo.setAttribute('aria-hidden','true');
@@ -78,15 +78,15 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
       const nx=x===x0?x1:x0;s.dataset.dir=nx>x?'r':'l';s.style.setProperty('--ox',(nx>x?4:96)+'%');
       seg.push({k:'h',x0:x,x1:nx,y,sec:s});x=nx;
       const end=i===secs.length-1?Math.min(sb,st+innerHeight*.8):sb;seg.push({k:'v',x,y0:y,y1:end,off:SEAM});y=end});
-    seg.forEach(s=>d+=s.k==='v'?` L${s.x} ${s.y1}`:` L${s.x1} ${s.y}`);path.setAttribute('d',d);
-    total=path.getTotalLength();path.style.strokeDasharray=total;secs.forEach(prep);draw()};
+    seg.forEach(s=>d+=s.k==='v'?` L${s.x} ${s.y1}`:` L${s.x1} ${s.y}`);path.setAttribute('d',d);glow.setAttribute('d',d);
+    total=path.getTotalLength();path.style.strokeDasharray=total;glow.style.strokeDasharray=total;secs.forEach(prep);draw()};
   const draw=()=>{const head=scrollY+innerHeight*.86;let len=0,hx=x0,hy=seg[0]?seg[0].y0||seg[0].y:0;
     for(const s of seg){if(s.k==='v'){const a=Math.min(s.y0+(s.off||0),s.y1-1),f=Math.max(0,Math.min(1,(head-a)/(s.y1-a)));len+=(s.y1-s.y0)*f;hx=s.x;hy=s.y0+(s.y1-s.y0)*f;if(f<1)break}
       else{const f=Math.max(0,Math.min(1,(head-s.y)/SEAM));len+=Math.abs(s.x1-s.x0)*f;hx=s.x0+(s.x1-s.x0)*f;hy=s.y;
         const sc=s.sec;if(sc.dataset.reveal==='kafel'&&!sc.classList.contains('in'))sc.style.setProperty('--f',Math.min(1,f/.6));
         if(f>=(sc.dataset.reveal==='kafel'?.6:.05)&&!sc.classList.contains('in'))reveal(sc,hx);
         if(f<1)break}}
-    path.style.strokeDashoffset=Math.max(0,total-len);dot.setAttribute('cx',hx);dot.setAttribute('cy',hy)};
+    const off=Math.max(0,total-len);path.style.strokeDashoffset=off;glow.style.strokeDashoffset=off;dot.setAttribute('cx',hx);dot.setAttribute('cy',hy);halo.setAttribute('cx',hx);halo.setAttribute('cy',hy)};
   let t=false;addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(()=>{draw();t=false})}},{passive:true});
   let rt;const rb=()=>{clearTimeout(rt);rt=setTimeout(build,120)};addEventListener('resize',rb);addEventListener('load',build);
   if(window.ResizeObserver)new ResizeObserver(rb).observe(document.querySelector('main'));if(document.fonts)document.fonts.ready.then(build);build()})();
