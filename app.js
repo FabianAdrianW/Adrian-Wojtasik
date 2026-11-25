@@ -49,7 +49,7 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
 /* Nić światła: ścieżka wije się od lewej do prawej krawędzi; dojście do granicy sekcji ją odsłania */
 (()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   const page=(location.pathname.split('/').pop()||'index.html').replace('.html','')||'index';
-  const MAP={index:{'o-mnie':'okno',kontakt:'wiatr'},strony:{kontakt:'wiatr'},aplikacje:{kontakt:'wiatr'},automatyzacje:{kontakt:'wiatr'},realizacje:{kontakt:'wiatr'}};
+  const MAP={index:{systemy:'enso','o-mnie':'okno',kontakt:'wiatr'},strony:{kontakt:'wiatr'},aplikacje:{kontakt:'wiatr'},automatyzacje:{kontakt:'wiatr'},realizacje:{kontakt:'wiatr'}};
   const m=MAP[page]||{},secs=[...document.querySelectorAll('main>section')].slice(1);if(!secs.length)return;
   secs.forEach(s=>{s.dataset.reveal=m[s.id]||'brak'});document.documentElement.classList.add('thread-on');
   const NS='http://www.w3.org/2000/svg',svg=document.createElementNS(NS,'svg'),path=document.createElementNS(NS,'path'),dot=document.createElementNS(NS,'circle'),glow=document.createElementNS(NS,'path'),halo=document.createElementNS(NS,'circle');
