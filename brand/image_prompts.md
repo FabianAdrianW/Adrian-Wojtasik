@@ -1,6 +1,6 @@
 # Karty kadrów i prompty do Google Flow · Adrian Wojtasik (v2: tylko zdjęcia)
 
-**Jak używać:** każdy prompt wklej do Flow osobno. Zdjęcia generuj w podanych proporcjach, po 2–4 warianty, i wrzuć mi te, które Ci się podobają (najlepiej w pełnej rozdzielczości). **Bez wideo (decyzja 25.11).** Nazwij pliki tak jak w kolumnie „Plik”, ułatwi mi to składanie.
+**Jak używać:** każdy prompt wklej do Flow osobno. Zdjęcia generuj w podanych proporcjach, po 2–4 warianty, i wrzuć mi te, które Ci się podobają (najlepiej w pełnej rozdzielczości). **Bez wideo (decyzja 25.11).** Flow ma proporcje 16:9, 4:3, 1:1, 3:4 i 9:16; wszystkie prompty są do nich dopasowane. Model: Nano Banana Pro. Nazwij pliki tak jak w kolumnie „Plik”, ułatwi mi to składanie.
 
 **Wspólna gramatyka (dopisana w każdym prompcie):** japońska sceneria, mech i zieleń, tradycyjne drewniane budynki, grabiony piasek, kamień; jedno źródło bursztynowego światła technologii (#FFB547: linia LED, ekran, latarnia z diodą); ciepła, stonowana paleta (sumi, washi, mech, hinoki); płytka głębia ostrości; bez ludzi w kadrze albo dłonie lub postać od tyłu; **bez napisów, znaków, kanji, logo**.
 
@@ -26,10 +26,10 @@ Top-down photograph of a Japanese karesansui garden, finely raked pale sand with
 ```
 
 ### Z3 · Laptop na werandzie (praca w ogrodzie)
-- **Plik:** `weranda-laptop-4x5.jpg`
+- **Plik:** `weranda-laptop-3x4.jpg`
 - **Zadanie:** sekcja „O mnie” i proces. **Influence:** nowoczesna praca w spokojnym miejscu. **Test:** widać technologię i tradycję w jednym kadrze.
 ```
-Photograph of an open laptop on a low hinoki wood table on a traditional Japanese engawa veranda, shoji screens slid open to a moss garden with raked sand, blue hour, the laptop screen casting a soft warm amber glow (#FFB547) on the wood, a ceramic tea cup and a closed washi paper notebook beside it, shallow depth of field, calm and premium, photorealistic, no people, screen content blurred and unreadable, no text, no logos, aspect ratio 4:5
+Photograph of an open laptop on a low hinoki wood table on a traditional Japanese engawa veranda, shoji screens slid open to a moss garden with raked sand, blue hour, the laptop screen casting a soft warm amber glow (#FFB547) on the wood, a ceramic tea cup and a closed washi paper notebook beside it, shallow depth of field, calm and premium, photorealistic, no people, screen content blurred and unreadable, no text, no logos, aspect ratio 3:4
 ```
 
 ### Z4 · Shoji nocą (przejścia, tło sekcji „Systemy”)
@@ -40,10 +40,10 @@ Photograph of a traditional Japanese shoji screen at night, fine kumiko wooden l
 ```
 
 ### Z5 · Kamienna latarnia z nowym światłem
-- **Plik:** `latarnia-4x5.jpg`
+- **Plik:** `latarnia-3x4.jpg`
 - **Zadanie:** symbol marki: tradycja + technologia. **Influence:** „od wizytówki po systemy”. **Test:** widz od razu łączy stare z nowym.
 ```
-Close photograph of a traditional Japanese stone lantern (toro) covered in moss, standing in a garden at dusk, inside the lantern a thin modern warm amber LED strip (#FFB547) instead of a flame, soft bokeh of maple leaves behind, quiet and precise, photorealistic, no people, no text, aspect ratio 4:5
+Close photograph of a traditional Japanese stone lantern (toro) covered in moss, standing in a garden at dusk, inside the lantern a thin modern warm amber LED strip (#FFB547) instead of a flame, soft bokeh of maple leaves behind, quiet and precise, photorealistic, no people, no text, aspect ratio 3:4
 ```
 
 ### Z6 · Deszcz na kamiennej ścieżce
@@ -54,17 +54,17 @@ Photograph of a wet stone stepping path through a moss garden at night after rai
 ```
 
 ### Z7 · Dłonie przy pracy
-- **Plik:** `dlonie-praca-4x5.jpg`
+- **Plik:** `dlonie-praca-3x4.jpg`
 - **Zadanie:** proces („Rozmowa → Research → Pomysł”). **Influence:** rzemiosło. **Test:** widać pracę ręczną i precyzję.
 ```
-Close-up photograph of hands sketching a website layout grid with a pencil on washi paper, next to a laptop on a dark hinoki wood desk, a small moss kokedama ball in a ceramic dish, warm side light from a shoji window, one thin amber light line reflected on the desk, shallow depth of field, photorealistic, no face, no text readable, aspect ratio 4:5
+Close-up photograph of hands sketching a website layout grid with a pencil on washi paper, next to a laptop on a dark hinoki wood desk, a small moss kokedama ball in a ceramic dish, warm side light from a shoji window, one thin amber light line reflected on the desk, shallow depth of field, photorealistic, no face, no text readable, aspect ratio 3:4
 ```
 
 ### Z8 · Okap świątyni i linia światła
-- **Plik:** `okap-3x2.jpg`
+- **Plik:** `okap-4x3.jpg`
 - **Zadanie:** przerywnik między dniem a nocą. **Influence:** architektura, precyzja. **Test:** grafika działa jako pas pełnej szerokości.
 ```
-Low-angle photograph of curved traditional Japanese temple roof eaves against a deep twilight sky, intricate wooden brackets, a single thin warm amber LED line (#FFB547) running along the edge of the roof, minimal, symmetrical, cinematic, photorealistic, no people, no text, aspect ratio 3:2
+Low-angle photograph of curved traditional Japanese temple roof eaves against a deep twilight sky, intricate wooden brackets, a single thin warm amber LED line (#FFB547) running along the edge of the roof, minimal, symmetrical, cinematic, photorealistic, no people, no text, aspect ratio 4:3
 ```
 
 ### Z9 · Bambus i światłowód
@@ -93,9 +93,9 @@ Photograph of an open modern laptop on a low hinoki wood table on a traditional 
 ```
 
 ### Z12 · Telefon na kamieniu w ogrodzie
-- **Plik:** `mock-telefon-kamien-4x5.jpg` · **Zadanie:** widok mobilny realizacji
+- **Plik:** `mock-telefon-kamien-3x4.jpg` · **Zadanie:** widok mobilny realizacji
 ```
-Photograph of a modern smartphone lying flat on a smooth dark river stone covered partly with moss, top-down view, the phone screen completely plain matte light grey, raked sand lines around the stone, soft morning light, one thin warm amber light reflection (#FFB547) on the stone edge, photorealistic, no text, no logos, aspect ratio 4:5
+Photograph of a modern smartphone lying flat on a smooth dark river stone covered partly with moss, top-down view, the phone screen completely plain matte light grey, raked sand lines around the stone, soft morning light, one thin warm amber light reflection (#FFB547) on the stone edge, photorealistic, no text, no logos, aspect ratio 3:4
 ```
 
 ### Z13 · Dłoń z telefonem przy shoji
@@ -111,23 +111,23 @@ Photograph of a large thin monitor on a low dark wooden desk in a minimal Japane
 ```
 
 ### Z15 · Tablet oparty o drewnianą ramę
-- **Plik:** `mock-tablet-drewno-4x5.jpg` · **Zadanie:** galerie i sklepy
+- **Plik:** `mock-tablet-drewno-3x4.jpg` · **Zadanie:** galerie i sklepy
 ```
-Photograph of a modern tablet standing on a wooden stand on hinoki wood, screen facing the camera straight on, screen completely plain matte light grey, background a moss garden at dusk softly blurred, one warm amber garden light (#FFB547) in the bokeh, photorealistic, no text, no logos, aspect ratio 4:5
+Photograph of a modern tablet standing on a wooden stand on hinoki wood, screen facing the camera straight on, screen completely plain matte light grey, background a moss garden at dusk softly blurred, one warm amber garden light (#FFB547) in the bokeh, photorealistic, no text, no logos, aspect ratio 3:4
 ```
 
 ## Więcej scen (tła sekcji)
 
 ### Z16 · Herbata na stole (sekcja „Rozmowa”)
-- **Plik:** `herbata-rozmowa-3x2.jpg`
+- **Plik:** `herbata-rozmowa-4x3.jpg`
 ```
-Photograph of two ceramic tea cups and a cast iron teapot on a low wooden table in a Japanese room, a closed laptop and a washi paper notebook with a pencil beside them, soft side light through shoji, warm amber reflection (#FFB547) on the teapot, calm, inviting, photorealistic, no people, no text, aspect ratio 3:2
+Photograph of two ceramic tea cups and a cast iron teapot on a low wooden table in a Japanese room, a closed laptop and a washi paper notebook with a pencil beside them, soft side light through shoji, warm amber reflection (#FFB547) on the teapot, calm, inviting, photorealistic, no people, no text, aspect ratio 4:3
 ```
 
 ### Z17 · Noren w wejściu (sekcja „Kontakt”)
-- **Plik:** `noren-wejscie-4x5.jpg`
+- **Plik:** `noren-wejscie-3x4.jpg`
 ```
-Photograph of a traditional wooden entrance with a plain dark indigo noren curtain without any lettering, gently moving, warm amber light (#FFB547) coming from inside, stone path and moss leading to the door, dusk, inviting, photorealistic, no people, no text, no symbols, aspect ratio 4:5
+Photograph of a traditional wooden entrance with a plain dark indigo noren curtain without any lettering, gently moving, warm amber light (#FFB547) coming from inside, stone path and moss leading to the door, dusk, inviting, photorealistic, no people, no text, no symbols, aspect ratio 3:4
 ```
 
 ### Z18 · Staw z karpiami (sekcja „Automatyzacje”)
@@ -137,21 +137,21 @@ Top-down photograph of a calm Japanese garden pond with a few koi fish moving in
 ```
 
 ### Z19 · Drewniany mostek (sekcja „Jak pracuję”)
-- **Plik:** `mostek-proces-3x2.jpg`
+- **Plik:** `mostek-proces-4x3.jpg`
 ```
-Photograph of a zigzag wooden plank bridge (yatsuhashi) crossing over a pond with iris plants and moss, morning mist, low warm sun, small warm amber garden lights (#FFB547) along the bridge edge, calm and precise, photorealistic, no people, no text, aspect ratio 3:2
+Photograph of a zigzag wooden plank bridge (yatsuhashi) crossing over a pond with iris plants and moss, morning mist, low warm sun, small warm amber garden lights (#FFB547) along the bridge edge, calm and precise, photorealistic, no people, no text, aspect ratio 4:3
 ```
 
 ### Z20 · Mur z kamienia i linia światła (przerywnik pełnej szerokości)
-- **Plik:** `mur-swiatlo-21x9.jpg`
+- **Plik:** `mur-swiatlo-16x9.jpg`
 ```
-Wide photograph of a traditional dry stone wall with moss in the joints, at night, a single thin horizontal warm amber LED line (#FFB547) running along the top of the wall, minimal, cinematic, photorealistic, no people, no text, aspect ratio 21:9
+Wide photograph of a traditional dry stone wall with moss in the joints, at night, a single thin horizontal warm amber LED line (#FFB547) running along the top of the wall, minimal, cinematic, photorealistic, no people, no text, aspect ratio 16:9, very wide composition with empty space above and below the wall
 ```
 
 ### Z21 · Klon jesienią przy pawilonie (sekcja „O mnie”)
-- **Plik:** `klon-pawilon-4x5.jpg`
+- **Plik:** `klon-pawilon-3x4.jpg`
 ```
-Photograph of a red Japanese maple tree beside a dark wooden pavilion, moss ground and raked sand, late afternoon golden light, a laptop resting on the pavilion floor in soft focus with a warm amber glow, calm, photorealistic, no people, no text, aspect ratio 4:5
+Photograph of a red Japanese maple tree beside a dark wooden pavilion, moss ground and raked sand, late afternoon golden light, a laptop resting on the pavilion floor in soft focus with a warm amber glow, calm, photorealistic, no people, no text, aspect ratio 3:4
 ```
 
 ### Z22 · Kratka kumiko z bliska (faktura znaku)
