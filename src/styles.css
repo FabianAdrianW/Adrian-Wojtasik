@@ -391,7 +391,7 @@ footer .light-line{top:0}
 
 /* odsłony */
 @media (prefers-reduced-motion:no-preference){
-  .js .rv{opacity:0;transform:translateY(22px);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
+  .js .rv{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .8s var(--ease)}
   .js .rv.in{opacity:1;transform:none}
   .js .focus img{filter:blur(10px);transform:scale(1.04);transition:filter 1.4s var(--ease),transform 1.6s var(--ease)}
   .js .focus.in img{filter:none;transform:none}
@@ -468,24 +468,7 @@ main{overflow-x:clip}
 .js.thread-on main>section.open{clip-path:none!important}
 @media (max-width:700px){.thread path{stroke-width:1.1}}
 
-/* Przegrupowanie zdjęć między sekcjami */
-.morph-layer{position:fixed;inset:0;z-index:35;pointer-events:none;overflow:hidden}
-.morph-layer .mc{position:absolute;left:0;top:0;border-radius:var(--r);overflow:hidden;will-change:transform,width,height;transform-origin:center}
-.morph-layer img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.morph-layer img.to{opacity:0}
-.path.peeled>img{opacity:0}
-.path.peeled{background:var(--ink)}
-.morph-wait,.morph-gone{opacity:0!important}
 .way-media .frame{transition:none}
 
-/* Kontakt na desktopie: tekst po lewej, formularz po prawej, całość w jednym kadrze */
-@media (min-width:1100px){
-  .contact .blk{max-width:none;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(3rem,6vw,6rem);align-content:center}
-  .contact .blk>*:not(form){grid-column:1}
-  .contact form{grid-column:2;grid-row:1/span 6;align-self:center;margin-top:0;max-width:none;padding:clamp(1.4rem,2.4vw,2.2rem);background:rgba(18,19,17,.55);border:1px solid var(--line-n);border-radius:var(--r);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-  .contact .bg{width:100%}
-  .contact .bg::after{background:linear-gradient(90deg,var(--ink) 25%,rgba(18,19,17,.55))}
-  .contact textarea{min-height:6.5rem}
-}
 /* listy w kolumnie obok zdjęcia: dwie kolumny na desktopie, żeby blok mieścił się w kadrze */
 @media (min-width:1100px){.cols2 .list{display:grid;grid-template-columns:1fr 1fr;column-gap:2rem}.cols2 .list li{grid-template-columns:2rem 1fr;padding:.9rem 0}}

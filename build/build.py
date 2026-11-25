@@ -1,4 +1,11 @@
 import base64,re,os,sys
+# straż: niedomknięta klamra w CSS po cichu wyłącza wszystkie reguły pod nią
+_c=open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','src','styles.css'),encoding='utf-8').read()
+_d=0
+for _n,_l in enumerate(_c.split('\n'),1):
+    _d+=_l.count('{')-_l.count('}')
+    if _d<0: sys.exit(f'styles.css: nadmiarowa klamra w linii {_n}')
+if _d: sys.exit(f'styles.css: {_d} niedomkniętych klamer')
 HERE=os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0,HERE);from cases import case
 os.chdir(os.path.join(HERE,".."))

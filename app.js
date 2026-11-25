@@ -25,7 +25,7 @@ const glow=$('.nav-glow');
 if(glow){$$('.links>li>a').forEach(a=>{a.addEventListener('mouseenter',()=>{const li=a.parentElement;glow.style.left=(li.offsetLeft+16)+'px';glow.style.width=(li.offsetWidth-32)+'px';glow.style.opacity=1})});
   $('.links').addEventListener('mouseleave',()=>glow.style.opacity=0)}
 /* odsłony */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:0,rootMargin:'0px 0px -4% 0px'});
 $$('.rv,.focus').forEach(el=>io.observe(el));
 /* Jak pracuję: aktywny krok to ten na środku ekranu; zdjęcie, podpis i znaczniki idą za nim */
 const steps=$('#steps');
@@ -49,27 +49,23 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
 /* Nić światła: ścieżka wije się od lewej do prawej krawędzi; dojście do granicy sekcji ją odsłania */
 (()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   const page=(location.pathname.split('/').pop()||'index.html').replace('.html','')||'index';
-  const MAP={index:{realizacje:'rozdanie',uslugi:'kafel','jak-pracuje':'brak',systemy:'enso','o-mnie':'okno',ceny:'mozaika',kontakt:'kirigami'},
-    strony:{co:'kafel',jak:'mozaika','inne-uslugi':'rozdanie',kontakt:'enso'},
-    aplikacje:{co:'okno',jak:'fala','inne-uslugi':'rozdanie',kontakt:'mozaika'},
-    automatyzacje:{co:'mozaika',jak:'enso','inne-uslugi':'rozdanie',kontakt:'kafel'},
-    realizacje:{realizacje:'rozdanie','inne-uslugi':'fala',kontakt:'okno'}};
+  const MAP={index:{realizacje:'brak',uslugi:'kafel','jak-pracuje':'fala',systemy:'enso','o-mnie':'okno',ceny:'mozaika',kontakt:'kirigami'},
+    strony:{co:'kafel',jak:'mozaika','inne-uslugi':'fala',kontakt:'enso'},
+    aplikacje:{co:'okno',jak:'fala','inne-uslugi':'kirigami',kontakt:'mozaika'},
+    automatyzacje:{co:'mozaika',jak:'enso','inne-uslugi':'okno',kontakt:'kafel'},
+    realizacje:{realizacje:'brak','inne-uslugi':'fala',kontakt:'okno'}};
   const m=MAP[page]||{},secs=[...document.querySelectorAll('main>section')].slice(1);if(!secs.length)return;
   secs.forEach(s=>{s.dataset.reveal=m[s.id]||'enso'});document.documentElement.classList.add('thread-on');
   const NS='http://www.w3.org/2000/svg',svg=document.createElementNS(NS,'svg'),path=document.createElementNS(NS,'path'),dot=document.createElementNS(NS,'circle');
   svg.setAttribute('class','thread');svg.setAttribute('aria-hidden','true');dot.setAttribute('r','2.6');svg.append(path,dot);document.body.append(svg);
-  const SEAM=150;let seg=[],total=0,x0=0,x1=0;
+  const SEAM=110;let seg=[],total=0,x0=0,x1=0;
   const bgOf=el=>{let p=el.previousElementSibling;while(p){const c=getComputedStyle(p).backgroundColor;if(c&&c!=='rgba(0, 0, 0, 0)')return c;p=p.previousElementSibling}return getComputedStyle(document.body).backgroundColor};
   const prep=s=>{if(s.dataset.reveal!=='mozaika'||s.querySelector(':scope>.mosaic'))return;const mo=document.createElement('div');mo.className='mosaic';mo.setAttribute('aria-hidden','true');
     const w=s.offsetWidth,cols=innerWidth<700?5:9,size=w/cols,rows=Math.min(Math.ceil(Math.min(s.offsetHeight,innerHeight*1.6)/size),14);
     mo.style.cssText=`--mc:${bgOf(s)};grid-template-columns:repeat(${cols},1fr);grid-auto-rows:${size}px;bottom:auto;height:${Math.min(s.offsetHeight,rows*size)}px`;
     const fromR=s.dataset.dir==='l';for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const i=document.createElement('i'),dx=fromR?cols-1-c:c;i.style.transitionDelay=(Math.hypot(dx,r*1.2)*.07).toFixed(2)+'s';mo.append(i)}
     s.append(mo);s.dataset.mosaicH='1'};
-  const deal=(s,hx)=>{const sr=s.getBoundingClientRect(),cards=[...s.querySelectorAll('.ph,.path,.price,.flow')].filter(c=>c.getBoundingClientRect().top<sr.top+innerHeight*1.6);
-    const ox=Math.min(Math.max(hx-scrollX,innerWidth*.2),innerWidth*.8),oy=sr.top+Math.min(innerHeight*.3,sr.height*.2);
-    cards.forEach((c,i)=>{const r=c.getBoundingClientRect(),dx=ox-(r.left+r.width/2),dy=oy-(r.top+r.height/2),rot=(i%2?1:-1)*(4+i%3*3);
-      c.animate([{transform:`translate(${dx}px,${dy}px) scale(.22) rotate(${rot}deg)`,opacity:0,offset:0},{opacity:1,offset:.25},{transform:'none',opacity:1}],{duration:1300,delay:i*110,easing:'cubic-bezier(.22,1,.36,1)',fill:'backwards'})})};
-  const reveal=(s,hx)=>{s.classList.add('in');if(s.dataset.reveal==='rozdanie')deal(s,hx);
+  const reveal=(s,hx)=>{s.classList.add('in');s.querySelectorAll('.rv:not(.in)').forEach(r=>{if(r.getBoundingClientRect().top<innerHeight*1.05)r.classList.add('in')});
     setTimeout(()=>{s.classList.add('open');const mo=s.querySelector(':scope>.mosaic');if(mo)mo.remove()},s.dataset.reveal==='mozaika'?2400:1900)};
 
   const build=()=>{const W=document.documentElement.clientWidth,pad=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad'))||parseFloat(getComputedStyle(secs[0]).paddingLeft)||20;
@@ -84,41 +80,17 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
       const end=i===secs.length-1?Math.min(sb,st+innerHeight*.8):sb;seg.push({k:'v',x,y0:y,y1:end,off:SEAM});y=end});
     seg.forEach(s=>d+=s.k==='v'?` L${s.x} ${s.y1}`:` L${s.x1} ${s.y}`);path.setAttribute('d',d);
     total=path.getTotalLength();path.style.strokeDasharray=total;secs.forEach(prep);draw()};
-  const draw=()=>{const head=scrollY+innerHeight*.72;let len=0,hx=x0,hy=seg[0]?seg[0].y0||seg[0].y:0;
+  const draw=()=>{const head=scrollY+innerHeight*.86;let len=0,hx=x0,hy=seg[0]?seg[0].y0||seg[0].y:0;
     for(const s of seg){if(s.k==='v'){const a=Math.min(s.y0+(s.off||0),s.y1-1),f=Math.max(0,Math.min(1,(head-a)/(s.y1-a)));len+=(s.y1-s.y0)*f;hx=s.x;hy=s.y0+(s.y1-s.y0)*f;if(f<1)break}
       else{const f=Math.max(0,Math.min(1,(head-s.y)/SEAM));len+=Math.abs(s.x1-s.x0)*f;hx=s.x0+(s.x1-s.x0)*f;hy=s.y;
-        const sc=s.sec;if(sc.dataset.reveal==='kafel'&&!sc.classList.contains('in'))sc.style.setProperty('--f',f);
-        if(f>=(sc.dataset.reveal==='kafel'?1:.3)&&!sc.classList.contains('in'))reveal(sc,hx);
+        const sc=s.sec;if(sc.dataset.reveal==='kafel'&&!sc.classList.contains('in'))sc.style.setProperty('--f',Math.min(1,f/.6));
+        if(f>=(sc.dataset.reveal==='kafel'?.6:.05)&&!sc.classList.contains('in'))reveal(sc,hx);
         if(f<1)break}}
     path.style.strokeDashoffset=Math.max(0,total-len);dot.setAttribute('cx',hx);dot.setAttribute('cy',hy)};
   let t=false;addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(()=>{draw();t=false})}},{passive:true});
   let rt;const rb=()=>{clearTimeout(rt);rt=setTimeout(build,120)};addEventListener('resize',rb);addEventListener('load',build);
   if(window.ResizeObserver)new ResizeObserver(rb).observe(document.querySelector('main'));if(document.fonts)document.fonts.ready.then(build);build()})();
 
-/* Przegrupowanie: zdjęcia odrywają się od jednej sekcji i składają w następną. Sterowane przewijaniem, więc w obie strony */
-(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  const layer=document.createElement('div');layer.className='morph-layer';layer.setAttribute('aria-hidden','true');document.body.append(layer);
-  const vis=e=>e&&e.offsetParent!==null;const cl=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;const L=(a,b,t)=>a+(b-a)*t;
-  const mk=(src,top)=>{const d=document.createElement('div');d.className='mc';d.innerHTML=`<img src="${src}" alt="">`+(top?`<img class="to" src="${top}" alt="">`:'');layer.append(d);return d};
-  const place=(d,a,b,t,rot,extra)=>{const x=L(a.left,b.left,t),y=L(a.top,b.top,t),w=L(a.width,b.width,t),h=L(a.height,b.height,t);
-    d.style.cssText=`transform:translate(${x}px,${y}px) rotate(${rot}deg);width:${w}px;height:${h}px;${extra||''}`};
-  const morphs=[];
-  /* 1. Usługi → Jak pracuję: trzy karty zbiegają się w wachlarz i lądują w ramce zdjęcia */
-  const cards=[...document.querySelectorAll('#uslugi .path')],frame=document.querySelector('.way-media .frame'),mph=document.querySelector('#steps .m-ph');
-  if(cards.length&&(frame||mph)){let cl1=null;const tgt=()=>vis(frame)?frame:mph;
-    morphs.push(()=>{const T=tgt();if(!T)return;const r=T.getBoundingClientRect(),stick=vis(frame)?parseFloat(getComputedStyle(frame.parentElement).top)||100:innerHeight*.28;
-      let p=cl((innerHeight*1.02-r.top)/(innerHeight*1.02-stick));if(p>.995)p=1;const on=p>0&&p<1;
-      cards.forEach(c=>c.classList.toggle('peeled',p>0));T.classList.toggle('morph-wait',p<1);
-      if(!on){if(cl1){cl1.forEach(d=>d.remove());cl1=null}return}
-      if(!cl1)cl1=cards.map((c,i)=>mk(c.querySelector('img').currentSrc||c.querySelector('img').src,i===0?(()=>{const m=T.matches('img')?T:(T.querySelector('img.on')||T.querySelector('img'));return m.currentSrc||m.src})():null));
-      const e=ease(p),n=cards.length;
-      cards.forEach((c,i)=>{const a=c.getBoundingClientRect(),off=(i-(n-1)/2),fan=Math.sin(Math.PI*e);
-        const b={left:r.left+off*fan*r.width*.42,top:r.top-fan*Math.abs(off)*-18,width:r.width,height:r.height};
-        const op=i===0?1:cl(1-(p-.72)/.2);
-        place(cl1[i],a,b,e,off*fan*9,`z-index:${n-i};opacity:${op};box-shadow:0 ${30*fan}px ${70*fan}px rgba(18,19,17,${.35*fan})`);
-        const to=cl1[i].querySelector('.to');if(to)to.style.opacity=cl((p-.6)/.35)})})}
-  if(!morphs.length)return;let t=false;const run=()=>{morphs.forEach(f=>f());t=false};
-  addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(run)}},{passive:true});addEventListener('resize',run);run()})();
 /* Po godzinach: schematy ruszają, gdy są na ekranie */
 (()=>{const f=document.querySelectorAll('.flow');if(!f.length||!('IntersectionObserver' in window))return;
   const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('run',e.isIntersecting)),{threshold:.4});f.forEach(x=>io.observe(x))})();
