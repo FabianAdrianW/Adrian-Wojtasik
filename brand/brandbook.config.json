@@ -1,0 +1,117 @@
+{
+  "brand": {
+    "name": "Adrian Wojtasik",
+    "descriptor": "strony, programy i automatyzacje dla firm",
+    "promise": "Twój partner technologiczny: od prostej wizytówki po zaawansowane systemy.",
+    "essence": "Znajduję to, czym Twoja firma się różni, i buduję z tego stronę, która działa."
+  },
+  "contact": {
+    "phone": "791 632 675",
+    "email": "TODO",
+    "address": "Nadolice Wielkie (okolice Wrocławia)",
+    "area": "Oława, Oleśnica, Wrocław i okolice; zdalnie cała Polska"
+  },
+  "tokens": {
+    "color": {
+      "accent": "#8A5A12",
+      "lantern": "#FFB547",
+      "paper": "#F2EFE7",
+      "sand": "#DCD3C1",
+      "ink": "#121311",
+      "muted": "#5D5F58",
+      "moss": "#33503F",
+      "hinoki": "#C9A46A",
+      "white": "#FFFFFF",
+      "line": "rgba(18,19,17,.13)",
+      "surface": "#ECE7DC"
+    },
+    "font": {
+      "display": "Sawarabi Mincho",
+      "body": "IBM Plex Sans",
+      "mono": "IBM Plex Mono"
+    },
+    "radius": "3px",
+    "grid": 12
+  },
+  "voice": {
+    "address": "Ty",
+    "yes": [
+      "spokojny",
+      "konkretny",
+      "pewny"
+    ],
+    "no": [
+      "nadęty",
+      "techniczny",
+      "sprzedażowy"
+    ],
+    "banned": [
+      "nowoczesny",
+      "responsywny (jako zaleta)",
+      "kompleksowy",
+      "innowacyjny",
+      "pasja",
+      "rozwiązania"
+    ],
+    "rule": "co zauważyłem → co z tym zrobię → co zyskasz → następny krok"
+  },
+  "archetype": {
+    "primary": "Twórca",
+    "supporting": "Mędrzec",
+    "shadow_avoid": "perfekcjonizm i dystans; wykład i chłód"
+  },
+  "soul": {
+    "brand_line": "Twój partner technologiczny: od prostej wizytówki po zaawansowane systemy.",
+    "metaphor": "ogród i neon (japoński ogród + światło technologii)",
+    "motif": "kratka kumiko, linie grabionego piasku, linia bursztynowego światła",
+    "prop": "jedno bursztynowe źródło światła (#FFB547) w każdym kadrze",
+    "photo_world": "japońska sceneria: mech, bambus, pawilony, shoji, piasek; złota i niebieska godzina, noc",
+    "section_schema": "eyebrow > h2 > lead > cta"
+  },
+  "contexts": [
+    {
+      "id": "lokal",
+      "label": "LOKAL",
+      "meaning": "firma z miejscem: sala, gabinet, sklep",
+      "image": "images/web/brama-laptop.jpg"
+    },
+    {
+      "id": "telefon",
+      "label": "TELEFON",
+      "meaning": "klient szuka w biegu, kciukiem",
+      "image": "images/web/pho-telefon.jpg"
+    },
+    {
+      "id": "zmiana",
+      "label": "ZMIANA",
+      "meaning": "nowa marka, nowa usługa, następca",
+      "image": "images/web/malgorzata-telefon.jpg"
+    },
+    {
+      "id": "zaplecze",
+      "label": "ZAPLECZE",
+      "meaning": "ręczna, powtarzalna robota do automatyzacji",
+      "image": "images/web/bambus.jpg"
+    },
+    {
+      "id": "region",
+      "label": "REGION",
+      "meaning": "Oława, Oleśnica, Wrocław i okolice",
+      "image": "images/web/mostek.jpg"
+    }
+  ],
+  "method": [
+    "Rozmowa",
+    "Research",
+    "Jeden pomysł",
+    "Projekt",
+    "Budowa",
+    "Publikacja",
+    "Opieka"
+  ],
+  "messages": {
+    "hero": "Twój partner technologiczny: od prostej wizytówki po zaawansowane systemy.",
+    "short": "Strony, programy i automatyzacje dla firm z Oławy, Oleśnicy, Wrocławia i całej Polski.",
+    "cta": "Porozmawiajmy"
+  }
+}
