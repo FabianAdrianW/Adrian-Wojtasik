@@ -12,6 +12,8 @@
   --z:1;--pad:clamp(1.25rem,5.5vw,6rem);--nav-h:4.25rem;--ease:cubic-bezier(.22,1,.36,1);--r:3px}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+/* skala desktopu: 100% w przeglądarce wygląda jak dawne 85%, rośnie dopiero na dużych ekranach */
+@media (min-width:1024px){html{font-size:clamp(13.6px,.4vw + 7.5px,16px)}}
 body{font-family:Plex,system-ui,sans-serif;font-size:1.0625rem;line-height:1.65;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:clip}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
@@ -23,7 +25,7 @@ a{color:inherit}
 .night .eyebrow .ico,.hero .eyebrow .ico,.sub-hero .eyebrow .ico{--tn:var(--lantern)}
 .night .eyebrow{color:var(--lantern)}
 h1,h2,h3{font-family:Mincho,serif;font-weight:400;letter-spacing:-.02em;line-height:1.08}
-h2{font-size:clamp(2.1rem,4.4vw,3.7rem);margin:1rem 0 1.1rem;max-width:18ch}
+h2{font-size:clamp(2rem,min(4.4vw,7.4vh),3.7rem);margin:1rem 0 1.1rem;max-width:18ch}
 h2.h-long{max-width:24ch;font-size:clamp(1.9rem,3.6vw,3.1rem)}
 h2 em,h1 em{font-style:normal;color:var(--moss)}
 .night h2 em,.night h1 em,.hero h1 em,.sub-hero h1 em{color:var(--lantern)}
@@ -163,16 +165,16 @@ section{position:relative;scroll-margin-top:var(--nav-h)}
 .region li{font-family:Mono,monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--moss)}
 
 /* wspólne bloki sekcji */
-.blk{padding:clamp(4.5rem,9vw,8.5rem) var(--pad)}
-.head{display:grid;grid-template-columns:1.15fr 1fr;gap:1.5rem 4rem;align-items:end;margin-bottom:clamp(2.5rem,5vw,4.5rem)}
+.blk{padding:clamp(3.5rem,min(9vw,13vh),8rem) var(--pad)}
+.head{display:grid;grid-template-columns:1.15fr 1fr;gap:1.5rem 4rem;align-items:end;margin-bottom:clamp(1.8rem,min(5vw,6.5vh),4.5rem)}
 .head .lead{margin-bottom:.4rem}
 @media (max-width:860px){.head{grid-template-columns:1fr}}
 
 /* realizacje */
-.works{display:grid;gap:clamp(4rem,8vw,7rem)}
+.works{display:grid;gap:clamp(3.5rem,min(8vw,12vh),7rem)}
 .work{display:grid;grid-template-columns:repeat(12,1fr);gap:1.5rem;align-items:center;text-decoration:none;color:inherit}
 .work .ph{grid-column:1/9;position:relative}
-.work .ph .main{position:relative;overflow:hidden;border-radius:var(--r);aspect-ratio:16/10;background:#222}
+.work .ph .main{position:relative;overflow:hidden;border-radius:var(--r);aspect-ratio:16/10;max-height:calc(100svh - var(--nav-h) - 7rem);width:100%;background:#222}
 .work .ph .main img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .work .ph .main::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,181,71,.28) 50%,transparent 65%);background-size:250% 100%;background-position:120% 0;opacity:0;transition:opacity .5s,background-position 1.2s var(--ease);mix-blend-mode:screen;pointer-events:none}
 .work .ph .sec{position:absolute;width:31%;right:-6%;bottom:-12%;border-radius:var(--r);overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.45);aspect-ratio:3/4;transition:transform 1s var(--ease)}
@@ -206,7 +208,7 @@ section{position:relative;scroll-margin-top:var(--nav-h)}
 
 /* usługi: od dnia do nocy */
 .paths{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.path{position:relative;min-height:34rem;border-radius:var(--r);overflow:hidden;color:var(--paper);text-decoration:none;display:flex;flex-direction:column;justify-content:flex-end;padding:1.8rem;isolation:isolate}
+.path{position:relative;min-height:clamp(22rem,56vh,34rem);border-radius:var(--r);overflow:hidden;color:var(--paper);text-decoration:none;display:flex;flex-direction:column;justify-content:flex-end;padding:1.8rem;isolation:isolate}
 .path img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.4s var(--ease)}
 .path::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,19,17,.1) 20%,rgba(18,19,17,.88))}
 .path .t{font-family:Mono,monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lantern)}
@@ -290,7 +292,7 @@ section{position:relative;scroll-margin-top:var(--nav-h)}
 /* o mnie */
 .about-g{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,6vw,6rem);align-items:center}
 .about .photo{position:relative}
-.about .photo img{border-radius:var(--r);width:100%;aspect-ratio:4/5;object-fit:cover}
+.about .photo img{border-radius:var(--r);width:100%;aspect-ratio:4/5;max-height:calc(100svh - var(--nav-h) - 6rem);object-fit:cover}
 .about .photo::after{content:"";position:absolute;left:-1.2rem;top:12%;bottom:12%;width:2px;background:var(--lantern);box-shadow:0 0 12px var(--lantern)}
 .principles{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 2rem;margin-top:2.2rem}
 .principles b{font-family:Mincho,serif;font-weight:400;font-size:1.2rem;display:block}
@@ -459,3 +461,15 @@ main{overflow-x:clip}
 .path.peeled{background:var(--ink)}
 .morph-wait,.morph-gone{opacity:0!important}
 .way-media .frame{transition:none}
+
+/* Kontakt na desktopie: tekst po lewej, formularz po prawej, całość w jednym kadrze */
+@media (min-width:1100px){
+  .contact .blk{max-width:none;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(3rem,6vw,6rem);align-content:center}
+  .contact .blk>*:not(form){grid-column:1}
+  .contact form{grid-column:2;grid-row:1/span 6;align-self:center;margin-top:0;max-width:none;padding:clamp(1.4rem,2.4vw,2.2rem);background:rgba(18,19,17,.55);border:1px solid var(--line-n);border-radius:var(--r);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .contact .bg{width:100%}
+  .contact .bg::after{background:linear-gradient(90deg,var(--ink) 25%,rgba(18,19,17,.55))}
+  .contact textarea{min-height:6.5rem}
+}
+/* listy w kolumnie obok zdjęcia: dwie kolumny na desktopie, żeby blok mieścił się w kadrze */
+@media (min-width:1100px){.cols2 .list{display:grid;grid-template-columns:1fr 1fr;column-gap:2rem}.cols2 .list li{grid-template-columns:2rem 1fr;padding:.9rem 0}}

@@ -49,7 +49,7 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
 /* Nić światła: ścieżka wije się od lewej do prawej krawędzi; dojście do granicy sekcji ją odsłania */
 (()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   const page=(location.pathname.split('/').pop()||'index.html').replace('.html','')||'index';
-  const MAP={index:{realizacje:'rozdanie',uslugi:'kafel','jak-pracuje':'brak',systemy:'brak','o-mnie':'okno',ceny:'mozaika',kontakt:'kirigami'},
+  const MAP={index:{realizacje:'rozdanie',uslugi:'kafel','jak-pracuje':'brak',systemy:'enso','o-mnie':'okno',ceny:'mozaika',kontakt:'kirigami'},
     strony:{co:'kafel',jak:'mozaika','inne-uslugi':'rozdanie',kontakt:'enso'},
     aplikacje:{co:'okno',jak:'fala','inne-uslugi':'rozdanie',kontakt:'mozaika'},
     automatyzacje:{co:'mozaika',jak:'enso','inne-uslugi':'rozdanie',kontakt:'kafel'},
@@ -117,16 +117,5 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
         const op=i===0?1:cl(1-(p-.72)/.2);
         place(cl1[i],a,b,e,off*fan*9,`z-index:${n-i};opacity:${op};box-shadow:0 ${30*fan}px ${70*fan}px rgba(18,19,17,${.35*fan})`);
         const to=cl1[i].querySelector('.to');if(to)to.style.opacity=cl((p-.6)/.35)})})}
-  /* 2. Jak pracuję → Systemy: ramka rośnie, ciemnieje i staje się tłem nocnej sekcji */
-  const sys=document.getElementById('systemy'),sbg=sys&&sys.querySelector('.bg img');
-  if(sys&&sbg){let c2=null;
-    morphs.push(()=>{const src=(vis(frame)?frame:document.querySelector('#steps li:last-child .m-ph'));if(!src)return;const sr=sys.getBoundingClientRect();
-      let p=cl((innerHeight*.95-sr.top)/(innerHeight*.95));if(p>.995)p=1;const on=p>0&&p<1;sys.classList.toggle('morph-in',on);
-      if(!on){if(c2){c2.remove();c2=null}src.classList.toggle('morph-gone',p>=1);return}src.classList.add('morph-gone');
-      const img=src.matches('img')?src:(src.querySelector('img.on')||src.querySelector('img'));
-      if(!c2)c2=mk(img.currentSrc||img.src,sbg.currentSrc||sbg.src);
-      const a=src.getBoundingClientRect(),b={left:0,top:Math.max(0,sr.top),width:innerWidth,height:innerHeight-Math.max(0,sr.top)},e=ease(cl(p/.85));
-      place(c2,a,b,e,0,`border-radius:${L(3,0,e)}px;filter:brightness(${L(1,.42,e)});opacity:${p<.8?1:cl(1-(p-.8)/.2)}`);
-      c2.querySelector('.to').style.opacity=cl((p-.35)/.4)})}
   if(!morphs.length)return;let t=false;const run=()=>{morphs.forEach(f=>f());t=false};
   addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(run)}},{passive:true});addEventListener('resize',run);run()})();
