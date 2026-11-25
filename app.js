@@ -137,7 +137,9 @@ async function ask(text){
   try{const c=JSON.parse(localStorage.getItem(key)||'null');if(c&&c.kanji)return c}catch(e){}
   const r=await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text})});
   if(r.status===429)throw new Error('Za dużo prób w ciągu minuty. Poczekaj chwilę i spróbuj jeszcze raz.');
-  if(!r.ok)throw new Error('Pracownia chwilowo odpoczywa. Wybierz jedno z gotowych haseł poniżej.');
+  if(r.status===422)throw new Error('Nie udało się dobrać znaków do tego słowa. Spróbuj pojęcia, np. „odwaga”, „nowy początek”.');
+  if(r.status===422)throw new Error('Nie udało się dobrać znaków do tego słowa. Spróbuj pojęcia, np. „odwaga”, „nowy początek”.');
+  if(!r.ok)throw new Error('Pracownia chwilowo odpoczywa. Wybierz jedno z gotowych haseł obok.');
   const j=await r.json();if(!j.kanji)throw new Error('Nie udało się dobrać znaków. Spróbuj innego słowa.');
   try{localStorage.setItem(key,JSON.stringify(j))}catch(e){}
   return j}
