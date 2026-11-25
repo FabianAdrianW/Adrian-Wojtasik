@@ -49,9 +49,13 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
 /* Nić światła: ścieżka wije się od lewej do prawej krawędzi; dojście do granicy sekcji ją odsłania */
 (()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   const page=(location.pathname.split('/').pop()||'index.html').replace('.html','')||'index';
-  const MAP={};
+  const MAP={index:{realizacje:'brak',uslugi:'kafel','jak-pracuje':'fala',systemy:'enso','o-mnie':'okno',ceny:'kirigami',kontakt:'wiatr'},
+    strony:{co:'kafel',jak:'kirigami','inne-uslugi':'fala',kontakt:'wiatr'},
+    aplikacje:{co:'okno',jak:'fala','inne-uslugi':'kirigami',kontakt:'wiatr'},
+    automatyzacje:{co:'kirigami',jak:'enso','inne-uslugi':'okno',kontakt:'wiatr'},
+    realizacje:{realizacje:'brak','inne-uslugi':'fala',kontakt:'wiatr'}};
   const m=MAP[page]||{},secs=[...document.querySelectorAll('main>section')].slice(1);if(!secs.length)return;
-  secs.forEach(s=>{s.dataset.reveal='wiatr'});document.documentElement.classList.add('thread-on');
+  secs.forEach(s=>{s.dataset.reveal=m[s.id]||'enso'});document.documentElement.classList.add('thread-on');
   const NS='http://www.w3.org/2000/svg',svg=document.createElementNS(NS,'svg'),path=document.createElementNS(NS,'path'),dot=document.createElementNS(NS,'circle');
   svg.setAttribute('class','thread');svg.setAttribute('aria-hidden','true');dot.setAttribute('r','2.6');svg.append(path,dot);document.body.append(svg);
   const SEAM=110;let seg=[],total=0,x0=0,x1=0;
