@@ -197,7 +197,7 @@ section{position:relative;scroll-margin-top:var(--nav-h)}
 .mw .sh{grid-column:1/-1;position:relative;display:block;border-radius:var(--r);overflow:hidden;aspect-ratio:16/10;background:var(--surface);border:1px solid var(--line);margin-bottom:.9rem;box-shadow:0 1px 0 rgba(18,19,17,.04)}
 .mw .sh::before{content:"";position:absolute;inset:0 0 auto;height:.5rem;background:var(--ink);z-index:1}
 .mw .sh::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--lantern);box-shadow:0 0 12px var(--lantern);transform:scaleX(0);transform-origin:left;transition:transform 1.02s var(--ease)}
-.mw img{position:absolute;inset:.5rem 0 0;width:100%;height:calc(100% - .5rem);object-fit:cover;object-position:top;transition:transform 1s var(--ease);will-change:transform;backface-visibility:hidden}
+.mw img{position:absolute;inset:.5rem 0 0;width:100%;height:calc(100% - .5rem);object-fit:cover;object-position:top;transition:transform 1s var(--ease)}
 .mw .n{font-family:Mono,monospace;font-size:.7rem;color:var(--muted);padding-top:.35rem}
 .mw b{font-family:Mincho,serif;font-weight:400;font-size:1.25rem;line-height:1.2}
 .mw .t{grid-column:2;font-size:.85rem;color:var(--muted)}
