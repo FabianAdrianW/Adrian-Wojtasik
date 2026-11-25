@@ -96,3 +96,72 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
   const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('run',e.isIntersecting)),{threshold:.4});f.forEach(x=>io.observe(x))})();
 /* textarea rośnie razem z tekstem */
 (()=>{const t=document.getElementById('f-msg');if(!t)return;const g=()=>{t.style.height='auto';t.style.height=Math.min(t.scrollHeight+2,260)+'px'};t.addEventListener('input',g)})();
+
+/* Pracownia: model AI wybiera kanji, kreski pochodzą z KanjiVG i są rysowane po kolei */
+(()=>{const form=document.getElementById('pform');if(!form)return;
+const WORKER='https://kaligrafia.eyeamadrian.workers.dev';
+const $=s=>document.getElementById(s),g=$('pg'),cv=$('pcanvas'),wa=$('washi'),st=$('pstat'),rp=$('replay'),dl=$('dl'),inp=$('pin'),go=$('pgo');
+const calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const KJ=/[㐀-䶿一-鿿々]/;
+const memo=new Map();let cur=null,run=0;
+const NS='http://www.w3.org/2000/svg';
+const hex=c=>c.codePointAt(0).toString(16).padStart(5,'0');
+async function strokes(c){
+  if(memo.has(c))return memo.get(c);
+  const f=hex(c),urls=[`https://cdn.jsdelivr.net/gh/KanjiVG/kanjivg@master/kanji/${f}.svg`,`https://raw.githubusercontent.com/KanjiVG/kanjivg/master/kanji/${f}.svg`];
+  for(const u of urls){try{const r=await fetch(u);if(!r.ok)continue;const d=new DOMParser().parseFromString(await r.text(),'image/svg+xml');
+    const p=[...d.querySelectorAll('path')].map(x=>x.getAttribute('d')).filter(Boolean);if(p.length){memo.set(c,p);return p}}catch(e){}}
+  memo.set(c,null);return null}
+function say(t){st.textContent=t||''}
+function setMeta(r,m){$('pread').textContent=r||'';$('pmean').textContent=m||''}
+async function draw(chars,read,mean){
+  const my=++run;cur=null;say('');wa.classList.remove('done');rp.disabled=dl.disabled=true;
+  const arr=[...chars].filter(c=>KJ.test(c)).slice(0,4);if(!arr.length)return fail();
+  setMeta(read,mean);
+  const data=await Promise.all(arr.map(strokes));if(my!==run)return;
+  const n=arr.length;cv.setAttribute('viewBox',`0 0 ${109*n} 109`);g.textContent='';
+  const all=[],q=[];
+  arr.forEach((c,i)=>{const gr=document.createElementNS(NS,'g');gr.setAttribute('transform',`translate(${109*i} 0)`);g.appendChild(gr);
+    if(!data[i]){const tx=document.createElementNS(NS,'text');tx.setAttribute('x',54.5);tx.setAttribute('y',90);tx.setAttribute('font-size',100);tx.setAttribute('text-anchor','middle');tx.setAttribute('class','fb');tx.textContent=c;gr.appendChild(tx);all.push(null);return}
+    all.push(data[i]);
+    data[i].forEach(d=>{const p=document.createElementNS(NS,'path');p.setAttribute('d',d);p.setAttribute('class','st');gr.appendChild(p);q.push(p)});q.push(null)});
+  let t=0;
+  if(!calm){const L=q.map(p=>p?p.getTotalLength():0),D=L.map(l=>260+l*7),tot=D.reduce((a,d,i)=>a+(q[i]?d*.72:240),0),k=Math.min(1,9000/tot);
+    q.forEach((p,i)=>{if(!p){t+=240*k;return}const dur=D[i]*k;p.style.strokeDasharray=L[i];p.style.strokeDashoffset=L[i];
+      p.animate([{strokeDashoffset:L[i]},{strokeDashoffset:0}],{duration:dur,delay:t,fill:'forwards',easing:'cubic-bezier(.42,.08,.3,1)'});t+=dur*.72})}
+  cur={arr,all,read,mean};
+  setTimeout(()=>{if(my!==run)return;wa.classList.add('done');rp.disabled=dl.disabled=false},calm?0:t+500)}
+function fail(msg){run++;say(msg||'Nie udało się dobrać znaków. Spróbuj innego słowa.')}
+async function ask(text){
+  const key='prac1:'+text.toLowerCase();
+  try{const c=JSON.parse(localStorage.getItem(key)||'null');if(c&&c.kanji)return c}catch(e){}
+  const r=await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text})});
+  if(r.status===429)throw new Error('Za dużo prób w ciągu minuty. Poczekaj chwilę i spróbuj jeszcze raz.');
+  if(!r.ok)throw new Error('Pracownia chwilowo odpoczywa. Wybierz jedno z gotowych haseł poniżej.');
+  const j=await r.json();if(!j.kanji)throw new Error('Nie udało się dobrać znaków. Spróbuj innego słowa.');
+  try{localStorage.setItem(key,JSON.stringify(j))}catch(e){}
+  return j}
+form.addEventListener('submit',async e=>{e.preventDefault();
+  const t=inp.value.trim().replace(/\s+/g,' ');
+  if(!t){say('Wpisz słowo albo wybierz jedno z haseł.');inp.focus();return}
+  if(t.split(' ').length>5){say('Maksymalnie pięć słów.');return}
+  document.querySelectorAll('#chips .on').forEach(b=>b.classList.remove('on'));
+  go.disabled=true;say('Dobieram znaki…');const my=run+1;
+  try{const j=await ask(t);await draw(j.kanji,j.reading,j.meaning)}catch(er){fail(er.message.length<120?er.message:'Pracownia chwilowo odpoczywa.')}
+  go.disabled=false});
+$('chips').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('#chips .on').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  inp.value=b.textContent;draw(b.dataset.k,b.dataset.r,b.dataset.m)});
+rp.addEventListener('click',()=>{if(cur)draw(cur.arr.join(''),cur.read,cur.mean)});
+dl.addEventListener('click',async()=>{if(!cur)return;const n=cur.arr.length,S=10,P=100,W=109*n*S+2*P,H=109*S+2*P+150;
+  const body=cur.all.map((ds,i)=>ds?`<g transform="translate(${109*i} 0)">`+ds.map(d=>`<path d="${d}" fill="none" stroke="#121311" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round"/>`).join('')+'</g>':`<text x="${109*i+54.5}" y="90" font-size="100" text-anchor="middle" fill="#121311">${cur.arr[i]}</text>`).join('');
+  const svg=`<svg xmlns="${NS}" width="${109*n*S}" height="${109*S}" viewBox="0 0 ${109*n} 109"><defs><filter id="r" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter></defs><g filter="url(#r)">${body}</g></svg>`;
+  const img=new Image();img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+  try{await img.decode();await document.fonts.load('40px Mincho','AW')}catch(e){}
+  const c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
+  x.fillStyle='#F2EFE7';x.fillRect(0,0,W,H);x.drawImage(img,P,P);
+  x.fillStyle='#5D5F58';x.textBaseline='alphabetic';x.font='38px Mincho, serif';x.fillText(`${cur.read}  ·  ${cur.mean}`,P,H-70);
+  const hx=W-P-118,hy=H-P-118+20;x.save();x.translate(hx+59,hy+59);x.rotate(-.1);x.fillStyle='#B23A2E';x.beginPath();x.roundRect(-59,-59,118,118,8);x.fill();
+  x.strokeStyle='#F2EFE7';x.lineWidth=3;x.strokeRect(-47,-47,94,94);x.fillStyle='#F2EFE7';x.textAlign='center';x.font='42px Mincho, serif';x.fillText('A',0,-4);x.fillText('W',0,40);x.restore();
+  c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='kaligrafia-'+(cur.read||'kanji').replace(/[^\w-]+/g,'')+'.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)})});
+})();

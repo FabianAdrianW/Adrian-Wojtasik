@@ -10,7 +10,7 @@ threading.Thread(target=srv.serve_forever,daemon=True).start();port=srv.server_a
 bad=0
 with sync_playwright() as p:
     b=p.chromium.launch()
-    for page in ['index','realizacje','strony','aplikacje','automatyzacje']:
+    for page in ['index','realizacje','strony','aplikacje','automatyzacje','pracownia']:
         for w in (320,390,1440):
             pg=b.new_page(viewport={'width':w,'height':800});err=[]
             pg.on('pageerror',lambda e:err.append(str(e)))

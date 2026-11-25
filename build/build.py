@@ -15,7 +15,7 @@ for f in sorted(set(re.findall(r"url\(fonts/([\w\-]+)\.woff2\)",css))):
     css=css.replace(f"url(fonts/{f}.woff2)",f"url({B('fonts/'+f+'.woff2','font/woff2')})")
 open("styles.css","w").write(css)
 nav=open(os.path.join(HERE,"nav.html")).read();foot=open(os.path.join(HERE,"foot.html")).read()
-PAGES=[p for p in ["index","realizacje","strony","aplikacje","automatyzacje"] if os.path.exists(f"src/{p}.html")]
+PAGES=[p for p in ["index","realizacje","strony","aplikacje","automatyzacje","pracownia"] if os.path.exists(f"src/{p}.html")]
 for src,out in [(f"src/{p}.html",f"{p}.html") for p in PAGES]:
     h=open(src).read().replace("{{NAV}}",nav).replace("{{FOOT}}",foot)
     h=re.sub(r'(<span class="eyebrow"[^>]*>)',r'\1<svg class="ico" viewBox="0 0 544 410" aria-hidden="true"><use href="#torii"/></svg>',h)
