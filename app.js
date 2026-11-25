@@ -49,7 +49,7 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
 /* Nić światła: ścieżka wije się od lewej do prawej krawędzi; dojście do granicy sekcji ją odsłania */
 (()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   const page=(location.pathname.split('/').pop()||'index.html').replace('.html','')||'index';
-  const MAP={index:{realizacje:'rozdanie',uslugi:'kafel','jak-pracuje':'fala',systemy:'enso','o-mnie':'okno',ceny:'mozaika',kontakt:'kirigami'},
+  const MAP={index:{realizacje:'rozdanie',uslugi:'kafel','jak-pracuje':'brak',systemy:'brak','o-mnie':'okno',ceny:'mozaika',kontakt:'kirigami'},
     strony:{co:'kafel',jak:'mozaika','inne-uslugi':'rozdanie',kontakt:'enso'},
     aplikacje:{co:'okno',jak:'fala','inne-uslugi':'rozdanie',kontakt:'mozaika'},
     automatyzacje:{co:'mozaika',jak:'enso','inne-uslugi':'rozdanie',kontakt:'kafel'},
@@ -94,3 +94,39 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
   let t=false;addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(()=>{draw();t=false})}},{passive:true});
   let rt;const rb=()=>{clearTimeout(rt);rt=setTimeout(build,120)};addEventListener('resize',rb);addEventListener('load',build);
   if(window.ResizeObserver)new ResizeObserver(rb).observe(document.querySelector('main'));if(document.fonts)document.fonts.ready.then(build);build()})();
+
+/* Przegrupowanie: zdjęcia odrywają się od jednej sekcji i składają w następną. Sterowane przewijaniem, więc w obie strony */
+(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const layer=document.createElement('div');layer.className='morph-layer';layer.setAttribute('aria-hidden','true');document.body.append(layer);
+  const vis=e=>e&&e.offsetParent!==null;const cl=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;const L=(a,b,t)=>a+(b-a)*t;
+  const mk=(src,top)=>{const d=document.createElement('div');d.className='mc';d.innerHTML=`<img src="${src}" alt="">`+(top?`<img class="to" src="${top}" alt="">`:'');layer.append(d);return d};
+  const place=(d,a,b,t,rot,extra)=>{const x=L(a.left,b.left,t),y=L(a.top,b.top,t),w=L(a.width,b.width,t),h=L(a.height,b.height,t);
+    d.style.cssText=`transform:translate(${x}px,${y}px) rotate(${rot}deg);width:${w}px;height:${h}px;${extra||''}`};
+  const morphs=[];
+  /* 1. Usługi → Jak pracuję: trzy karty zbiegają się w wachlarz i lądują w ramce zdjęcia */
+  const cards=[...document.querySelectorAll('#uslugi .path')],frame=document.querySelector('.way-media .frame'),mph=document.querySelector('#steps .m-ph');
+  if(cards.length&&(frame||mph)){let cl1=null;const tgt=()=>vis(frame)?frame:mph;
+    morphs.push(()=>{const T=tgt();if(!T)return;const r=T.getBoundingClientRect(),stick=vis(frame)?parseFloat(getComputedStyle(frame.parentElement).top)||100:innerHeight*.28;
+      let p=cl((innerHeight*1.02-r.top)/(innerHeight*1.02-stick));if(p>.995)p=1;const on=p>0&&p<1;
+      cards.forEach(c=>c.classList.toggle('peeled',p>0));T.classList.toggle('morph-wait',p<1);
+      if(!on){if(cl1){cl1.forEach(d=>d.remove());cl1=null}return}
+      if(!cl1)cl1=cards.map((c,i)=>mk(c.querySelector('img').currentSrc||c.querySelector('img').src,i===0?(()=>{const m=T.matches('img')?T:(T.querySelector('img.on')||T.querySelector('img'));return m.currentSrc||m.src})():null));
+      const e=ease(p),n=cards.length;
+      cards.forEach((c,i)=>{const a=c.getBoundingClientRect(),off=(i-(n-1)/2),fan=Math.sin(Math.PI*e);
+        const b={left:r.left+off*fan*r.width*.42,top:r.top-fan*Math.abs(off)*-18,width:r.width,height:r.height};
+        const op=i===0?1:cl(1-(p-.72)/.2);
+        place(cl1[i],a,b,e,off*fan*9,`z-index:${n-i};opacity:${op};box-shadow:0 ${30*fan}px ${70*fan}px rgba(18,19,17,${.35*fan})`);
+        const to=cl1[i].querySelector('.to');if(to)to.style.opacity=cl((p-.6)/.35)})})}
+  /* 2. Jak pracuję → Systemy: ramka rośnie, ciemnieje i staje się tłem nocnej sekcji */
+  const sys=document.getElementById('systemy'),sbg=sys&&sys.querySelector('.bg img');
+  if(sys&&sbg){let c2=null;
+    morphs.push(()=>{const src=(vis(frame)?frame:document.querySelector('#steps li:last-child .m-ph'));if(!src)return;const sr=sys.getBoundingClientRect();
+      let p=cl((innerHeight*.95-sr.top)/(innerHeight*.95));if(p>.995)p=1;const on=p>0&&p<1;sys.classList.toggle('morph-in',on);
+      if(!on){if(c2){c2.remove();c2=null}src.classList.toggle('morph-gone',p>=1);return}src.classList.add('morph-gone');
+      const img=src.matches('img')?src:(src.querySelector('img.on')||src.querySelector('img'));
+      if(!c2)c2=mk(img.currentSrc||img.src,sbg.currentSrc||sbg.src);
+      const a=src.getBoundingClientRect(),b={left:0,top:Math.max(0,sr.top),width:innerWidth,height:innerHeight-Math.max(0,sr.top)},e=ease(cl(p/.85));
+      place(c2,a,b,e,0,`border-radius:${L(3,0,e)}px;filter:brightness(${L(1,.42,e)});opacity:${p<.8?1:cl(1-(p-.8)/.2)}`);
+      c2.querySelector('.to').style.opacity=cl((p-.35)/.4)})}
+  if(!morphs.length)return;let t=false;const run=()=>{morphs.forEach(f=>f());t=false};
+  addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(run)}},{passive:true});addEventListener('resize',run);run()})();

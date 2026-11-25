@@ -449,3 +449,13 @@ main{overflow-x:clip}
 @property --k{syntax:"<length>";inherits:false;initial-value:0px}
 .js.thread-on main>section.open{clip-path:none!important}
 @media (max-width:700px){.thread path{stroke-width:1.1}}
+
+/* Przegrupowanie zdjęć między sekcjami */
+.morph-layer{position:fixed;inset:0;z-index:35;pointer-events:none;overflow:hidden}
+.morph-layer .mc{position:absolute;left:0;top:0;border-radius:var(--r);overflow:hidden;will-change:transform,width,height;transform-origin:center}
+.morph-layer img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.morph-layer img.to{opacity:0}
+.path.peeled>img{opacity:0}
+.path.peeled{background:var(--ink)}
+.morph-wait,.morph-gone{opacity:0!important}
+.way-media .frame{transition:none}
