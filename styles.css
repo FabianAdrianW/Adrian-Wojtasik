@@ -48,7 +48,7 @@ section{position:relative;scroll-margin-top:var(--nav-h)}
 .btn:hover svg{transform:translateX(3px)}
 
 /* logo */
-.mark rect.f{fill:none;stroke:currentColor;stroke-width:3}.mark path{stroke:currentColor;stroke-width:2}.mark rect.w{fill:var(--action);transition:fill .4s}
+.mark .f{fill:currentColor}.mark rect.w{fill:var(--action);transition:fill .4s}
 .on-dark .mark rect.w{fill:var(--lantern)}
 
 /* nawigacja */
@@ -303,3 +303,24 @@ footer .light-line{top:0}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 .ai-note{font-size:.75rem;color:var(--muted);margin-top:.6rem}.night .ai-note{color:var(--muted-n)}
 @media (max-width:560px){.more-works a{grid-template-columns:2.4rem 1fr}.more-works span:last-child{grid-column:2}.work .ph .sec{right:0;width:32%}.work.flip .ph .sec{left:0}}
+
+/* intro: brama torii, przez którą wchodzisz na stronę (raz na sesję, tylko strona główna) */
+.intro{position:fixed;inset:0;z-index:200;pointer-events:auto;cursor:pointer}
+.intro svg{position:absolute;inset:0;width:100%;height:100%}
+.intro .ink{fill:var(--ink)}
+.intro .veil{fill:var(--ink);animation:veil .5s 1.55s ease-out forwards}
+.intro .zoom{transform-box:view-box;transform-origin:32px 46px;animation:through 1.15s 2.05s cubic-bezier(.7,0,.2,1) forwards}
+.intro .tr *{fill:transparent;stroke:var(--paper);stroke-width:.35;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1s .15s var(--ease) forwards,fillin .45s 1s ease-out forwards}
+.intro .nuki{fill:var(--lantern);opacity:0;filter:drop-shadow(0 0 1.2px var(--lantern));animation:lampon .7s 1.15s ease-out forwards}
+.intro .lbl{position:absolute;left:50%;bottom:5vh;white-space:nowrap;transform:translateX(-50%);color:var(--muted-n);animation:lblin .6s .6s both,lblout .3s 1.9s forwards}
+.intro .skip-i{position:absolute;right:var(--pad);top:1.4rem;background:none;border:1px solid var(--line-n);color:var(--paper);border-radius:var(--r);padding:.5rem .9rem;font:500 .8rem Plex,sans-serif;cursor:pointer}
+.intro.done{animation:introout .35s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fillin{to{fill:var(--paper);stroke-width:0}}
+@keyframes lampon{0%{opacity:0}35%{opacity:1}45%{opacity:.4}60%,100%{opacity:1}}
+@keyframes veil{to{opacity:0}}
+@keyframes through{to{transform:scale(14)}}
+@keyframes lblin{from{opacity:0}}@keyframes lblout{to{opacity:0}}
+@keyframes introout{to{opacity:0;visibility:hidden}}
+.intro-on .hero .in>*,.intro-on .hero .bg img,.intro-on .hero .light-line{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.intro{display:none}}

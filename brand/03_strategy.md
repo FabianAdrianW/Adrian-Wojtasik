@@ -39,7 +39,7 @@ Każda firma ma jedną cechę, którą klienci znają z wizyty, a której nie wi
    - *ma* (pusta przestrzeń) → dużo powietrza między sekcjami;
    - *kanso* (prostota) → jedna akcja na ekran;
    - *kaizen* (małe ulepszenia) → opieka po publikacji jako stała usługa.
-   **Zakazane:** fałszywe lub przypadkowe znaki kanji, samuraje, katany, gejsze, fonty udające pędzel, karykaturalne „orientalne” ozdobniki.
+   **Zakazane:** fałszywe lub przypadkowe znaki kanji, samuraje, katany, gejsze, fonty udające pędzel, karykaturalne „orientalne” ozdobniki. Brama torii jest znakiem marki (S, 25.11): nowoczesna, geometryczna, z poprzeczką świecącą bursztynem; nigdy czerwona.
 4. **Świat zdjęć (Flow):** ogród z mchem, kamieniem i grabionym piaskiem, drewniane pawilony i werandy, ścianki shoji, bambus, deszcz; laptop i bursztynowe światło technologii wplecione w tradycyjne miejsca; pory: złota godzina, niebieska godzina, noc. Bez ludzi pozujących; jeśli ludzie, to od tyłu lub dłonie przy pracy.
 5. **Stały rekwizyt:** w każdym kadrze jedno źródło bursztynowego światła technologii (cienka linia LED, ekran, latarnia z diodą) w kolorze neonu `#FFB547`.
 6. **Motyw graficzny: kumiko i grabiony piasek.** Linie grabionego piasku to drugi wzór (tła sekcji, przerywniki, animacja linii przy przewijaniu). **Kumiko** (drewniana kratka z japońskiej stolarki, z której składa się ścianka shoji). Siatka kumiko = system, porządek, rzemiosło. Wraca w znaku, tle sekcji (delikatna siatka), przejściach (przesuwane panele shoji), hoverach (linie kratki zapalają się neonem).

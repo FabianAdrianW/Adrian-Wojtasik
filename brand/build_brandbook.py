@@ -78,7 +78,7 @@ CH = [
  [["Zieleń: mech, bambus, klony. Tradycyjne budynki: pawilony, werandy, shoji, latarnie. Piasek: grabiony ogród. Światło: bursztynowe linie LED, ekran, neon.",
    "Stały rekwizyt: w każdym kadrze jedno bursztynowe źródło światła technologii.",
    "Motywy graficzne: kratka kumiko i linie grabionego piasku.",
-   "Zakazane: fałszywe kanji, samuraje, katany, gejsze, fonty udające pędzel.",
+   "Zakazane: fałszywe kanji, samuraje, katany, gejsze, fonty udające pędzel. Brama torii jest znakiem marki (decyzja Fabiana 25.11), więc nie używamy jej jako zwykłej ozdoby w tłach.",
    "Test duszy: po zasłonięciu logo stronę rozpoznaje się po kratce kumiko, przejściu dzień → noc i bursztynowym świetle."]],
  [("Japonia jako sceneria","Teksty, realizacje i kontakt zostają polskie i lokalne")], "latarnia"),
 ("KREACJA / KIERUNEK", "Spokój za dnia, światło nocą.",
@@ -87,13 +87,14 @@ CH = [
    "Przejścia między sekcjami: przesuwane panele shoji i linie piasku.",
    "Animacje: linia światła zapala się od lewej do prawej; zdjęcia wyostrzają się przy wejściu."]],
  [("Jedna linia światła","Element `.light-line` wraca w hero, przejściach i stopce")], "okap"),
-("IDENTYFIKACJA / LOGOTYP", "Ścianka shoji z zapalonym oknem.",
- "Znak to ścianka shoji z kratki kumiko, w której pali się jedno okno: jeden pomysł na Twoją firmę. Obok nazwisko szeryfem.",
- [["Wersje: pozioma (znak + nazwisko), sam znak, monochrom, na ciemnym (okno w kolorze Lampionu).",
-   "Pole ochronne: szerokość jednego pola kratki dookoła znaku.",
+("IDENTYFIKACJA / LOGOTYP", "Brama torii ze światłem technologii.",
+ "Znak to brama torii narysowana prostą, geometryczną linią. Poprzeczka nuki świeci bursztynem jak linia LED: tradycja i nowa technologia w jednym znaku. Brama to też wejście: od niej zaczyna się współpraca i strona.",
+ [["Wersje: pozioma (znak + nazwisko), sam znak, monochrom, na ciemnym (poprzeczka w kolorze Lampionu).",
+   "Pole ochronne: wysokość belki kasagi dookoła znaku.",
    "Minimalny rozmiar: znak 20 px na ekranie, 6 mm w druku.",
-   "Nie wolno: obracać, dodawać cienia, zmieniać koloru okna na inny niż Bursztyn akcji lub Lampion."]],
- [("Okno = pomysł","Zapalone okno animowane raz przy wejściu na stronę")], "LOGO"),
+   "Nie wolno: obracać, dodawać cienia, malować bramy na czerwono, zmieniać koloru poprzeczki na inny niż Bursztyn akcji lub Lampion.",
+   "Intro strony: brama rysuje się linią, poprzeczka zapala się, przez bramę widać stronę, a potem przechodzimy przez nią do środka (raz na sesję, z przyciskiem „Pomiń”)."]],
+ [("Brama = wejście","Intro na stronie głównej i animacja poprzeczki w logo")], "LOGO"),
 ("IDENTYFIKACJA / PALETA", "Sumi, washi, piasek, mech, hinoki, lampion.",
  "Siedem kolorów z ogrodu i nocy. Bursztyn świeci tylko na ciemnym, na jasnym działa jego ciemniejsza wersja.",
  ["PALETA"],
@@ -219,7 +220,7 @@ CH = [
  "S = Fabian, B = rynek i konkurencja, E = dane, D = decyzja projektowa.",
  [["S: hasło, Japonia (zieleń, budynki, piasek, światło), paleta C, archetyp Twórca + Mędrzec, rola partnera, tylko zdjęcia bez wideo, charakter precyzyjny i spokojny premium.",
    "B: 16 marek z 02_research.md (Oferteo, Useme, Behance, Antyweb).",
-   "D: metafora ogród i neon, kumiko, Sawarabi Mincho zamiast Shippori (brak polskich znaków), realizacje w scenach.",
+   "S: znak bramy torii i intro z bramą (25.11). D: metafora ogród i neon, kumiko, Sawarabi Mincho zamiast Shippori (brak polskich znaków), realizacje w scenach.",
    "Wersja 1.0, 25.11.2026. Następna wersja po zdjęciach 2K i nowej stronie."]],
  [("Każda zmiana z powodem","Wpis w historii wersji")], None),
 ]
@@ -229,7 +230,7 @@ PAL = [("Sumi","#121311","tekst, tła nocne"),("Washi","#F2EFE7","tło dnia"),("
 CONTRAST = [("Sumi / Washi","16,2:1","AA"),("Sumi / Piasek","12,5:1","AA"),("Mech / Washi","7,7:1","AA"),("Mech / Piasek","6,0:1","AA"),
             ("Lampion / Sumi","10,6:1","AA"),("Bursztyn akcji / Washi","5,1:1","AA"),("Bursztyn akcji / Piasek","4,0:1","tylko duży tekst i UI")]
 
-LOGO = lambda fg,lit,s=72: f'<svg width="{s}" height="{s}" viewBox="0 0 64 64" aria-hidden="true"><rect x="3" y="3" width="58" height="58" rx="3" fill="none" stroke="{fg}" stroke-width="3"/><path d="M22.3 3v58M41.7 3v58M3 32h58" stroke="{fg}" stroke-width="2"/><rect x="24.3" y="34" width="15.4" height="25" fill="{lit}"/></svg>'
+LOGO = lambda fg,lit,s=72: f'<svg width="{s}" height="{s}" viewBox="0 0 64 64" aria-hidden="true"><g fill="{fg}"><path d="M3 12.5C14 14.6 50 14.6 61 12.5L60 17.2C48 18.6 16 18.6 4 17.2Z"/><rect x="9" y="20" width="46" height="2.6"/><rect x="30.6" y="22.6" width="2.8" height="7"/><path d="M16.2 20h4.2l-.8 41h-4.6z"/><path d="M43.6 20h4.2l1.2 41h-4.6z"/></g><rect x="9.5" y="29.6" width="45" height="2.8" fill="{lit}"/></svg>'
 
 def body(items):
     out=[]
