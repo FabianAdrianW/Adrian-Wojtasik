@@ -41,7 +41,7 @@ $$('.copybtn').forEach(b=>b.addEventListener('click',async()=>{try{await navigat
 const f=$('#form');
 if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status'),n=f.imie.value.trim();
   if(!n){st.textContent='Wpisz imię, żebym wiedział, jak się zwracać.';f.imie.focus();return}
-  const body=`Imię: ${n}\nKontakt: ${f.kontakt.value}\nFirma: ${f.firma.value}\n\n${f.wiadomosc.value}`;
+  const body=`Imię: ${n}\nKontakt: ${f.kontakt.value}\n\n${f.wiadomosc.value}`;
   location.href=`mailto:eyeamadrian@gmail.com?subject=${encodeURIComponent('Zapytanie ze strony: '+n)}&body=${encodeURIComponent(body)}`;
   st.textContent='Otwieram program pocztowy. Jeśli się nie otworzył, napisz na eyeamadrian@gmail.com.'});
 })();
@@ -94,3 +94,5 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
 /* Po godzinach: schematy ruszają, gdy są na ekranie */
 (()=>{const f=document.querySelectorAll('.flow');if(!f.length||!('IntersectionObserver' in window))return;
   const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('run',e.isIntersecting)),{threshold:.4});f.forEach(x=>io.observe(x))})();
+/* textarea rośnie razem z tekstem */
+(()=>{const t=document.getElementById('f-msg');if(!t)return;const g=()=>{t.style.height='auto';t.style.height=Math.min(t.scrollHeight+2,260)+'px'};t.addEventListener('input',g)})();
