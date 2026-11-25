@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adrian Wojtasik · Moodboard v1</title>
+<style>
+@font-face{font-family:Mincho;src:url(fonts/sawarabi-mincho-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-024F,U+1E00-1EFF;font-display:swap}
+@font-face{font-family:Mincho;src:url(fonts/sawarabi-mincho-latin-400-normal.woff2) format('woff2');font-display:swap}
+@font-face{font-family:Plex;src:url(fonts/ibm-plex-sans-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-024F,U+1E00-1EFF;font-display:swap}
+@font-face{font-family:Plex;src:url(fonts/ibm-plex-sans-latin-400-normal.woff2) format('woff2');font-display:swap}
+@font-face{font-family:Mono;src:url(fonts/ibm-plex-mono-latin-ext-500-normal.woff2) format('woff2');unicode-range:U+0100-024F,U+1E00-1EFF;font-display:swap}
+@font-face{font-family:Mono;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format('woff2');font-display:swap}
+.aw-moodboard{--mb-ink:#121311;--mb-paper:#F2EFE7;--mb-sand:#DCD3C1;--mb-moss:#33503F;--mb-hinoki:#C9A46A;--mb-lantern:#FFB547;--mb-action:#8A5A12;--mb-line:rgba(18,19,17,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#d9d4c8}
+body.aw-moodboard{font-family:Plex,system-ui,sans-serif;color:var(--mb-ink);-webkit-font-smoothing:antialiased}
+.sheet{width:210mm;min-height:297mm;margin:24px auto;background:var(--mb-paper);padding:12mm 12mm 10mm;display:flex;flex-direction:column;gap:5mm;position:relative;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.15)}
+.sheet::before{content:"";position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(51,80,63,.07) 1px,transparent 1px),linear-gradient(rgba(51,80,63,.07) 1px,transparent 1px);background-size:17.5mm 23.4mm;pointer-events:none}
+.sheet>*{position:relative}
+.mono{font-family:Mono,monospace;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase}
+.over{display:flex;justify-content:space-between;align-items:center;color:var(--mb-moss)}
+.brand{display:flex;align-items:center;gap:3mm}
+.brand svg{width:9mm;height:9mm}
+.brand b{font-family:Mincho,serif;font-weight:500;font-size:13pt;letter-spacing:-.01em}
+h1{font-family:Mincho,serif;font-weight:500;font-size:30pt;line-height:1.05;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--mb-moss)}
+.thesis{display:grid;grid-template-columns:1.25fr 1fr;gap:8mm;align-items:end}
+.thesis p{border-left:2px solid var(--mb-lantern);padding-left:4mm;font-size:9.5pt;line-height:1.5;color:#3b3d38}
+.mosaic{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:27mm;gap:2.5mm}
+.mosaic figure{position:relative;overflow:hidden;border-radius:2px;background:#222}
+.mosaic img{width:100%;height:100%;object-fit:cover;display:block}
+.mosaic figcaption{position:absolute;left:0;right:0;bottom:0;padding:6mm 3mm 2.5mm;background:linear-gradient(transparent,rgba(10,10,9,.78));color:#F2EFE7}
+.mosaic figcaption .mono{display:block;font-size:6pt;color:var(--mb-lantern)}
+.mosaic figcaption i{font-family:Mincho,serif;font-style:normal;font-size:9.5pt}
+.f-main{grid-column:1/8;grid-row:span 3}.f-s1{grid-column:8/13;grid-row:span 2}.f-s2{grid-column:8/13;grid-row:span 1}
+.f-r{grid-column:span 3;grid-row:span 2}
+.method{background:var(--mb-ink);color:var(--mb-paper);border-radius:2px;padding:4.5mm 5mm;display:flex;flex-wrap:wrap;gap:2.5mm 3mm;align-items:center}
+.method .mono{color:var(--mb-lantern);margin-right:2mm}
+.method span{font-family:Mincho,serif;font-size:10.5pt}
+.method s{text-decoration:none;color:var(--mb-hinoki)}
+.palette{display:grid;grid-template-columns:repeat(7,1fr);gap:2mm}
+.chip i{display:block;height:13mm;border-radius:2px;border:1px solid var(--mb-line)}
+.chip b{display:block;font-weight:500;font-size:7.5pt;margin-top:1.5mm}
+.chip span{font-family:Mono,monospace;font-size:6.5pt;color:#5d5f58}
+.foot{margin-top:auto;display:flex;justify-content:space-between;border-top:1px solid var(--mb-line);padding-top:3mm;color:#5d5f58}
+h2{font-family:Mincho,serif;font-weight:500;font-size:22pt;line-height:1.1;letter-spacing:-.02em}
+h2 em{font-style:normal;color:var(--mb-moss)}
+.persp{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm}
+.persp figure{display:flex;flex-direction:column;gap:2mm}
+.persp img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px;display:block}
+.persp .mono{color:var(--mb-moss);font-size:6.5pt}
+.persp p{font-size:8pt;line-height:1.4;color:#3b3d38}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+.panel{background:#fff;border:1px solid var(--mb-line);border-radius:2px;padding:5mm}
+.panel>.mono{color:var(--mb-moss);display:block;margin-bottom:3mm}
+.icons{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm 3mm}
+.icons div{display:flex;flex-direction:column;align-items:flex-start;gap:1.5mm;font-size:7.5pt;line-height:1.3}
+.icons svg{width:9mm;height:9mm;fill:none;stroke:var(--mb-moss);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.icons svg .lit{stroke:var(--mb-action)}
+.icons b{font-weight:500}
+.spec .d{font-family:Mincho,serif;font-size:26pt;line-height:1;letter-spacing:-.02em}
+.spec .b{font-size:9pt;line-height:1.55;margin-top:3mm;color:#3b3d38}
+.spec .m{font-family:Mono,monospace;font-size:7.5pt;letter-spacing:.1em;margin-top:3mm;color:var(--mb-moss)}
+.rule{margin-top:4mm;padding-top:3mm;border-top:1px solid var(--mb-line);font-size:8.5pt;line-height:1.5}
+.rule b{font-family:Mincho,serif;font-weight:500}
+.night{background:var(--mb-ink);color:var(--mb-paper);border-radius:2px;display:grid;grid-template-columns:1fr 1.1fr;overflow:hidden}
+.night div{padding:5mm}
+.night .mono{color:var(--mb-lantern);text-shadow:0 0 8px rgba(255,181,71,.6)}
+.night h3{font-family:Mincho,serif;font-weight:500;font-size:15pt;line-height:1.15;margin:2.5mm 0}
+.night h3 em{font-style:normal;color:var(--mb-lantern)}
+.night p{font-size:8pt;line-height:1.5;opacity:.85}
+.night img{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:820px){
+  .sheet{width:auto;min-height:0;margin:0 0 12px;padding:22px 18px}
+  .thesis,.two,.night{grid-template-columns:1fr}
+  .mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:120px}
+  .f-main{grid-column:1/3;grid-row:span 2}.f-s1,.f-s2,.f-r{grid-column:span 1;grid-row:span 1}
+  .palette{grid-template-columns:repeat(4,1fr)}
+  .persp{grid-template-columns:1fr 1fr}
+  .icons{grid-template-columns:repeat(2,1fr)}
+  h1{font-size:30px}h2{font-size:24px}
+}
+@page{size:A4;margin:0}
+@media print{html{background:none}.sheet{margin:0;box-shadow:none;page-break-after:always;height:297mm}.sheet:last-child{page-break-after:auto}}
+</style>
+</head>
+<body class="aw-moodboard">
+
+<!-- ARKUSZ 1 -->
+<section class="sheet">
+  <div class="over">
+    <div class="brand"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="3" y="3" width="58" height="58" rx="3" fill="none" stroke="#121311" stroke-width="3"/><path d="M22.3 3v58M41.7 3v58M3 32h58" stroke="#121311" stroke-width="2"/><rect x="24.3" y="34" width="15.4" height="25" fill="#8A5A12"/></svg><b>Adrian Wojtasik</b></div>
+    <span class="mono">Adrian Wojtasik / partner technologiczny / strony · programy · automatyzacje</span>
+  </div>
+  <span class="mono" style="color:#5d5f58">Brand book 1.0 / Moodboard</span>
+  <div class="thesis">
+    <h1>Twój partner technologiczny: od prostej wizytówki <em>po zaawansowane systemy.</em></h1>
+    <p>Ogród i neon. Za dnia spokój, porządek i rzemiosło: mech, piasek, drewno. Nocą światło nowoczesnej technologii, które pracuje dla firmy po godzinach. Najpierw rozumiem Twoją firmę, potem buduję jeden pomysł, który klienci zapamiętają.</p>
+  </div>
+  <div class="mosaic">
+    <figure class="f-main"><img src="images/web/hero-ogrod.jpg" alt=""><figcaption><span class="mono">Ogród</span><i>Spokój i precyzja z linią światła</i></figcaption></figure>
+    <figure class="f-s1"><img src="images/web/brama-laptop.jpg" alt=""><figcaption><span class="mono">Realizacja</span><i>Brama Oleśnicka na werandzie</i></figcaption></figure>
+    <figure class="f-s2"><img src="images/web/okap.jpg" alt="" style="object-position:50% 30%"><figcaption><span class="mono">Architektura</span><i>Tradycja z nowym światłem</i></figcaption></figure>
+    <figure class="f-r"><img src="images/web/piasek.jpg" alt=""><figcaption><span class="mono">Piasek</span><i>Porządek</i></figcaption></figure>
+    <figure class="f-r"><img src="images/web/latarnia.jpg" alt=""><figcaption><span class="mono">Latarnia</span><i>Opieka po publikacji</i></figcaption></figure>
+    <figure class="f-r"><img src="images/web/bambus.jpg" alt=""><figcaption><span class="mono">Bambus</span><i>Automatyzacja</i></figcaption></figure>
+    <figure class="f-r"><img src="images/web/shoji-noc.jpg" alt=""><figcaption><span class="mono">Shoji nocą</span><i>Systemy</i></figcaption></figure>
+  </div>
+  <div class="method"><span class="mono">Metoda</span><span>Rozmowa</span><s>→</s><span>Research</span><s>→</s><span>Jeden pomysł</span><s>→</s><span>Projekt</span><s>→</s><span>Budowa</span><s>→</s><span>Publikacja</span><s>→</s><span>Opieka</span></div>
+  <div class="palette">
+    <div class="chip"><i style="background:#121311"></i><b>Sumi</b><span>#121311</span></div>
+    <div class="chip"><i style="background:#F2EFE7"></i><b>Washi</b><span>#F2EFE7</span></div>
+    <div class="chip"><i style="background:#DCD3C1"></i><b>Piasek</b><span>#DCD3C1</span></div>
+    <div class="chip"><i style="background:#33503F"></i><b>Mech</b><span>#33503F</span></div>
+    <div class="chip"><i style="background:#C9A46A"></i><b>Hinoki</b><span>#C9A46A</span></div>
+    <div class="chip"><i style="background:#FFB547"></i><b>Lampion</b><span>#FFB547</span></div>
+    <div class="chip"><i style="background:#8A5A12"></i><b>Bursztyn akcji</b><span>#8A5A12</span></div>
+  </div>
+  <div class="foot mono"><span>Adrian Wojtasik · system marki · projekt do oceny właścicielskiej</span><span>1 / 2</span></div>
+</section>
+
+<!-- ARKUSZ 2 -->
+<section class="sheet">
+  <div class="over"><span class="mono">Brand book 1.0 / Fundament</span><span class="mono">Twórca + Mędrzec · rola: partner</span></div>
+  <h2>Jeden standard. <em>Cztery punkty oceny.</em></h2>
+  <div class="persp">
+    <figure><img src="images/web/malgorzata-telefon.jpg" alt=""><span class="mono">Lokalna firma</span><p>W 5 sekund wiem, co dostanę i ile to mniej więcej kosztuje.</p></figure>
+    <figure><img src="images/web/weranda-laptop.jpg" alt=""><span class="mono">Firma zdalnie</span><p>Widzę prawdziwe realizacje z nazwy i jasny proces.</p></figure>
+    <figure><img src="images/web/eskander-monitor.jpg" alt="" style="object-position:62% 50%"><span class="mono">Firma, która rośnie</span><p>Widzę skutek w godzinach i błędach, nie w technologii.</p></figure>
+    <figure><img src="images/web/dlonie-praca.jpg" alt=""><span class="mono">Adrian</span><p>Każde zdanie brzmi jak ja na spotkaniu: spokojnie i konkretnie.</p></figure>
+  </div>
+  <div class="two">
+    <div class="panel"><span class="mono">Słownik symboli</span>
+      <div class="icons">
+        <div><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M9 3v18M15 3v18M3 12h18"/><rect class="lit" x="10" y="13.5" width="4" height="6"/></svg><b>Okno kumiko</b>jeden pomysł</div>
+        <div><svg viewBox="0 0 24 24"><path d="M5 9h14l-3-4H8z"/><path d="M8 9v7h8V9M10 16v4h4v-4"/><path class="lit" d="M10 12.5h4"/></svg><b>Latarnia</b>opieka po publikacji</div>
+        <div><svg viewBox="0 0 24 24"><path d="M3 8c3-2 6-2 9 0s6 2 9 0M3 13c3-2 6-2 9 0s6 2 9 0M3 18c3-2 6-2 9 0s6 2 9 0"/></svg><b>Piasek</b>porządek procesu</div>
+        <div><svg viewBox="0 0 24 24"><path d="M4 16c1-5 4-8 8-8s7 3 8 8"/><path d="M3 16h18"/></svg><b>Kamień</b>trwały kod</div>
+        <div><svg viewBox="0 0 24 24"><path d="M3 17h6l3-5h4l2 3h3"/><path d="M5 17v3M19 15v5"/></svg><b>Mostek</b>etapy pracy</div>
+        <div><svg viewBox="0 0 24 24"><path d="M7 21V5M7 5c4 0 6 2 6 6-4 0-6-2-6-6zM12 21V9M12 9c3 0 5-2 5-5-3 0-5 2-5 5z"/></svg><b>Bambus</b>wzrost firmy</div>
+        <div><svg viewBox="0 0 24 24"><path class="lit" d="M3 12h18"/><circle cx="7" cy="12" r="1.5"/><circle cx="17" cy="12" r="1.5"/></svg><b>Linia światła</b>automatyzacja</div>
+        <div><svg viewBox="0 0 24 24"><path d="M4 8h16v12H4z"/><path d="M4 8l2-4h12l2 4M10 8v12M14 8v12"/></svg><b>Noren</b>zaproszenie, kontakt</div>
+      </div>
+    </div>
+    <div class="panel spec"><span class="mono">Typografia</span>
+      <div class="d">Ogród i neon. Zażółć gęślą jaźń.</div>
+      <p class="b">IBM Plex Sans do tekstu. Najpierw czytam Twoje opinie i przyjeżdżam zobaczyć miejsce. Potem buduję jedną rzecz, którą klienci zapamiętają.</p>
+      <p class="m">IBM Plex Mono · 01 / Rozmowa → 02 / Research</p>
+      <div class="rule"><b>Reguła języka:</b> co zauważyłem → co z tym zrobię → co zyskasz → następny krok.</div>
+    </div>
+  </div>
+  <div class="night">
+    <div><span class="mono">● Noc · systemy</span><h3>Zgłoszenie samo trafia <em>do kalendarza.</em></h3><p>Dzień to wizytówka: spokój, papier, mech. Noc to programy i automatyzacje: jeden bursztynowy neon na czerni. Strona prowadzi od dnia do nocy, tak jak oferta prowadzi od wizytówki do systemu.</p></div>
+    <img src="images/web/pho-telefon.jpg" alt="" style="object-position:50% 40%;max-height:62mm">
+  </div>
+  <div class="foot mono"><span>Sceny ilustracyjne wygenerowane przez AI (Google Flow). Ekrany: prawdziwe realizacje.</span><span>2 / 2</span></div>
+</section>
+</body>
+</html>
