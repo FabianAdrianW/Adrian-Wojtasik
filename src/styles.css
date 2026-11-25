@@ -391,8 +391,8 @@ footer .light-line{top:0}
 
 /* odsłony */
 @media (prefers-reduced-motion:no-preference){
-  .js .rv{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .8s var(--ease)}
-  .js .rv.in{opacity:1;transform:none}
+  .js .rv{opacity:0;transform:translateY(-10px);clip-path:inset(0 0 100% 0);transition:opacity .5s var(--ease),transform .8s var(--ease),clip-path .9s var(--ease)}
+  .js .rv.in{opacity:1;transform:none;clip-path:inset(-40% -40% -40% -40%)}
   .js .focus img{filter:blur(10px);transform:scale(1.04);transition:filter 1.4s var(--ease),transform 1.6s var(--ease)}
   .js .focus.in img{filter:none;transform:none}
   .js .hero .bg img{animation:focusin 2.2s var(--ease) both}
@@ -405,8 +405,8 @@ footer .light-line{top:0}
 }
 @keyframes focusin{from{filter:blur(14px);transform:scale(1.08)}to{filter:none;transform:none}}
 @keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-@keyframes rise{from{clip-path:inset(100% 0 -.3em 0);transform:translateY(.5em)}to{clip-path:inset(-.3em -.2em -.3em 0);transform:none}}
-@keyframes drop{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes rise{from{clip-path:inset(-.3em -.2em 100% 0);transform:translateY(-.35em)}to{clip-path:inset(-.3em -.2em -.3em 0);transform:none}}
+@keyframes drop{from{transform:scaleY(0);opacity:0}to{transform:scaleY(1);opacity:1}}
 @keyframes cfade{from{opacity:0;transform:scale(1.6)}to{opacity:1;transform:none}}
 @keyframes line{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
 @keyframes lamp{0%{filter:none}30%{filter:drop-shadow(0 0 6px rgba(255,181,71,.8))}100%{filter:none}}
