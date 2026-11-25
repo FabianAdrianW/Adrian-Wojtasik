@@ -88,7 +88,7 @@ CH = [
    "Animacje: linia światła zapala się od lewej do prawej; zdjęcia wyostrzają się przy wejściu."]],
  [("Jedna linia światła","Element `.light-line` wraca w hero, przejściach i stopce")], "okap"),
 ("IDENTYFIKACJA / LOGOTYP", "Brama torii ze światłem technologii.",
- "Znak to brama torii narysowana prostą, geometryczną linią. Poprzeczka nuki świeci bursztynem jak linia LED: tradycja i nowa technologia w jednym znaku. Brama to też wejście: od niej zaczyna się współpraca i strona.",
+ "Znak to brama torii narysowana podwójną, cienką linią, jak plan techniczny. Poprzeczka nuki świeci bursztynem jak linia LED: tradycja i nowa technologia w jednym znaku. Brama to też wejście: od niej zaczyna się współpraca i strona.",
  [["Wersje: pozioma (znak + nazwisko), sam znak, monochrom, na ciemnym (poprzeczka w kolorze Lampionu).",
    "Pole ochronne: wysokość belki kasagi dookoła znaku.",
    "Minimalny rozmiar: znak 20 px na ekranie, 6 mm w druku.",
@@ -230,7 +230,7 @@ PAL = [("Sumi","#121311","tekst, tła nocne"),("Washi","#F2EFE7","tło dnia"),("
 CONTRAST = [("Sumi / Washi","16,2:1","AA"),("Sumi / Piasek","12,5:1","AA"),("Mech / Washi","7,7:1","AA"),("Mech / Piasek","6,0:1","AA"),
             ("Lampion / Sumi","10,6:1","AA"),("Bursztyn akcji / Washi","5,1:1","AA"),("Bursztyn akcji / Piasek","4,0:1","tylko duży tekst i UI")]
 
-LOGO = lambda fg,lit,s=72: f'<svg width="{s}" height="{s}" viewBox="0 0 64 64" aria-hidden="true"><g fill="{fg}"><path d="M3 12.5C14 14.6 50 14.6 61 12.5L60 17.2C48 18.6 16 18.6 4 17.2Z"/><rect x="9" y="20" width="46" height="2.6"/><rect x="30.6" y="22.6" width="2.8" height="7"/><path d="M16.2 20h4.2l-.8 41h-4.6z"/><path d="M43.6 20h4.2l1.2 41h-4.6z"/></g><rect x="9.5" y="29.6" width="45" height="2.8" fill="{lit}"/></svg>'
+LOGO = lambda fg,lit,s=72: f'<svg width="{s}" height="{round(s*410/544)}" viewBox="240 305 544 410" fill="none" stroke-width="{max(9,round(9*90/s))}" aria-hidden="true"><g stroke="{fg}"><path d="M254 323Q512 385 770 323L724 383H300Z"/><path d="M358.5 383V701M395.5 383V701M627.5 383V701M665 383V701M493 383V435M530 383V435"/><path d="M395.5 435H627.5M307.5 465V435H358.5M716 465V435H665"/></g><path d="M307.5 465H716" stroke="{lit}"/></svg>'
 
 def body(items):
     out=[]

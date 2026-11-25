@@ -20,6 +20,8 @@ def run(scene,shot,out,tint=.12,quad=None):
     if quad is None: q,mask=find_quad(img)
     else:
         q=np.float32(quad).reshape(4,2);mask=np.zeros(img.shape[:2],np.uint8);cv2.fillConvexPoly(mask,q.astype(np.int32),255)
+        gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY);mask[gray<90]=0  # wycięcie i ramka zostają (np. notch)
+        mask=cv2.morphologyEx(mask,cv2.MORPH_OPEN,np.ones((3,3),np.uint8))
     w=int(np.linalg.norm(q[1]-q[0]));h=int(np.linalg.norm(q[3]-q[0]))
     # dopasuj zrzut do proporcji ekranu (przytnij od góry)
     ar=w/h;H,W=sh.shape[:2]

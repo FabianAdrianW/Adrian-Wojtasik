@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="240 305 544 410" fill="none" stroke-width="9" stroke-linejoin="miter">
+<g stroke="#F2EFE7">
+<path d="M254 323Q512 385 770 323L724 383H300Z"/>
+<path d="M358.5 383V701M395.5 383V701M627.5 383V701M665 383V701M493 383V435M530 383V435"/>
+<path d="M395.5 435H627.5M307.5 465V435H358.5M716 465V435H665"/>
+</g>
+<path d="M307.5 465H716" stroke="#FFB547" style="filter:drop-shadow(0 0 10px #FFB547)"/>
+</svg>

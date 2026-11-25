@@ -11,6 +11,7 @@ nav=open(os.path.join(HERE,"nav.html")).read();foot=open(os.path.join(HERE,"foot
 PAGES=[p for p in ["index","realizacje","strony","aplikacje","automatyzacje"] if os.path.exists(f"src/{p}.html")]
 for src,out in [(f"src/{p}.html",f"{p}.html") for p in PAGES]:
     h=open(src).read().replace("{{NAV}}",nav).replace("{{FOOT}}",foot)
+    h=re.sub(r'(<span class="eyebrow"[^>]*>)',r'\1<svg class="ico" viewBox="0 0 544 410" aria-hidden="true"><use href="#torii"/></svg>',h)
     h=re.sub(r"\{\{CASE:(\w+):(\w+)\}\}",lambda m:case(m.group(1),m.group(2)),h)
     if out=="index.html": h=h.replace('href="index.html#','href="#')
     open(out,"w").write(h)

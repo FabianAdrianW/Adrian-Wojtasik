@@ -84,3 +84,10 @@ Pełny redesign na podstawie brand booka 1.0 (`brand/`). Stara wersja: gałąź 
 - Zdjęcia: 22 kadry z Google Flow (1376 px, do podmiany na 2K), realizacje wklejone w ekrany przez `tools/mockup.py`.
 - Ruch: zdjęcia wyostrzają się przy wejściu, kroki procesu zapalają się po kolei, okno w logo zapala się przy starcie; `prefers-reduced-motion` wyłącza ruch.
 - Kontrola: `build/check_site.py` zastępuje `check_light.py` (motyw okna z v4 usunięty).
+
+## v5.1 (25.11.2026)
+- Logo: brama torii podwójną linią (wektor z projektu z Flow, `brand/logo-torii.svg`), symbol `#torii` w `build/nav.html`; używany w menu, stopce, menu mobilnym, etykietach sekcji (zamiast kwadratu), faviconie i intro.
+- Navbar: etykiety mono, pionowe listwy jak w shoji, łuk „kasagi” nad wskazaną pozycją, bursztynowe światło przesuwające się pod pozycjami, przycisk z narożnikami jak łączenia kumiko, menu rozwijane z bursztynową belką.
+- Realizacje: zrzuty robione w proporcjach ekranu każdej sceny (`tools/shoot_sites.py`), więc nic nie jest ucięte; laptop z dokładnym prostokątem i wycięciem kamery.
+- Podwójne kreski w łańcuchach automatyzacji zamienione na strzałki; punkty list jako małe romby.
+- Teksty przejrzane humanizerem.
