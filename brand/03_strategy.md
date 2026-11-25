@@ -34,19 +34,19 @@ Każda firma ma jedną cechę, którą klienci znają z wizyty, a której nie wi
 ## 4. Dusza marki (sekcja 4b)
 1. **Zdanie marki (filtr):** „Twój partner technologiczny: od prostej wizytówki po zaawansowane systemy.” Element, który nie pokazuje partnerstwa albo rozpiętości od prostego do zaawansowanego, wypada. (S)
 2. **Metafora: ogród i neon.** Japoński ogród to precyzja, cierpliwość i coś, co rośnie z czasem (Twórca, partnerstwo, opieka). Neon to technologia, noc, miasto, sygnał (Mędrzec widzi dalej, systemy). Strona przechodzi od dziennego ogrodu (jasne, spokojne, papier washi, mech) do nocnego miasta (ciemne, neony, ekran). Od wizytówki do systemu. (S, D)
-3. **Zasady zamiast dekoracji (D):** czerpiemy z japońskich pojęć, nie z rekwizytów:
+3. **Japonia wprost, ale z szacunkiem (S, 25.11):** strona ma być w tematyce Japonii tak, jak widzi ją Fabian: zieleń (mech, bambus, klony), tradycyjne budynki (pawilony, werandy engawa, ścianki shoji, kamienne latarnie tōrō), piasek (grabiony ogród karesansui) i światło nowoczesnej technologii (bursztynowe linie LED, ekran, neon). Pojęcia, które porządkują projekt:
    - *shokunin* (rzemieślnik oddany jednej rzeczy) → dopracowany detal, podpis na każdej realizacji;
-   - *ma* (pusta przestrzeń, która coś znaczy) → dużo powietrza, cisza między sekcjami;
+   - *ma* (pusta przestrzeń) → dużo powietrza między sekcjami;
    - *kanso* (prostota) → jedna akcja na ekran;
    - *kaizen* (małe ulepszenia) → opieka po publikacji jako stała usługa.
-   **Zakazane:** fałszywe znaki kanji, samuraje, katany, sakura w każdej sekcji, czerwona brama torii jako logo, „orientalne” fonty imitujące pędzel.
-4. **Świat zdjęć (Flow):** ogród z mchem i kamieniem, drewniana weranda, papierowe ścianki shoji, deszcz; ekran laptopa i neon odbite w mokrej powierzchni; godzina: niebieska godzina (zmierzch) i noc. Bez ludzi pozujących; jeśli ludzie, to od tyłu lub dłonie przy pracy.
-5. **Stały rekwizyt:** jeden element w kolorze neonu/akcentu w każdym kadrze (pasek światła, odbicie ekranu, lampion, kabel). Do ustalenia z paletą.
-6. **Motyw graficzny: kumiko** (drewniana kratka z japońskiej stolarki, z której składa się ścianka shoji). Siatka kumiko = system, porządek, rzemiosło. Wraca w znaku, tle sekcji (delikatna siatka), przejściach (przesuwane panele shoji), hoverach (linie kratki zapalają się neonem).
+   **Zakazane:** fałszywe lub przypadkowe znaki kanji, samuraje, katany, gejsze, fonty udające pędzel, karykaturalne „orientalne” ozdobniki.
+4. **Świat zdjęć (Flow):** ogród z mchem, kamieniem i grabionym piaskiem, drewniane pawilony i werandy, ścianki shoji, bambus, deszcz; laptop i bursztynowe światło technologii wplecione w tradycyjne miejsca; pory: złota godzina, niebieska godzina, noc. Bez ludzi pozujących; jeśli ludzie, to od tyłu lub dłonie przy pracy.
+5. **Stały rekwizyt:** w każdym kadrze jedno źródło bursztynowego światła technologii (cienka linia LED, ekran, latarnia z diodą) w kolorze neonu `#FFB547`.
+6. **Motyw graficzny: kumiko i grabiony piasek.** Linie grabionego piasku to drugi wzór (tła sekcji, przerywniki, animacja linii przy przewijaniu). **Kumiko** (drewniana kratka z japońskiej stolarki, z której składa się ścianka shoji). Siatka kumiko = system, porządek, rzemiosło. Wraca w znaku, tle sekcji (delikatna siatka), przejściach (przesuwane panele shoji), hoverach (linie kratki zapalają się neonem).
 7. **Schemat sekcji:** etykieta mono (jak napis neonu, mała) → nagłówek szeryfem (mincho) → krótki tekst → jedno wezwanie do działania.
 8. **Test duszy:** po zasłonięciu logo strona ma być rozpoznawalna po kratce kumiko, przejściu dzień → noc i jednym kolorze neonu.
 
-**Ryzyko (D):** klient z Oławy może uznać styl za „azjatycki” i obcy. Przeciwwaga: treść, zdjęcia realizacji i język zostają lokalne i polskie; Japonia jest w sposobie, nie w tematach.
+**Ryzyko (D):** klient z Oławy może uznać styl za obcy. Przeciwwaga: teksty, realizacje i kontakt zostają polskie i lokalne; Japonia to sceneria marki, nie oferta.
 
 ## 5. Perspektywy (punkty oceny)
 | Kto ocenia | Wymaganie wobec komunikatu |
@@ -90,3 +90,16 @@ dokładność / w szczegółach · własny pomysł / zawsze · spokój / w proce
 Wariant skrócony do social i wizytówki: „Twój partner technologiczny.” Wariant po humanizerze do rozważenia: „Twój partner od technologii. Od wizytówki po systemy, które pracują za Ciebie.” (D)
 
 Uwaga (B): „partner technologiczny” używają też software house’y; wyróżnia nas druga część zdania (rozpiętość od wizytówki do systemu) i lokalność.
+
+## 11. Paleta (zatwierdzona: kierunek C „Mech i lampion” + piasek)
+| Token | Nazwa | Hex | Rola |
+|---|---|---|---|
+| --ink | Sumi | #121311 | tekst, tła nocne |
+| --paper | Washi | #F2EFE7 | tło dzienne |
+| --sand | Piasek | #DCD3C1 | sekcje przyciemnione, wzór grabionego piasku |
+| --moss | Mech | #33503F | nagłówki akcentowe, tła zielone |
+| --hinoki | Hinoki | #C9A46A | drewno, linie, detale |
+| --lantern | Lampion (neon) | #FFB547 | światło technologii, tylko na ciemnym |
+| --action | Bursztyn akcji | #8A5A12 | przyciski i linki na jasnym |
+
+Kontrast (WCAG): Sumi/Washi 16,2:1 · Sumi/Piasek 12,5:1 · Mech/Piasek 6,0:1 · Washi/Mech 7,7:1 · Lampion/Sumi 10,6:1 · Bursztyn akcji/Washi 5,1:1 · **Bursztyn akcji/Piasek 4,0:1: na piasku linki i drobny tekst w kolorze mchu, nie bursztynu.**
