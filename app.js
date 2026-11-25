@@ -27,17 +27,14 @@ if(glow){$$('.links>li>a').forEach(a=>{a.addEventListener('mouseenter',()=>{cons
 /* odsłony */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
 $$('.rv,.focus').forEach(el=>io.observe(el));
-/* fusuma: panele rozsuwają się jeden raz same, potem po najechaniu, kliknięciu albo strzałkami */
+/* Jak pracuję: aktywny krok to ten na środku ekranu; zdjęcie, podpis i znaczniki idą za nim */
 const steps=$('#steps');
-if(steps){const li=[...steps.children],n=li.length,fu=steps.parentElement,lbl=$('#prog-l'),pr=$('.prog'),still=matchMedia('(prefers-reduced-motion: reduce)').matches,wide=matchMedia('(hover:hover) and (min-width:861px)');let cur=0,timer=null,done=false;
-  const set=i=>{cur=i;li.forEach((l,k)=>{const on=k===i;l.classList.toggle('on',on);l.querySelector('.hd').setAttribute('aria-expanded',String(on));l.querySelector('.bd').inert=!on});
-    if(pr)pr.style.setProperty('--p',(i+1)/n);if(lbl)lbl.textContent=`Krok 0${i+1} / 0${n}`};
-  const stop=()=>{done=true;clearInterval(timer);timer=null};
-  li.forEach((l,i)=>{const b=l.querySelector('.hd');b.addEventListener('click',()=>{stop();set(i)});
-    l.addEventListener('mouseenter',()=>{if(wide.matches){stop();set(i)}});
-    b.addEventListener('keydown',e=>{const d=e.key==='ArrowRight'||e.key==='ArrowDown'?1:e.key==='ArrowLeft'||e.key==='ArrowUp'?-1:0;if(d){e.preventDefault();stop();const k=(cur+d+n)%n;set(k);li[k].querySelector('.hd').focus()}})});
-  set(0);
-  if(!still)new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!done&&!timer)timer=setInterval(()=>{if(cur>=n-1)return stop();set(cur+1)},2600);else if(!e.isIntersecting&&timer){clearInterval(timer);timer=null}}),{threshold:.55}).observe(fu)}
+if(steps){const li=[...steps.children],imgs=$$('.way-media .frame img'),ticks=$$('.way-media .ticks li'),wn=$('#way-n'),wt=$('#way-t');let cur=-1;
+  const set=i=>{if(i===cur)return;cur=i;li.forEach((l,k)=>l.classList.toggle('on',k===i));imgs.forEach((m,k)=>m.classList.toggle('on',k===i));
+    ticks.forEach((t,k)=>{t.classList.toggle('on',k===i);t.classList.toggle('done',k<i)});
+    if(wn)wn.textContent='0'+(i+1);if(wt)wt.textContent=li[i].querySelector('h3').firstChild.textContent};
+  const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)set(+e.target.dataset.i)}),{rootMargin:'-46% 0px -46% 0px'});
+  li.forEach(l=>io2.observe(l));set(0)}
 /* kopiowanie e-maila */
 $$('.copybtn').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);const t=b.textContent;b.textContent='Skopiowano';setTimeout(()=>b.textContent=t,1800)}catch(e){}}));
 /* formularz: mailto */
