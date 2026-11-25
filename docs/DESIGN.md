@@ -75,3 +75,12 @@ Portrety pochodzą wprost z oryginałów 2576 px (kolor, bez wypalonego tonowani
 `--accent:#d99a1e` (hover `#b87e10`, jasny `--amber:#f5c45a`), tekst akcentu na jasnym tle `--accent-t:#8a5d0a`; tekst na przyciskach akcentu: czerń. Menu: „Oferta" i „Realizacje" mają rozwijane panele (numeracja, opis, strzałka przy hoverze).
 
 Podstrony usług kończą się sekcją `#inne-uslugi` (dwie pozostałe usługi w tym samym stylu co lista na stronie głównej), przed kontaktem.
+
+## v5 „Ogród i neon” (25.11.2026)
+Pełny redesign na podstawie brand booka 1.0 (`brand/`). Stara wersja: gałąź `v4-czern-miod`.
+- Paleta C „Mech i lampion” + piasek; Lampion `#FFB547` tylko na ciemnym, na jasnym `#8A5A12`.
+- Kroje: Sawarabi Mincho, IBM Plex Sans, IBM Plex Mono (Shippori Mincho odrzucony: brak polskich znaków).
+- Układ dzień → noc; motywy: kumiko (logo, tło sekcji, hover realizacji), linie piasku (pas regionu), linia światła (hero, stopka, ścieżki usług).
+- Zdjęcia: 22 kadry z Google Flow (1376 px, do podmiany na 2K), realizacje wklejone w ekrany przez `tools/mockup.py`.
+- Ruch: zdjęcia wyostrzają się przy wejściu, kroki procesu zapalają się po kolei, okno w logo zapala się przy starcie; `prefers-reduced-motion` wyłącza ruch.
+- Kontrola: `build/check_site.py` zastępuje `check_light.py` (motyw okna z v4 usunięty).

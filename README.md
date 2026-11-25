@@ -1,85 +1,51 @@
 # Adrian Wojtasik
 
-Strona osobista i wizytówka, przez którą firmy zamawiają u mnie strony internetowe, aplikacje, programy i automatyzacje. Pracuję osobiście, od pierwszej rozmowy do publikacji.
+Strona osobista i wizytówka, przez którą firmy zamawiają u mnie strony internetowe, programy i automatyzacje.
 
-Strona nie ma frameworka ani etapu budowania po stronie przeglądarki: to czysty HTML, CSS i JavaScript, który działa po otwarciu pliku z dysku i na każdym hostingu statycznym.
+**Hasło:** Twój partner technologiczny: od prostej wizytówki po zaawansowane systemy.
 
-## Co jest na stronie
+Czysty HTML, CSS i JavaScript, bez frameworka. Działa na każdym hostingu statycznym.
 
-- **Hero**: „Strony i automatyzacje dla Twojej firmy”, zdjęcie i dwa przyciski, z rzutem szyb okna wędrującym po stronie.
-- **Moje ostatnie realizacje**: dwie wyróżnione na głównej, pełna lista na podstronie `realizacje.html`.
-- **Podstrony usług**: `strony.html`, `aplikacje.html` i `automatyzacje.html`, każda z opisem, procesem, przykładem i ceną. Linki są w menu „Oferta”, w sekcji oferty i w stopce.
-- **Jak pracuję**: oś pionowa z sześcioma krokami, każdy rozwija się po najechaniu kursorem (wątek AI jest w kroku „Budowa”), obok przykładowa rozmowa z klientem.
-- **Wiesz, ile zapłacisz**: trzy pozycje cennika w układzie księgi.
-- **O mnie** i **Kontakt** z numerem telefonu, e-mailem, WhatsAppem i formularzem.
+## Wersja 5: „Ogród i neon” (25.11.2026)
 
-## Wygląd
+Źródłem prawdy jest brand book w folderze [`brand/`](brand/): strategia, archetyp, dusza marki, paleta, kroje, zdjęcia i kontrakt dla strony (`brand/brandbook.config.json`).
 
-Motyw przewodni to okno i pora dnia: sekcje przechodzą od ciemnego hero, przez szarości, do jasnego kontaktu.
+Strona prowadzi od dnia do nocy, tak jak oferta prowadzi od wizytówki do systemu:
 
-| Token | Nazwa | Wartość |
+1. **Hero:** japoński ogród o zmierzchu z bursztynową linią światła, hasło, dwa przyciski.
+2. **Realizacje:** Eskander, Phở Việt, Brama Oleśnicka, Kwiaciarnia Małgorzata na urządzeniach w scenerii marki, plus lista starszych projektów.
+3. **Usługi:** trzy ścieżki dzień → zmierzch → noc (strony, programy, automatyzacje).
+4. **Jak pracuję:** 7 kroków, które zapalają się po kolei.
+5. **Po godzinach (noc):** przykłady automatyzacji.
+6. **O mnie:** prawdziwe zdjęcie i cztery zasady (shokunin, ma, kanso, kaizen).
+7. **Ceny** i **Kontakt** (telefon, e-mail, formularz mailto).
+
+Podstrony: `realizacje.html`, `strony.html`, `aplikacje.html`, `automatyzacje.html` (generowane przez `build/gen_pages.py`).
+
+| Token | Nazwa | Hex |
 |---|---|---|
-| Tło ciemne | Czerń | `#0B0B0C` |
-| Tło jasne | Papier | `#F4F3F0` |
-| Akcent na jasnym | Pomarańcz | `#D9480F` |
-| Akcent na ciemnym | Słońce | `#FF7A2F` |
+| `--ink` | Sumi | `#121311` |
+| `--paper` | Washi | `#F2EFE7` |
+| `--sand` | Piasek | `#DCD3C1` |
+| `--moss` | Mech | `#33503F` |
+| `--hinoki` | Hinoki | `#C9A46A` |
+| `--lantern` | Lampion (tylko na ciemnym) | `#FFB547` |
+| `--action` | Bursztyn akcji | `#8A5A12` |
 
-Zdjęcia na stronie są czarno-białe, a miód pojawia się tylko na przyciskach i detalach. Poprzednią, brązową wersję zachowuje gałąź `v1-braz`.
+Kroje (OFL): Sawarabi Mincho (nagłówki), IBM Plex Sans (tekst), IBM Plex Mono (etykiety).
 
-Kroje: **Geist** (tekst) i **Instrument Serif** w kursywie (akcenty w nagłówkach), oba na licencji OFL, wbudowane w `styles.css`. Szczegóły decyzji projektowych są w [`docs/DESIGN.md`](docs/DESIGN.md).
+Zdjęcia scen: Google Flow (Nano Banana Pro), prompty w `brand/image_prompts.md`. Realizacje w scenach składa `tools/mockup.py`.
 
-## Technologia i jakość
+Poprzednie wersje: gałęzie `v4-czern-miod` i `v1-braz`.
 
-- HTML5, CSS ze zmiennymi, JavaScript bez bibliotek (`app.js`, około 7 KB).
-- Skala: na komputerze `--z: .8`, na telefonie `--z: 1`, dzięki czemu 100% zoomu wygląda tak, jak projektowałem przy 80%.
-- Ruch tylko przez `transform` i `opacity`. Efekty najechania kursorem tylko w `@media (hover: hover)`, a całość wyłączana przy `prefers-reduced-motion`.
-- Układ sprawdzony od 320 do 1920 px, bez poziomego przewijania.
-- Semantyczny HTML, widoczny fokus, polskie metadane, Open Graph i favicon.
-- Obrazy w WebP, razem około 1,6 MB.
+## Praca nad stroną
 
-## Struktura repozytorium
+- Teksty i układ: `src/index.html`, `src/styles.css`, `app.js`, nawigacja i stopka w `build/nav.html`, `build/foot.html`.
+- Podstrony: edytuj `build/gen_pages.py`, potem `python3 build/gen_pages.py`.
+- Budowanie: `python3 build/build.py` (pliki w katalogu głównym + samodzielne `dist/*.html` do podglądu).
+- Kontrola: `python3 build/check_site.py` (brak poziomego przewijania przy 320, 390 i 1440 px, brak błędów JS).
+- Nowa realizacja w scenie: `python3 tools/mockup.py brand/images/src/mock-laptop-weranda.jpg zrzut.png wynik.jpg`.
 
-```
-.
-├── index.html          strona główna (wynik budowania)
-├── realizacje.html     podstrona z realizacjami (wynik budowania)
-├── strony.html, aplikacje.html, automatyzacje.html   podstrony usług
-├── styles.css          style z wbudowanymi fontami (wynik budowania)
-├── app.js              animacje, menu, rozmowa, formularz
-├── img/                zdjęcia, znaki, favicon, og.jpg
-├── fonts/              pliki .woff2
-├── src/                źródła wszystkich stron i styles.css
-├── build/              skrypt budujący i wspólne fragmenty (nav, stopka, realizacje)
-└── docs/DESIGN.md      decyzje projektowe
-```
+## Do uzupełnienia
 
-## Uruchomienie
-
-Wystarczy otworzyć `index.html` w przeglądarce albo uruchomić lokalny serwer:
-
-```bash
-python3 -m http.server 8000
-```
-
-## Edycja i budowanie
-
-Pliki w katalogu głównym powstają ze źródeł w `src/` i `build/`. Po zmianach uruchom:
-
-```bash
-python3 build/build.py
-```
-
-Skrypt składa `index.html` i `realizacje.html`, wkleja fonty do `styles.css` i tworzy w `dist/` wersje jednoplikowe (CSS, JS i obrazy w środku), wygodne do wysłania komuś w mailu. Wymagany jest tylko Python 3, bez dodatkowych pakietów.
-
-## Publikacja
-
-Strona jest statyczna, więc nadaje się do GitHub Pages, Netlify albo zwykłego hostingu. Przed publikacją uzupełnij w `src/index.html` adres `canonical` (jest tam `TODO-domena.pl`), NIP i dane firmy w stopce (`build/foot.html`) oraz politykę prywatności.
-
-## Kontakt
-
-Adrian Wojtasik
-tel. [791 632 675](tel:+48791632675) · [eyeamadrian@gmail.com](mailto:eyeamadrian@gmail.com)
-
-## Prawa
-
-© Adrian Wojtasik. Wszelkie prawa zastrzeżone. Kroje Geist i Instrument Serif są udostępnione na licencji SIL Open Font License.
+Zdjęcia scen w 2K, domena (canonical `TODO-domena.pl`), ceny poza wizytówką, NIP i polityka prywatności, zgody klientów na pokazanie realizacji, opinie.
