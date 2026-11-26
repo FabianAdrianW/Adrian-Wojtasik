@@ -108,7 +108,7 @@ section{position:relative;scroll-margin-top:var(--nav-h)}
 .nav{clip-path:inset(0 0 -100vh 0);transition:background .77s,color .77s,clip-path .8s var(--ease),visibility 0s}
 .nav-mini .nav{clip-path:inset(0 0 -100vh 100%);visibility:hidden;transition:background .77s,color .77s,clip-path .8s var(--ease),visibility 0s .8s}
 .dock{position:fixed;z-index:51;top:calc((var(--nav-h) - 3.4rem)/2);right:var(--pad);height:3.4rem;display:flex;align-items:center;gap:.3rem;padding:.3rem;background:rgba(18,19,17,.95);color:var(--paper);border:1px solid rgba(201,164,106,.5);border-radius:var(--r);box-shadow:0 18px 40px -18px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(-.6rem);transition:opacity .45s,transform .6s var(--ease),visibility 0s .6s}
-.nav-mini.nav-open .nav{clip-path:inset(0 0 -100vh 0);visibility:visible;transition-delay:0s}
+.nav-mini.nav-open .nav{clip-path:inset(0 0 -100vh 0);visibility:visible;transition:background .77s,color .77s,clip-path .45s var(--ease),visibility 0s}
 .nav-mini .dock{opacity:1;visibility:visible;transform:none;transition-delay:0s}
 .tori-btn{display:flex;align-items:center;gap:.6rem;height:100%;min-width:2.75rem;padding:0 .8rem;background:none;border:0;border-radius:var(--r);color:inherit;cursor:pointer;font:400 .9rem Label,system-ui,sans-serif;transition:background .5s}
 .tori-btn .mark{width:2.1rem;height:1.6rem;--tw:1.4px;--tn:var(--lantern);transition:filter .5s,transform .6s var(--ease)}

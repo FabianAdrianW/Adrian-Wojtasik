@@ -11,7 +11,7 @@ const darkPage=!$('.hero')&&!$('.sub-hero');if(darkPage)nav.classList.add('scrol
 let tick=false,openY=0;
 /* zwinięty navbar: przycisk tori rozwija belkę */
 const root=document.documentElement,dock=$('#dock'),tori=$('#tori');
-function setOpen(o){root.classList.toggle('nav-open',o);if(!tori)return;tori.setAttribute('aria-expanded',String(o));tori.querySelector('.t').textContent=o?'Zamknij':'Menu'}
+function setOpen(o){root.classList.toggle('nav-open',o);if(!tori)return;tori.setAttribute('aria-expanded',String(o))}
 function isMini(){return !!dock&&scrollY>Math.max(innerHeight*.5,280)&&!(mnav&&mnav.classList.contains('open'))}
 function onScroll(){
   if(dock){const m=isMini();root.classList.toggle('nav-mini',m);root.style.setProperty('--dock-w',dock.offsetWidth+'px');
@@ -26,7 +26,12 @@ addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScrol
 if(btn){btn.addEventListener('click',()=>{const o=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!o));mnav.classList.toggle('open',!o);document.body.style.overflow=o?'':'hidden';btn.querySelector('.t').textContent=o?'Menu':'Zamknij';onScroll()});
   mnav.addEventListener('click',e=>{if(e.target.tagName==='A'){btn.setAttribute('aria-expanded','false');mnav.classList.remove('open');document.body.style.overflow='';btn.querySelector('.t').textContent='Menu';onScroll()}});
   addEventListener('keydown',e=>{if(e.key==='Escape'&&mnav.classList.contains('open')){btn.click();(root.classList.contains('nav-mini')?tori:btn).focus()}})}
-if(tori){tori.addEventListener('click',()=>{if(matchMedia('(max-width:1100px)').matches){btn.click();btn.focus();return}openY=scrollY;setOpen(!root.classList.contains('nav-open'))});
+if(tori){tori.addEventListener('click',()=>{if(matchMedia('(max-width:1100px)').matches){btn.click();btn.focus();return}if(root.classList.contains('nav-open')&&Date.now()-hoverAt<700)return;openY=scrollY;setOpen(!root.classList.contains('nav-open'))});
+  /* mysz: najechanie rozwija od razu, zjechanie z belki zwija po chwili */
+  const hover=matchMedia('(hover:hover) and (min-width:1101px)');let hoverAt=0,leave=0;
+  tori.addEventListener('mouseenter',()=>{clearTimeout(leave);if(!hover.matches||root.classList.contains('nav-open'))return;hoverAt=Date.now();openY=scrollY;setOpen(true)});
+  [nav,dock].forEach(el=>{el.addEventListener('mouseenter',()=>clearTimeout(leave));
+    el.addEventListener('mouseleave',()=>{if(!hover.matches)return;clearTimeout(leave);leave=setTimeout(()=>{if(!nav.querySelector(':focus-visible'))setOpen(false)},450)})});
   addEventListener('keydown',e=>{if(e.key==='Escape'&&root.classList.contains('nav-open')){setOpen(false);tori.focus()}});
   addEventListener('pointerdown',e=>{if(root.classList.contains('nav-open')&&!e.target.closest('#nav,#dock'))setOpen(false)})}
 /* światło pod wskazaną pozycją menu */
