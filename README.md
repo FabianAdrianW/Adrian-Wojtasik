@@ -32,7 +32,7 @@ Podstrony: `realizacje.html`, `strony.html`, `aplikacje.html`, `automatyzacje.ht
 | `--lantern` | Lampion (tylko na ciemnym) | `#FFB547` |
 | `--action` | Bursztyn akcji | `#8A5A12` |
 
-Kroje (OFL): Sawarabi Mincho (nagłówki), IBM Plex Sans (tekst), IBM Plex Mono (etykiety).
+Kroje (OFL): Sawarabi Mincho (nagłówki), IBM Plex Sans (tekst), BIZ UDPGothic (etykiety).
 
 Zdjęcia scen: Google Flow (Nano Banana Pro), prompty w `brand/image_prompts.md`. Realizacje w scenach składa `tools/mockup.py`.
 

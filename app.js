@@ -8,8 +8,14 @@ if(intro&&!intro.hidden){const end=()=>{if(intro.classList.contains('done'))retu
   intro.addEventListener('click',end);addEventListener('keydown',end,{once:true});setTimeout(end,3250)}else if(intro)intro.remove();
 const nav=$('#nav'),bar=$('#callbar'),btn=$('.menu-btn'),mnav=$('#mnav');
 const darkPage=!$('.hero')&&!$('.sub-hero');if(darkPage)nav.classList.add('scrolled');
-let tick=false;
+let tick=false,openY=0;
+/* zwinięty navbar: przycisk tori rozwija belkę */
+const root=document.documentElement,dock=$('#dock'),tori=$('#tori');
+function setOpen(o){root.classList.toggle('nav-open',o);if(!tori)return;tori.setAttribute('aria-expanded',String(o));tori.querySelector('.t').textContent=o?'Zamknij':'Menu'}
+function isMini(){return !!dock&&scrollY>Math.max(innerHeight*.5,280)&&!(mnav&&mnav.classList.contains('open'))}
 function onScroll(){
+  if(dock){const m=isMini();root.classList.toggle('nav-mini',m);root.style.setProperty('--dock-w',dock.offsetWidth+'px');
+    if(root.classList.contains('nav-open')&&(!m||Math.abs(scrollY-openY)>120))setOpen(false)}
   const y=scrollY;nav.classList.toggle('scrolled',darkPage||y>40);
   /* nad ciemną sekcją nawigacja zostaje ciemna */
   const mid=document.elementsFromPoint(innerWidth/2,(parseFloat(getComputedStyle(nav).height)||68)+2).find(e=>e.closest&&e.closest('section'));
@@ -17,9 +23,12 @@ function onScroll(){
   if(bar)bar.classList.toggle('show',y>innerHeight*.6);
   tick=false}
 addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
-if(btn){btn.addEventListener('click',()=>{const o=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!o));mnav.classList.toggle('open',!o);document.body.style.overflow=o?'':'hidden'});
-  mnav.addEventListener('click',e=>{if(e.target.tagName==='A'){btn.setAttribute('aria-expanded','false');mnav.classList.remove('open');document.body.style.overflow=''}});
-  addEventListener('keydown',e=>{if(e.key==='Escape'&&mnav.classList.contains('open')){btn.click();btn.focus()}})}
+if(btn){btn.addEventListener('click',()=>{const o=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!o));mnav.classList.toggle('open',!o);document.body.style.overflow=o?'':'hidden';btn.querySelector('.t').textContent=o?'Menu':'Zamknij';onScroll()});
+  mnav.addEventListener('click',e=>{if(e.target.tagName==='A'){btn.setAttribute('aria-expanded','false');mnav.classList.remove('open');document.body.style.overflow='';btn.querySelector('.t').textContent='Menu';onScroll()}});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&mnav.classList.contains('open')){btn.click();(root.classList.contains('nav-mini')?tori:btn).focus()}})}
+if(tori){tori.addEventListener('click',()=>{if(matchMedia('(max-width:1100px)').matches){btn.click();btn.focus();return}openY=scrollY;setOpen(!root.classList.contains('nav-open'))});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&root.classList.contains('nav-open')){setOpen(false);tori.focus()}});
+  addEventListener('pointerdown',e=>{if(root.classList.contains('nav-open')&&!e.target.closest('#nav,#dock'))setOpen(false)})}
 /* światło pod wskazaną pozycją menu */
 const glow=$('.nav-glow');
 if(glow){$$('.links>li>a').forEach(a=>{a.addEventListener('mouseenter',()=>{const li=a.parentElement;glow.style.left=(li.offsetLeft+16)+'px';glow.style.width=(li.offsetWidth-32)+'px';glow.style.opacity=1})});
@@ -163,3 +172,11 @@ dl.addEventListener('click',async()=>{if(!cur)return;const n=cur.arr.length,S=10
   x.strokeStyle='#F2EFE7';x.lineWidth=3;x.strokeRect(-47,-47,94,94);x.fillStyle='#F2EFE7';x.textAlign='center';x.font='42px Mincho, serif';x.fillText('A',0,-4);x.fillText('W',0,40);x.restore();
   c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='kaligrafia-'+(cur.read||'kanji').replace(/[^\w-]+/g,'')+'.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)})});
 })();
+
+/* Programy: pędzel pisze znak 道, gdy kartka wejdzie w kadr, i ponownie po najechaniu */
+(()=>{const el=document.querySelector('.kal-paper');if(!el||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const p=[...el.querySelectorAll('path')];let busy=0;
+  const write=()=>{if(Date.now()<busy)return;let t=0;p.forEach(s=>{const l=s.getTotalLength(),d=150+l*4;s.style.strokeDasharray=l+' '+(l+10);
+    s.animate([{strokeDashoffset:l,opacity:0},{opacity:1,offset:.02},{strokeDashoffset:0,opacity:1}],{duration:d,delay:t,fill:'both',easing:'cubic-bezier(.42,.08,.3,1)'});t+=d*.75});busy=Date.now()+t+600};
+  new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){write();o.disconnect()}},{threshold:.6}).observe(el);
+  el.addEventListener('mouseenter',write)})();

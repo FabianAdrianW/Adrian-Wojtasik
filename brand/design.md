@@ -4,7 +4,7 @@
 
 ## Reguły wyglądu
 - Dzień → noc: sekcje `data-tone="day"` (Washi/Piasek) na górze, `data-tone="night"` (Sumi) dla programów i automatyzacji, kontakt na końcu.
-- Nagłówki Sawarabi Mincho 400; tekst IBM Plex Sans; etykiety IBM Plex Mono wersalikami. Shippori Mincho odrzucony: brak polskich znaków.
+- Nagłówki Sawarabi Mincho 400; tekst IBM Plex Sans; etykiety BIZ UDPGothic wersalikami. Shippori Mincho odrzucony: brak polskich znaków.
 - Lampion `#FFB547` wyłącznie na ciemnym tle; na jasnym akcja w `#8A5A12`; na Piasku linki w Mchu.
 - Motywy: kratka kumiko (tła, hover), linie piasku (przerywniki), linia światła (hero, przejścia, stopka).
 - Zdjęcia: tylko z gramatyki `image_prompts.md`; adnotacja „Sceny ilustracyjne wygenerowane przez AI”. Realizacje przez `tools/mockup.py`.
