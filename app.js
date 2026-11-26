@@ -8,14 +8,8 @@ if(intro&&!intro.hidden){const end=()=>{if(intro.classList.contains('done'))retu
   intro.addEventListener('click',end);addEventListener('keydown',end,{once:true});setTimeout(end,3250)}else if(intro)intro.remove();
 const nav=$('#nav'),bar=$('#callbar'),btn=$('.menu-btn'),mnav=$('#mnav');
 const darkPage=!$('.hero')&&!$('.sub-hero');if(darkPage)nav.classList.add('scrolled');
-let tick=false,openY=0;
-/* zwinięty navbar: przycisk tori rozwija belkę */
-const root=document.documentElement,dock=$('#dock'),tori=$('#tori');
-function setOpen(o){root.classList.toggle('nav-open',o);if(!tori)return;tori.setAttribute('aria-expanded',String(o))}
-function isMini(){return !!dock&&scrollY>Math.max(innerHeight*.5,280)&&!(mnav&&mnav.classList.contains('open'))}
+let tick=false;
 function onScroll(){
-  if(dock){const m=isMini();root.classList.toggle('nav-mini',m);root.style.setProperty('--dock-w',dock.offsetWidth+'px');
-    if(root.classList.contains('nav-open')&&(!m||Math.abs(scrollY-openY)>120))setOpen(false)}
   const y=scrollY;nav.classList.toggle('scrolled',darkPage||y>40);
   /* nad ciemną sekcją nawigacja zostaje ciemna */
   const mid=document.elementsFromPoint(innerWidth/2,(parseFloat(getComputedStyle(nav).height)||68)+2).find(e=>e.closest&&e.closest('section'));
@@ -23,17 +17,9 @@ function onScroll(){
   if(bar)bar.classList.toggle('show',y>innerHeight*.6);
   tick=false}
 addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
-if(btn){btn.addEventListener('click',()=>{const o=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!o));mnav.classList.toggle('open',!o);document.body.style.overflow=o?'':'hidden';btn.querySelector('.t').textContent=o?'Menu':'Zamknij';onScroll()});
-  mnav.addEventListener('click',e=>{if(e.target.tagName==='A'){btn.setAttribute('aria-expanded','false');mnav.classList.remove('open');document.body.style.overflow='';btn.querySelector('.t').textContent='Menu';onScroll()}});
-  addEventListener('keydown',e=>{if(e.key==='Escape'&&mnav.classList.contains('open')){btn.click();(root.classList.contains('nav-mini')?tori:btn).focus()}})}
-if(tori){tori.addEventListener('click',()=>{if(matchMedia('(max-width:1100px)').matches){btn.click();btn.focus();return}if(root.classList.contains('nav-open')&&Date.now()-hoverAt<700)return;openY=scrollY;setOpen(!root.classList.contains('nav-open'))});
-  /* mysz: najechanie rozwija od razu, zjechanie z belki zwija po chwili */
-  const hover=matchMedia('(hover:hover) and (min-width:1101px)');let hoverAt=0,leave=0;
-  tori.addEventListener('mouseenter',()=>{clearTimeout(leave);if(!hover.matches||root.classList.contains('nav-open'))return;hoverAt=Date.now();openY=scrollY;setOpen(true)});
-  [nav,dock].forEach(el=>{el.addEventListener('mouseenter',()=>clearTimeout(leave));
-    el.addEventListener('mouseleave',()=>{if(!hover.matches)return;clearTimeout(leave);leave=setTimeout(()=>{if(!nav.querySelector(':focus-visible'))setOpen(false)},450)})});
-  addEventListener('keydown',e=>{if(e.key==='Escape'&&root.classList.contains('nav-open')){setOpen(false);tori.focus()}});
-  addEventListener('pointerdown',e=>{if(root.classList.contains('nav-open')&&!e.target.closest('#nav,#dock'))setOpen(false)})}
+if(btn){btn.addEventListener('click',()=>{const o=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!o));mnav.classList.toggle('open',!o);document.body.style.overflow=o?'':'hidden'});
+  mnav.addEventListener('click',e=>{if(e.target.tagName==='A'){btn.setAttribute('aria-expanded','false');mnav.classList.remove('open');document.body.style.overflow=''}});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&mnav.classList.contains('open')){btn.click();btn.focus()}})}
 /* światło pod wskazaną pozycją menu */
 const glow=$('.nav-glow');
 if(glow){$$('.links>li>a').forEach(a=>{a.addEventListener('mouseenter',()=>{const li=a.parentElement;glow.style.left=(li.offsetLeft+16)+'px';glow.style.width=(li.offsetWidth-32)+'px';glow.style.opacity=1})});
@@ -63,7 +49,7 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const st=$('#form-status
 /* Nić światła: ścieżka wije się od lewej do prawej krawędzi; dojście do granicy sekcji ją odsłania */
 (()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   const page=(location.pathname.split('/').pop()||'index.html').replace('.html','')||'index';
-  const MAP={index:{systemy:'enso','o-mnie':'okno',kontakt:'wiatr'},strony:{kontakt:'wiatr'},aplikacje:{kontakt:'wiatr'},automatyzacje:{kontakt:'wiatr'},realizacje:{kontakt:'wiatr'}};
+  const MAP={index:{systemy:'enso',kontakt:'wiatr'},strony:{kontakt:'wiatr'},aplikacje:{kontakt:'wiatr'},automatyzacje:{kontakt:'wiatr'},realizacje:{kontakt:'wiatr'}};
   const m=MAP[page]||{},secs=[...document.querySelectorAll('main>section')].slice(1);if(!secs.length)return;
   secs.forEach(s=>{s.dataset.reveal=m[s.id]||'brak'});document.documentElement.classList.add('thread-on');
   const NS='http://www.w3.org/2000/svg',svg=document.createElementNS(NS,'svg'),path=document.createElementNS(NS,'path'),dot=document.createElementNS(NS,'circle'),glow=document.createElementNS(NS,'path'),halo=document.createElementNS(NS,'circle');

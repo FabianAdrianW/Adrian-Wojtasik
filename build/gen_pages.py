@@ -41,8 +41,8 @@ def lst(items):
 def others(cur):
     return f'''
 <section class="sand" id="inne-uslugi" data-tone="day"><div class="blk">
-  <div class="head rv"><div><span class="eyebrow">Inne usługi</span><h2>To dopiero jedna część. <em>Zrobię też resztę.</em></h2></div><p class="lead">Te same zasady współpracy i ta sama osoba po drugiej stronie.</p></div>
-  <div class="paths" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr))">{''.join(v for k, v in paths.items() if k != cur)}</div>
+  <div class="head"><div><span class="eyebrow">Inne usługi</span><h2>To dopiero jedna część. <em>Zrobię też resztę.</em></h2></div><p class="lead">Te same zasady współpracy i ta sama osoba po drugiej stronie.</p></div>
+  <div class="paths" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr))">{''.join(v.replace('path rv','path') for k, v in paths.items() if k != cur)}</div>
 </div></section>'''
 
 CONTACT = f'''

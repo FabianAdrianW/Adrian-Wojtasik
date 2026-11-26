@@ -14,7 +14,6 @@
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="torii" viewBox="240 305 544 410"><g fill="none" stroke-linejoin="miter"><path style="stroke:var(--tc,currentColor);stroke-width:var(--tw,1.5px)" vector-effect="non-scaling-stroke" d="M254 323Q512 385 770 323L724 383H300Z"/><path style="stroke:var(--tc,currentColor);stroke-width:var(--tw,1.5px)" vector-effect="non-scaling-stroke" d="M358.5 383V701M395.5 383V701M627.5 383V701M665 383V701M493 383V435M530 383V435"/><path style="stroke:var(--tc,currentColor);stroke-width:var(--tw,1.5px)" vector-effect="non-scaling-stroke" d="M395.5 435H627.5M307.5 465V435H358.5M716 465V435H665"/><path class="nk" style="stroke:var(--tn,#FFB547);stroke-width:var(--tw,1.5px)" vector-effect="non-scaling-stroke" d="M307.5 465H716"/></g></symbol></svg>
 <a class="skip" href="#main">Przejdź do treści</a>
-<div class="dock" id="dock"><button class="tori-btn" id="tori" type="button" aria-expanded="false" aria-controls="nav"><svg class="mark" viewBox="0 0 544 410" aria-hidden="true"><use href="#torii"/></svg><span class="t">Menu</span></button><a class="dock-cta" href="index.html#kontakt">Porozmawiajmy</a></div>
 <header class="nav" id="nav">
   <a class="brand" href="index.html#top" aria-label="Adrian Wojtasik, strona główna"><svg class="mark" viewBox="0 0 544 410" aria-hidden="true"><use href="#torii"/></svg><span class="wm">Adrian Wojtasik<small>Partner technologiczny</small></span></a>
   <nav aria-label="Główna"><ul class="links"><li class="nav-glow" aria-hidden="true"></li>
@@ -36,7 +35,7 @@
   <div class="nav-r">
     <a class="tel" href="tel:+48791632675"><span class="mono">Tel.</span> 791 632 675</a>
     <a class="btn btn-act nav-cta" href="index.html#kontakt">Porozmawiajmy</a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav"><svg class="mark" viewBox="0 0 544 410" aria-hidden="true"><use href="#torii"/></svg><span class="t">Menu</span></button>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Menu"><span></span></button>
   </div>
 </header>
 <div class="mnav" id="mnav"><svg class="mnav-mark" viewBox="0 0 544 410" aria-hidden="true"><use href="#torii"/></svg><a href="realizacje.html">Realizacje</a><a href="index.html#uslugi">Usługi</a><a class="sm" href="strony.html">Strony internetowe</a><a class="sm" href="aplikacje.html">Aplikacje i programy</a><a class="sm" href="automatyzacje.html">Automatyzacje</a><a class="sm" href="pracownia.html">Pracownia kaligrafii</a><a href="index.html#jak-pracuje">Jak pracuję</a><a href="index.html#o-mnie">O mnie</a><a href="index.html#ceny">Ceny</a><a href="index.html#kontakt">Kontakt</a></div>
@@ -44,15 +43,15 @@
 <main id="main">
 <section class="night prac kumiko-bg" id="pracownia" data-tone="night"><div class="blk prac-g">
   <div class="prac-l">
-    <span class="eyebrow rv">Pracownia</span>
-    <h1 class="rv">Napisz słowo. <em>Narysuję je pędzlem.</em></h1>
-    <p class="lead rv">Wpisz po polsku słowo albo krótką frazę (do pięciu słów). Model AI dobierze znaki kanji, a ja pokażę, w jakiej kolejności kreśli się je pędzlem.</p>
-    <form class="pform rv" id="pform" autocomplete="off" novalidate>
+    <span class="eyebrow"><svg class="ico" viewBox="0 0 544 410" aria-hidden="true"><use href="#torii"/></svg>Pracownia</span>
+    <h1 class="">Napisz słowo. <em>Narysuję je pędzlem.</em></h1>
+    <p class="lead">Wpisz po polsku słowo albo krótką frazę (do pięciu słów). Model AI dobierze znaki kanji, a ja pokażę, w jakiej kolejności kreśli się je pędzlem.</p>
+    <form class="pform" id="pform" autocomplete="off" novalidate>
       <label class="sr" for="pin">Słowo lub fraza po polsku</label>
       <input id="pin" name="t" type="text" maxlength="60" placeholder="np. spokój, odwaga, nowy początek" enterkeyhint="go">
       <button class="btn btn-act" type="submit" id="pgo">Pisz <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
     </form>
-    <div class="chips rv" id="chips" role="group" aria-label="Gotowe hasła">
+    <div class="chips" id="chips" role="group" aria-label="Gotowe hasła">
       <button type="button" data-k="道" data-r="michi" data-m="droga, ścieżka, sposób">droga</button>
       <button type="button" data-k="風" data-r="kaze" data-m="wiatr">wiatr</button>
       <button type="button" data-k="勇気" data-r="yūki" data-m="odwaga">odwaga</button>
@@ -70,7 +69,7 @@
     <div class="pact"><button class="btn btn-ghost" type="button" id="replay" disabled>Powtórz</button><button class="btn btn-act" type="button" id="dl" disabled>Pobierz PNG</button></div>
     <p class="pstat mono" id="pstat" role="status" aria-live="polite"></p>
   </div>
-<p class="fine mono rv fine-w">Znaki dobiera model AI. Nie wpisuj danych osobowych. Kolejność kresek: <a href="https://kanjivg.tagaini.net/" rel="noopener">KanjiVG</a> (CC BY-SA 3.0).</p>
+<p class="fine mono fine-w">Znaki dobiera model AI. Nie wpisuj danych osobowych. Kolejność kresek: <a href="https://kanjivg.tagaini.net/" rel="noopener">KanjiVG</a> (CC BY-SA 3.0).</p>
 
 </div></section>
 </main>
