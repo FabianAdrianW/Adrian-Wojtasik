@@ -3,7 +3,7 @@ Realizacje i ścieżki usług bierze z src/index.html, żeby nie było dwóch ź
 import re, os
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 idx = open("src/index.html", encoding="utf-8").read()
-works = re.search(r'<div class="works">.*?</div>\s*<div class="more-works rv">.*?</div>\s*</div>', idx, re.S).group(0)
+works = re.search(r'<div class="works">.*?</div>\s*<div class="more-works">.*?</div>\s*</div>', idx, re.S).group(0)
 paths = {m.group(1): m.group(0) for m in re.finditer(r'<a class="path rv" href="(\w+)\.html">.*?</a>', idx, re.S)}
 ARW = '<svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>'
 
